@@ -17,6 +17,8 @@ class BugReport(models.Model):
     hunter_email = models.EmailField()
     report_reviewer = models.CharField(max_length=25, verbose_name="Report Reviewer")
     report_title = models.CharField(max_length=150, default='NO TITLE')
+    report_customer = models.CharField(max_length=150, default='NO CUSTOMER')
+    customer_code = models.CharField(max_length=3, default='ALL')
     report_endpoint = models.CharField(max_length=150, default='NO ENDPOINT')
     report_attack = models.CharField(max_length=100, default='NO ATTACK TYPE')
     report_summary = models.TextField()
@@ -87,6 +89,22 @@ class BugHunter(models.Model):
     def __str__(self):
         return self.hunter_scores
 
+class Scoreboard(models.Model):
+    hunter_name = models.CharField(max_length=100, verbose_name="Bug Hunter Name")
+    report_id = models.ForeignKey('BugReport', on_delete=models.CASCADE, verbose_name="Accepted Report ID")
+    customer_code = models.CharField(max_length=3, verbose_name="Customer Code")
+    points_awarded = models.IntegerField(verbose_name="Points Awarded")
+    deleted = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "Bug Hunter Score"
+        verbose_name_plural = "Bug Hunter Scores"
+        ordering = ['hunter_name', 'customer_code']  # Изменено с company_code на customer_code
+
+    def __str__(self):
+        return f"{self.hunter_name} - {self.customer_code} - {self.points_awarded} points"
+
+
 
 class ReportStatus(models.Model):
     status_id = models.IntegerField(primary_key=True)
@@ -155,3 +173,7 @@ class Personalization(models.Model):
 
     def __str__(self):
         return self.personalize_id
+
+
+
+

@@ -13,18 +13,18 @@ from django.views.generic import (
     TemplateView
 )
 from django.urls import reverse, reverse_lazy
-from django.db.models import Sum
+from django.db.models import F, Sum
 from django.http import FileResponse
 from django.middleware.csrf import get_token
 from prerequisites.models import MailBox, Webhook
-from .models import BugHunter, BugReport, BugReportUpdate, BugReportAppeal, BugReportNDA, ReportStatus, StaticRules, BlacklistRule, CertificateData, Personalization
+from .models import BugHunter, BugReport, BugReportUpdate, BugReportAppeal, BugReportNDA, ReportStatus, Scoreboard, StaticRules, BlacklistRule, CertificateData, Personalization
 from .forms import Requestform, RulesGuidelineForm, CompleteRequestform, MailboxForm, AccountForm, ReviewerForm, WebhookForm, BlacklistForm, TemplateReportForm, TemplateNDAForm, TemplateCertForm, CertDataForm, PersonalizationForm, CompanyIdentityForm, Invalidform, TroubleshootForm
 from sys import platform
 from geromail import geromailer, gerofilter, geroparser, gerocalculator
 from gerobug.settings import MEDIA_ROOT, BASE_DIR
 
 import threading, os, shutil, gerocert.gerocert
-import logging
+import logging, re
 from logging.handlers import TimedRotatingFileHandler
 
 
@@ -362,9 +362,19 @@ def AdminSetting(request):
         reviewer = ReviewerForm(request.POST)
         if reviewer.is_valid():
             try:
-                groupreviewer = Group.objects.get(name='Reviewer')
                 reviewername = reviewer.cleaned_data.get('reviewername')
                 revieweremail = reviewer.cleaned_data.get('reviewer_email')
+                if reviewer.cleaned_data.get('is_customer') == True:
+                    logging.getLogger("Gerologger").info("--------------- Customer choosed ---------------")
+                    groupreviewer = Group.objects.get(name='Customer')
+                    if not re.match(r'^\([A-Z]+\)\w+', reviewername):
+                        messages.error(request,"Username need contain code with 3 symbols in UPpercase before name. Format: (BIG)BI_Group")
+                        logging.getLogger("Gerologger").error("Doesnt contain 3 symbols code before name")
+                        logging.getLogger("Gerologger").error("INPUT : " + str(reviewername))
+                        return redirect("setting")
+                else:
+                    logging.getLogger("Gerologger").info("--------------- Reviewer choosed ---------------")
+                    groupreviewer = Group.objects.get(name='Reviewer')
                 if User.objects.filter(Q(username__exact=reviewername)).count() > 0:
                     messages.error(request,"Username already used. Please try another username!")
                     logging.getLogger("Gerologger").error("Username already used!")
@@ -374,12 +384,14 @@ def AdminSetting(request):
                     logging.getLogger("Gerologger").error("Email already used!")
                     return redirect("setting")
                 else:
-                    reviewerpassword = "G3r0bUg_@dM!n_1337yipPie13579246810121337" #default pw, change since this is temp
-                    revieweraccount = User.objects.create(username=reviewername,email=revieweremail)
+                    reviewerpassword = "1337" #default pw, change since this is temp
+                    revieweraccount = User.objects.create(username=reviewername,email=revieweremail) # NE ZABYTb
                     revieweraccount.set_password(reviewerpassword)
                     revieweraccount.groups.add(groupreviewer)
                     revieweraccount.save()
+                    logging.getLogger("Gerologger").info("Group name : " + str(groupreviewer))
                     logging.getLogger("Gerologger").info("Reviewer is created successfully")
+                    logging.getLogger("Gerologger").info(f"New User Details: Username: {revieweraccount.username}, Email: {revieweraccount.email}, Groups: {[group.name for group in revieweraccount.groups.all()]}")
                     messages.success(request,"Reviewer is created successfully!")
                     return redirect('setting')
             except Exception as e:
@@ -571,23 +583,28 @@ def AdminSetting(request):
                     'personalization': PersonalizationForm(instance=THEME), 'troubleshoot': TroubleshootForm(), 'users':users, 'mailbox_status': mailbox_status,'mailbox_name': mailbox_name,'notifications':notifications,'bl':bl})
 
 @login_required
-def ReviewerDelete(request,id):
+def ReviewerDelete(request, id):
     if request.method == "POST":
         try:
-            if User.objects.filter(id=id).count() != 0:
-                User.objects.filter(id=id).delete()
-                messages.success(request,"User is deleted successfully!")
+            user = User.objects.filter(id=id).first()
+            if user:
+                customer_group = Group.objects.get(name='Customer')
+                if customer_group in user.groups.all():
+                    Scoreboard.objects.filter(hunter_name=user.username).update(deleted=True)
+
+                user.delete()
+                messages.success(request, "User is deleted successfully!")
                 logging.getLogger("Gerologger").info("USER ID " + str(id) + " SUCCESSFULLY DELETED BY " + str(request.user.username))
                 return redirect('dashboard')
-            
+
         except Exception as e:
             logging.getLogger("Gerologger").error(str(e))
-            messages.error(request,"Something wrong. The delete operation is unsuccessful. Please report to the Admin!")
+            messages.error(request, "Something wrong. The delete operation is unsuccessful. Please report to the Admin!")
             return redirect('setting')
-        
+
         return redirect('setting')
-    
-    return render(request,'setting.html')
+
+    return render(request, 'setting.html')
 
 @login_required
 def NotificationDelete(request,service):
@@ -620,26 +637,102 @@ def rulescontext(request,):
     staticrules = StaticRules.objects.get(pk=1)
     return render(request,'rules.html',{'RDP':staticrules.RDP,'bountyterms':staticrules.bountyterms,'inscope':staticrules.inscope,'outofscope':staticrules.outofscope,'reportguidelines':staticrules.reportguidelines,'faq':staticrules.faq})
 
-def emailcontext(request,):
+def emailcontext(request):
     if MailBox.objects.filter(mailbox_id=1)[0].email != "":
         email = MailBox.objects.filter(mailbox_id=1)[0].email
-        template = "Submit your email to <strong>"+ email +"</strong> using the templates below..."
+        template = "Submit your email to <strong>" + email + "</strong> using the templates below..."
     else:
         template = "Currently the company hasn't set their email yet. Please contact the admin/wait for the mailbox setup."
-    return render(request, 'submit.html',{'template':template})
 
-def halloffame(request,):
-    bughunters = BugHunter.objects.alias(
-        points=Sum('hunter_scores')
-    ).exclude(hunter_scores=0).order_by('-points')
+    # Fetch the list of companies dynamically
+    customer_group = Group.objects.get(name='Customer')
+    customers_list = User.objects.filter(groups=customer_group)
+    companies = []
+    for user in customers_list:
+        match = re.match(r'\((.*?)\)(.*)', user.username)
+        if match:
+            code = match.group(1)
+            name = match.group(2).strip().replace('_', ' ')
+            companies.append({'code': code, 'name': name})
 
-    return render(request, 'halloffame.html',{'bughunters':bughunters})
+    return render(request, 'submit.html', {'template': template, 'companies': companies})
+
+
+# def halloffame(request,):
+#     bughunters = BugHunter.objects.alias(
+#         points=Sum('hunter_scores')
+#     ).exclude(hunter_scores=0).order_by('-points')
+# 
+#     return render(request, 'halloffame.html',{'bughunters':bughunters})
+
+def halloffame(request):
+    customer_group = Group.objects.get(name='Customer')
+    customers_list = User.objects.filter(groups=customer_group)
+    companies = []
+
+    for user in customers_list:
+        match = re.match(r'\((.*?)\)(.*)', user.username)
+        if match:
+            code = match.group(1)
+            name = match.group(2).strip().replace('_', ' ')
+            companies.append({'code': code, 'name': name})
+
+    selected_company = request.GET.get('company', 'ALL')
+
+    if selected_company == 'ALL':
+        # Fetch all bug hunter scores from the Scoreboard
+        scoreboard_entries = Scoreboard.objects.all()
+    else:
+        # Filter scores by the selected company code
+        scoreboard_entries = Scoreboard.objects.filter(customer_code=selected_company)
+
+    # Group by hunter name and sum their points
+    bughunters = (scoreboard_entries
+                  .values('hunter_name', 'deleted')  # Include deleted status
+                  .annotate(points=Sum('points_awarded'))  # Sum points
+                  .exclude(points=0)  # Exclude those with 0 points
+                  .order_by('-points'))  # Order by points, descending
+
+    # Separate deleted and non-deleted entries
+    non_deleted = []
+    deleted = []
+
+    for hunter in bughunters:
+        if hunter['deleted']:
+            hunter['hunter_name'] += ' (Deleted)'
+            deleted.append(hunter)
+        else:
+            non_deleted.append(hunter)
+
+    # Combine non-deleted and deleted, with deleted at the bottom
+    sorted_bughunters = non_deleted + deleted
+
+    return render(request, 'halloffame.html', {
+        'bughunters': sorted_bughunters,
+        'companies': companies,
+        'selected_company': selected_company
+    })
+
 
 def notfound_404(request, exception):
     return render(request, '404.html', status=404)
 
 # def error_500(request, exception):
 #     return render(request, '500.html', status=500)
+
+def submit(request):
+    # Fetch the list of companies dynamically
+    customer_group = Group.objects.get(name='Customer')
+    customers_list = User.objects.filter(groups=customer_group)
+    companies = []
+    for user in customers_list:
+        match = re.match(r'\((.*?)\)(.*)', user.username)
+        if match:
+            code = match.group(1)
+            name = match.group(2).strip().replace('_', ' ')
+            companies.append({'code': code, 'name': name})
+    return render(request, 'submit.html', {'companies': companies})
+
 
 class Themes(TemplateView):
     template_name = 'theme.css'
@@ -658,3 +751,7 @@ class Themes(TemplateView):
         context['text_2']       = "White"
 
         return self.render_to_response(context)
+
+
+
+

@@ -359,7 +359,8 @@
                                       <thead>
                                         <tr>
                                           <th>Username</th>
-                                          <th>Email</th>
+					  <th>Email</th>
+                                          <th>Group</th>
                                           <th>Actions</th>
                                         </tr>
                                       </thead>
@@ -369,6 +370,15 @@
                                           <td>{{ user.username }}</td>
                                           <td>{{ user.email }}</td>
                                           <td>
+                        			{% if user.groups.all %}
+                            				{% for group in user.groups.all %}
+                                				{{ group.name }}{% if not forloop.last %}, {% endif %}
+                            				{% endfor %}
+                        			{% else %}
+                            				None
+                        			{% endif %}
+                    			  </td>
+					  <td>
                                             <!-- <a href="#editUserModal" class="edit" data-toggle="modal"><i id="edit-user-{{ user.id }}" class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> -->
                                             <a href="#deleteUserModal" class="delete" data-toggle="modal"><i id="delete-user-{{ user.id }}" class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                           </td>

@@ -155,35 +155,36 @@ def validate_attachment(msg, id, FILEPATH):
 
 # PARSE EMAIL BODY
 def parse_body(body):
-    endpoint = '' 
+    type = ''
+    endpoint = ''
     summary = ''
+    customer = ''
 
     try:
-        type = re.search('(TYPE=|TYPE =|TYPE)((.|\n)*)(ENDPOINT=|ENDPOINT =|ENDPOINT)', body.replace('*', ''))
-        if type != None:
-            type = type.group(2)
-            type = str(type.replace("\n",""))
-        else:
-            type = ''
+        # Захватываем текст после CUSTOMER=
+        customer_match = re.search(r'CUSTOMER\s*=\s*(.*?)(?=\s*TYPE\s*=|\s*ENDPOINT\s*=|\s*SUMMARY\s*=)', body.replace('*', ''), re.DOTALL)
+        if customer_match is not None:
+            customer = customer_match.group(1).strip()
 
-        endpoint = re.search('(ENDPOINT=|ENDPOINT =|ENDPOINT)((.|\n)*)(SUMMARY=|SUMMARY =|SUMMARY)', body.replace('*', ''))
-        if endpoint != None:
-            endpoint = endpoint.group(2)
-            endpoint = re.sub(r"<.*>", "", str(endpoint))
-            endpoint = str(endpoint.replace("\n",""))
-        else:
-            endpoint = ''
+        # Захватываем текст между TYPE= и ENDPOINT=
+        type_match = re.search(r'TYPE\s*=\s*(.*?)(?=\s*ENDPOINT\s*=)', body.replace('*', ''), re.DOTALL)
+        if type_match is not None:
+            type = type_match.group(1).strip()
 
-        summary = re.search('(SUMMARY=|SUMMARY =|SUMMARY)(.*)', body.replace('\n', ' ').replace('*', ''))
-        if summary != None:
-            summary = summary.group(2)
-        else:
-            summary = ''
+        # Захватываем текст между ENDPOINT= и SUMMARY=
+        endpoint_match = re.search(r'ENDPOINT\s*=\s*(.*?)(?=\s*SUMMARY\s*=)', body.replace('*', ''), re.DOTALL)
+        if endpoint_match is not None:
+            endpoint = re.sub(r"<.*>", "", endpoint_match.group(1).strip())  # Убираем теги
+
+        # Захватываем текст после SUMMARY=
+        summary_match = re.search(r'SUMMARY\s*=\s*(.*)', body.replace('*', ''), re.DOTALL)
+        if summary_match is not None:
+            summary = summary_match.group(1).strip()
 
     except Exception as e:
         logging.getLogger("Gerologger").error(str(e))
 
-    return type, endpoint, summary
+    return type, endpoint, summary, customer
 
 
 # CLASSIFY ACTION BY EMAIL SUBJECT
@@ -293,3 +294,7 @@ def classify_action(email, subject):
 
     except Exception as e:
         logging.getLogger("Gerologger").error(str(e))
+
+
+
+

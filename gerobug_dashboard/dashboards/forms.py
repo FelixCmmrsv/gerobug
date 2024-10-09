@@ -42,6 +42,7 @@ class AccountForm(forms.Form):
 class ReviewerForm(forms.Form):
     reviewername = forms.CharField(widget=forms.TextInput(attrs={'id':'reviewername', 'placeholder': 'Reviewer\'s Username', 'style': 'width: 100%;', 'class': 'form-control'}),label="Reviewer's Name")
     reviewer_email = forms.CharField(widget=forms.EmailInput(attrs={'id':'reviewer_email', 'placeholder': 'Reviewer\'s Email', 'style': 'width: 100%;', 'class': 'form-control'}),label="Reviewer's Email")
+    is_customer = forms.BooleanField(label="is_customer", required=False)
 
 class WebhookForm(forms.Form):
     CHOICES = (('SLACK', 'Slack'),('TELEGRAM', 'Telegram'),)
@@ -78,3 +79,7 @@ class PersonalizationForm(forms.ModelForm):
 
 class TroubleshootForm(forms.Form):
     troubleshoot_1 = forms.BooleanField(label="Recover Loss Report Files", required=False)
+
+
+
+

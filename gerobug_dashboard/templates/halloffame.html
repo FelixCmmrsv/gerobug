@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Gerobug-signature" content="97de67b8d672c51c158247f398b85d31">
-  
+
   <title>Hall Of Fame</title>
   <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
   <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
@@ -25,9 +25,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
   <script>
     function myFunction() {
       var x = document.getElementById("navbar");
@@ -43,20 +43,20 @@
 <body>
   <header>
     <ul class="topnav" id="navbar">
-        <li><a class="logo" href="{% url 'rules' %}">
-            <div class="nav-content"><img src="{% static 'logo.png' %}"></div>
+      <li><a class="logo" href="{% url 'rules' %}">
+          <div class="nav-content"><img src="{% static 'logo.png' %}"></div>
         </a></li>
-        <li><a href="{% url 'rules' %}">
-            <div class="nav-content">Rules & Guidelines</div>
+      <li><a href="{% url 'rules' %}">
+          <div class="nav-content">Rules & Guidelines</div>
         </a></li>
-        <li><a class="active" href="{% url 'halloffame' %}">
-            <div class="nav-content">Hall Of Fame</div>
+      <li><a class="active" href="{% url 'halloffame' %}">
+          <div class="nav-content">Hall Of Fame</div>
         </a></li>
-        <li><a href="{% url 'submit' %}">
-            <div class="nav-content">Submit</div>
+      <li><a href="{% url 'submit' %}">
+          <div class="nav-content">Submit</div>
         </a></li>
-        <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">
-            <div class="nav-content"><i class="fa fa-bars"></i></div>
+      <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">
+          <div class="nav-content"><i class="fa fa-bars"></i></div>
         </a></li>
     </ul>
   </header>
@@ -66,8 +66,20 @@
       <h1>Hall Of Fame</h1>
       <img src="{% static 'leaderboard.png' %}">
     </div>
+
+    <!-- Форма для выбора компании -->
+    <form method="GET" action=".">
+      <label for="company">Select Company:</label>
+      <select id="company" name="company" onchange="this.form.submit()">
+        <option value="ALL" {% if selected_company == 'ALL' %}selected{% endif %}>All Companies</option>
+        {% for company in companies %}
+          <option value="{{ company.code }}" {% if selected_company == company.code %}selected{% endif %}>{{ company.name }}</option>
+        {% endfor %}
+      </select>
+    </form>
+
     <p>Gerobug thanks the following researchers for reporting valid security issues</p>
-        
+
     <table id="leaderboard">
       <thead>
         <tr>
@@ -83,8 +95,8 @@
         {% for bughunter in bughunters|slice:":1000" %}
         <tr>
           <td style="width:20%">{{ forloop.counter }}</td>
-          <td style="width:52%">{{ bughunter.hunter_username }}</td>
-          <td style="width:28%">{{ bughunter.hunter_scores }}</td>
+          <td style="width:52%">{{ bughunter.hunter_name }}</td>
+          <td style="width:28%">{{ bughunter.points }}</td>
         </tr>
         {% endfor %}
       </table>

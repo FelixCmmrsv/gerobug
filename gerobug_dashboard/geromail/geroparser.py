@@ -16,9 +16,12 @@ from . import gerosecure
 from . import gerofilter
 from . import geromailer
 from . import geronotify
-from dashboards.models import BugHunter, BugReport, BugReportUpdate, BugReportAppeal, BugReportNDA
+from dashboards.models import BugHunter, BugReport, BugReportUpdate, BugReportAppeal, BugReportNDA, Scoreboard
 from prerequisites.models import MailBox
 from gerobug.settings import MEDIA_ROOT
+
+from django.contrib.auth.models import Group, User
+from django.db import transaction
 
 
 
@@ -60,15 +63,57 @@ def saveuser(email, name, score):
         newuser.save()
         logging.getLogger("Gerologger").info("New User registered.")
 
+# GETTING ALL CUSTOMERS NAME FROM GROUP
+def customers():
+    try:
+        # Получаем группу по имени 'Customer'
+        customer_group = Group.objects.get(name='Customer')
+        # Получаем всех пользователей, которые принадлежат к этой группе
+        customers_list = User.objects.filter(groups=customer_group)
+        # Извлекаем коды пользователей
+        customer_codes = []
+        for user in customers_list:
+            match = re.match(r'\((.*?)\)', user.username)
+            if match:
+                code = match.group(1)
+                customer_codes.append(code)
+        return customer_codes
+    except Group.DoesNotExist:
+        logging.getLogger("Gerologger").warning("Customer group does not exist.")
+        return []
+    except Exception as e:
+        logging.getLogger("Gerologger").error(f"An error occurred: {str(e)}")
+        return []
+
+def get_company_name_by_code(code):
+    try:
+        # Получаем группу по имени 'Customer'
+        customer_group = Group.objects.get(name='Customer')
+        # Получаем всех пользователей, которые принадлежат к этой группе
+        customers_list = User.objects.filter(groups=customer_group)
+        # Ищем компанию по коду
+        for user in customers_list:
+            match = re.match(rf'\({code}\)(.*)', user.username)
+            if match:
+                return match.group(1).strip()
+        return None
+    except Group.DoesNotExist:
+        logging.getLogger("Gerologger").warning("Customer group does not exist.")
+        return None
+    except Exception as e:
+        logging.getLogger("Gerologger").error(f"An error occurred: {str(e)}")
+        return None
 
 # INSERT NEW REPORT TO BUGREPORT MODEL
-def savereport(id, email, date, title, atk_type, endpoint, summary):
+def savereport(id, email, date, title, customer, code, atk_type, endpoint, summary):
     newreport = BugReport()
     
     newreport.report_id = id
     newreport.hunter_email = email
     newreport.report_datetime = date
     newreport.report_title = title
+    newreport.report_customer = customer
+    newreport.customer_code = code
     newreport.report_attack = atk_type
     newreport.report_endpoint = endpoint
     newreport.report_summary = summary
@@ -258,10 +303,11 @@ def read_mail():
                                 email_body = rm_html_tags(email_body)
                                 logging.getLogger("Gerologger").info('Body : ' + str(email_body) + '\n')
 
+                                customer_code = ''
                                 atk_type = ''
                                 report_endpoint = ''
                                 report_summary = ''
-                                atk_type, report_endpoint, report_summary = gerofilter.parse_body(email_body)
+                                atk_type, report_endpoint, report_summary, customer_code = gerofilter.parse_body(email_body)
                                 
                                 # for line in email_body.splitlines():
                                 #     if line.startswith("TYPE="):
@@ -271,28 +317,36 @@ def read_mail():
                                 #     elif line.startswith("SUMMARY="):
                                 #         report_summary = line.split("=", 1)[1].strip()
 
-                                logging.getLogger("Gerologger").info('Title : ' + str(report_title))
+                                logging.getLogger("Gerologger").info('Title : ' + str(report_title)) 
+                                logging.getLogger("Gerologger").info('Customer Code : ' + str(customer_code))
                                 logging.getLogger("Gerologger").info('Type : ' + str(atk_type))
                                 logging.getLogger("Gerologger").info('Endpoint : ' + str(report_endpoint))
-                                
+
+
                                 # VALIDATE REPORT
-                                if (len(report_title) < 3) or (atk_type == '') or (report_endpoint == '') or (len(report_summary) < 10):
+                                if (len(report_title) < 3) or (len(customer_code) != 3) or (atk_type == '') or (report_endpoint == '') or (len(report_summary) < 10):
                                     logging.getLogger("Gerologger").warning('[ERROR 404] Report not valid (Details are too short)')
                                     code = 404
-                                    payload[3] = "Details are too short, make sure Title at least < 3, and Summary at least < 10"
+                                    payload[3] = "Details are too short, make sure Title at least < 3, Customer = 3, Summary at least < 10"
                                     
                                 elif (len(report_title) > 100) or (len(atk_type) > 100) or (len(report_endpoint) > 100):
                                     logging.getLogger("Gerologger").warning('[ERROR 404] Report not valid (Details are too long)')
                                     code = 404
                                     payload[3] = "Details are too long, make sure title, type, and endpoint are less than 100."
                                     
+                                elif customer_code not in customers():
+                                    logging.getLogger("Gerologger").warning('[ERROR 404] Report not valid (Customer not on the list)')
+                                    code = 404
+                                    payload[3] = "Client not on the list, check with available Clients Code in the table."
+
                                 else:
+                                    report_customer = get_company_name_by_code(customer_code)
                                     saveuser(hunter_email, str(hunter_name), 0)
-                                    savereport(report_id, hunter_email, email_date, report_title, atk_type, report_endpoint, report_summary)
-                                    
+                                    savereport(report_id, hunter_email, email_date, report_title, report_customer, customer_code, atk_type, report_endpoint, report_summary)
+
                                     gerofilter.check_duplicate(report_id)
                                     geronotify.notify(report_title, hunter_email, "NEW_REPORT")
-                                    
+
                                     logging.getLogger("Gerologger").info('[CODE 201] Bug Hunter Report Saved Successfully')
 
                             else: 
@@ -538,44 +592,54 @@ def read_mail():
 # PARSE COMPANY REQUEST geroparser.request(id, note, 701/702/703)
 def company_action(id, note, code):
     report = BugReport.objects.get(report_id=id)
-    
-    if code == 701: # REQUEST AMEND
+
+    # Начало атомарной транзакции
+    if code == 701:  # REQUEST AMEND
         logging.getLogger("Gerologger").info('[CODE 701] Request Amend to Bug Hunter')
         if not gerofilter.validate_permission("U", id):
-            report.report_permission = report.report_permission + 4 
-            report.save()
-        
-    elif code == 702: # SEND BOUNTY CALCULATIONS
-        logging.getLogger("Gerologger").info('[CODE 702] Send Bounty Calculations')
-        if not gerofilter.validate_permission("A", id):
-            report.report_permission = report.report_permission + 2
-            report.save()
-        
-    elif code == 703: # REQUEST NDA and OTHERS
-        logging.getLogger("Gerologger").info('[CODE 703] Request NDA and Other Requirements to Bug Hunter')
-        if not gerofilter.validate_permission("N", id):
-            report.report_permission = report.report_permission + 1
+            report.report_permission += 4
             report.save()
 
-    elif code == 704: # SEND CERTIFICATE and BOUNTY PROOF TO HUNTER
+    elif code == 702:  # SEND BOUNTY CALCULATIONS
+        logging.getLogger("Gerologger").info('[CODE 702] Send Bounty Calculations')
+        if not gerofilter.validate_permission("A", id):
+            report.report_permission += 2
+            report.save()
+
+    elif code == 703:  # REQUEST NDA and OTHERS
+        logging.getLogger("Gerologger").info('[CODE 703] Request NDA and Other Requirements to Bug Hunter')
+        if not gerofilter.validate_permission("N", id):
+            report.report_permission += 1
+            report.save()
+
+    elif code == 704:  # SEND CERTIFICATE and BOUNTY PROOF TO HUNTER
         logging.getLogger("Gerologger").info('[CODE 704] Send Certificate and Bounty Proof to Bug Hunter')
-        
-        # GET HUNTER NAME AND GENERATE CERTIFICATE
+
+        # Получение информации о баг-хантере
         hunter_email = report.hunter_email
         hunter = BugHunter.objects.get(hunter_email=hunter_email)
         gerocert.gerocert.generate(id, hunter.hunter_username, int(report.report_severity))
 
-        # UPDATE HUNTER SCORE
-        hunter.hunter_scores += int(report.report_severity)
+        # Присуждение очков
+        points_awarded = int(report.report_severity)
+        hunter.hunter_scores += points_awarded
         hunter.save()
 
-        # UPDATE REPORT STATUS TO COMPLETE
+        # Запись в таблицу Scoreboard
+        Scoreboard.objects.create(
+            hunter_name=hunter.hunter_username,
+            report_id=report,
+            customer_code=report.customer_code,
+            points_awarded=points_awarded
+        )
+
+        # Обновление статуса репорта
         report.report_status += 1
         report.save()
 
+    # Отправка уведомления
     payload = [id, report.report_title, report.report_status, note, report.report_severity]
     destination = report.hunter_email
-
     geromailer.write_mail(code, payload, destination)
 
 def check_mailbox_status():
@@ -775,3 +839,7 @@ def recover_loss_file(id, type):
         logging.getLogger("Gerologger").error("Recovery Failed = " + str(id))
 
     return recover
+
+
+
+

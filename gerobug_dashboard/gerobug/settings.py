@@ -9,7 +9,7 @@ root_path = str(BASE_DIR).replace("gerobug_dashboard",'')
 
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
-DEBUG = False
+DEBUG = True 
 
 # READ FROM GEROBUG HOST FILE
 f = open(root_path+"/gerobug_host", "r")
