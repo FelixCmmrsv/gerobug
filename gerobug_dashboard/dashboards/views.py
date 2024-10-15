@@ -35,12 +35,25 @@ def LogoutForm(request):
     return redirect('login')
 
 
-class RenderDashboardAdmin(LoginRequiredMixin,ListView):
+class RenderDashboardAdmin(LoginRequiredMixin, ListView):
     login_url = '/login/'
     redirect_field_name = 'login'
     model = BugReport
     template_name = "dashboard.html"
     context_object_name = "bugposts"
+
+    def get_queryset(self):
+        user = self.request.user
+        queryset = BugReport.objects.all()
+
+        if user.groups.filter(name="Reviewer").exists():
+            return queryset
+
+        elif user.groups.filter(name="Customer").exists():
+            customer_code = user.username[1:4]
+            return queryset.filter(customer_code=customer_code)
+
+        return queryset.none()
 
     def get_context_data(self, **kwargs):
         context = super(RenderDashboardAdmin, self).get_context_data(**kwargs)
@@ -52,24 +65,41 @@ class RenderDashboardAdmin(LoginRequiredMixin,ListView):
         context['total_calcbount'] = BugReport.objects.filter(report_status=5).count()
         context['total_procbount'] = BugReport.objects.filter(report_status=6).count()
         context['total_completed'] = BugReport.objects.filter(report_status=7).count()
-        context['total_bounty'] = BugReport.objects.filter(report_status=5).count() + BugReport.objects.filter(report_status=6).count()
-        
+        context['total_bounty'] = BugReport.objects.filter(report_status=5).count() + BugReport.objects.filter(
+            report_status=6).count()
+
         return context
 
-    
-class ReportDetails(LoginRequiredMixin,DetailView):
+
+class ReportDetails(LoginRequiredMixin, DetailView):
     login_url = '/login/'
     redirect_field_name = 'login'
     model = BugReport
     template_name = "dashboard_varieties/detail_report.html"
     context_object_name = "bugposts"
 
+    def get_queryset(self):
+        user = self.request.user
+        queryset = BugReport.objects.all()
+
+        if user.groups.filter(name="Reviewer").exists():
+            return queryset
+
+        elif user.groups.filter(name="Customer").exists():
+            customer_code = user.username[1:4]
+            return queryset.filter(customer_code=customer_code)
+
+        return queryset.none()
+
     def get_context_data(self, **kwargs):
         context = super(ReportDetails, self).get_context_data(**kwargs)
-        context['reportstatus'] = ReportStatus.objects.filter(status_id=BugReport.objects.get(report_id=self.kwargs.get('pk')).report_status)[0].status_name
+        report = BugReport.objects.get(report_id=self.kwargs.get('pk'))
+
+        context['reportstatus'] = ReportStatus.objects.filter(status_id=report.report_status)[0].status_name
         context['requestform'] = Requestform()
         context['invalidform'] = Invalidform()
         context['completeform'] = CompleteRequestform()
+
         return context
 
 
