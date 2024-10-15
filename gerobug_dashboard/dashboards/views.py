@@ -228,25 +228,21 @@ class NDADetails(LoginRequiredMixin,DetailView):
 
 @login_required
 def ReportStatusView(request, id):
+    user = request.user
+    reports = BugReport.objects.all()
+
+    if user.groups.filter(name="Customer").exists():
+        customer_code = user.username[1:4]
+        reports = reports.filter(customer_code=customer_code)
+
     count = int(ReportStatus.objects.count()) - 1
-    if int(id) > count:
+    if int(id) > count or int(id) < 0:
         return notfound_404(request, id)
-    elif int(id) < 0:
-        return notfound_404(request, id)
-        
-    report = BugReport.objects.filter(report_status=id).values()
-    status = ReportStatus.objects.get(status_id=id)
-    status = status.status_name
-    context = {'bugreportlists': report, 'reportstatus': status}
+
+    reports = reports.filter(report_status=id).values()
+    status = ReportStatus.objects.get(status_id=id).status_name
+    context = {'bugreportlists': reports, 'reportstatus': status}
     return render(request, 'dashboard_varieties/report_status.html', context)
-
-
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.shortcuts import redirect
-from .models import BugReport, ReportStatus  # Импортируйте необходимые модели
-import threading
-import logging
 
 
 @login_required
