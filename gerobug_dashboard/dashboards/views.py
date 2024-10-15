@@ -46,6 +46,9 @@ class RenderDashboardAdmin(LoginRequiredMixin, ListView):
         user = self.request.user
         queryset = BugReport.objects.all()
 
+        if user.is_superuser:
+            return queryset
+
         if user.groups.filter(name="Reviewer").exists():
             return queryset
 
@@ -81,6 +84,9 @@ class ReportDetails(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         user = self.request.user
         queryset = BugReport.objects.all()
+
+        if user.is_superuser:
+            return queryset
 
         if user.groups.filter(name="Reviewer").exists():
             return queryset
