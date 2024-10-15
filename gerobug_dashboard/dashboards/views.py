@@ -225,32 +225,26 @@ class NDADetails(LoginRequiredMixin,DetailView):
         context['report_title'] = BugReport.objects.get(report_id=self.kwargs.get('pk')[:12]).report_title
         return context
 
+
 @login_required
 def ReportStatusView(request, id):
     count = int(ReportStatus.objects.count()) - 1
     if int(id) > count or int(id) < 0:
         return notfound_404(request, id)
 
-    user = request.user
-
-    status = ReportStatus.objects.get(status_id=id)
-    status_name = status.status_name
-
-    if user.groups.filter(name="Customer").exists():
-        report = BugReport.objects.filter(report_status=id, customer_code=user.username[:3]).values()
-        available_count = report.count()
-    else:
+    if request.user.is_superuser or request.user.groups.filter(name='Reviewer').exists():
         report = BugReport.objects.filter(report_status=id).values()
-        available_count = BugReport.objects.filter(report_status=id).count()
+    elif request.user.groups.filter(name='Customer').exists():
+        report = BugReport.objects.filter(report_status=id, user=request.user).values()
+    else:
+        return notfound_404(request, id)
 
+    status = ReportStatus.objects.get(status_id=id).status_name
     context = {
         'bugreportlists': report,
-        'reportstatus': status_name,
-        'available_count': available_count
+        'reportstatus': status
     }
-
     return render(request, 'dashboard_varieties/report_status.html', context)
-
 
 
 @login_required
