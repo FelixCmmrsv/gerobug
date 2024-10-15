@@ -680,20 +680,16 @@ def halloffame(request):
     selected_company = request.GET.get('company', 'ALL')
 
     if selected_company == 'ALL':
-        # Fetch all bug hunter scores from the Scoreboard
         scoreboard_entries = Scoreboard.objects.all()
     else:
-        # Filter scores by the selected company code
         scoreboard_entries = Scoreboard.objects.filter(customer_code=selected_company)
 
-    # Group by hunter name and sum their points
     bughunters = (scoreboard_entries
-                  .values('hunter_name', 'deleted')  # Include deleted status
-                  .annotate(points=Sum('points_awarded'))  # Sum points
-                  .exclude(points=0)  # Exclude those with 0 points
-                  .order_by('-points'))  # Order by points, descending
+                  .values('hunter_name', 'deleted')
+                  .annotate(points=Sum('points_awarded'))
+                  .exclude(points=0)
+                  .order_by('-points'))
 
-    # Separate deleted and non-deleted entries
     non_deleted = []
     deleted = []
 
@@ -704,7 +700,6 @@ def halloffame(request):
         else:
             non_deleted.append(hunter)
 
-    # Combine non-deleted and deleted, with deleted at the bottom
     sorted_bughunters = non_deleted + deleted
 
     return render(request, 'halloffame.html', {
@@ -717,21 +712,9 @@ def halloffame(request):
 def notfound_404(request, exception):
     return render(request, '404.html', status=404)
 
+
 # def error_500(request, exception):
 #     return render(request, '500.html', status=500)
-
-def submit(request):
-    # Fetch the list of companies dynamically
-    customer_group = Group.objects.get(name='Customer')
-    customers_list = User.objects.filter(groups=customer_group)
-    companies = []
-    for user in customers_list:
-        match = re.match(r'\((.*?)\)(.*)', user.username)
-        if match:
-            code = match.group(1)
-            name = match.group(2).strip().replace('_', ' ')
-            companies.append({'code': code, 'name': name})
-    return render(request, 'submit.html', {'companies': companies})
 
 
 class Themes(TemplateView):

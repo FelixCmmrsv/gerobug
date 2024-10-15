@@ -121,10 +121,12 @@ class DashboardsConfig(AppConfig):
                     g_reviewer.permissions.add(permissions['view_reportstatus'])
                     g_reviewer.permissions.add(permissions['view_staticrules'])
                     g_reviewer.permissions.add(permissions['view_session'])
-                except:
-                    logging.getLogger("Gerologger").debug("-------------------------------------------------------------------")
-                    logging.getLogger("Gerologger").debug("Group Reviewer shall be created successfully. Visit the Admin Site!")
-                    logging.getLogger("Gerologger").debug("-------------------------------------------------------------------")
+                    logging.getLogger("Gerologger").debug(
+                        "-------------------------------------------------------------------")
+                    logging.getLogger("Gerologger").debug(
+                        "Group Reviewer shall be created successfully. Visit the Admin Site!")
+                    logging.getLogger("Gerologger").debug(
+                        "-------------------------------------------------------------------")
             
             # INIT GROUP CUSTOMER CREATION
             def init_group_customer():
@@ -135,21 +137,23 @@ class DashboardsConfig(AppConfig):
                 try:
                     checker = Group.objects.get(name="Customer")
                 except ObjectDoesNotExist:
-                    g_reviewer = Group.objects.create(name="Customer")
-                    g_reviewer.permissions.add(permissions['view_group'])
-                    g_reviewer.permissions.add(permissions['view_user'])
-                    g_reviewer.permissions.add(permissions['view_contenttype'])
-                    g_reviewer.permissions.add(permissions['view_bughunter'])
-                    # g_reviewer.permissions.add(permissions['change_bugreport'])
-                    g_reviewer.permissions.add(permissions['view_bugreport'])
-                    # g_reviewer.permissions.add(permissions['delete_bugreport'])
-                    g_reviewer.permissions.add(permissions['view_reportstatus'])
-                    g_reviewer.permissions.add(permissions['view_staticrules'])
-                    g_reviewer.permissions.add(permissions['view_session'])
-                except:
-                    logging.getLogger("Gerologger").debug("-------------------------------------------------------------------")
-                    logging.getLogger("Gerologger").debug("Group Customer shall be created successfully. Visit the Admin Site!")
-                    logging.getLogger("Gerologger").debug("-------------------------------------------------------------------")
+                    g_customer = Group.objects.create(name="Customer")  # Use a new variable for Customer
+                    g_customer.permissions.add(permissions['view_group'])
+                    g_customer.permissions.add(permissions['view_user'])
+                    g_customer.permissions.add(permissions['view_contenttype'])
+                    g_customer.permissions.add(permissions['view_bughunter'])
+                    # g_customer.permissions.add(permissions['change_bugreport'])  # No permission to change bugreport
+                    g_customer.permissions.add(permissions['view_bugreport'])
+                    # g_customer.permissions.add(permissions['delete_bugreport'])  # No permission to delete bugreport
+                    g_customer.permissions.add(permissions['view_reportstatus'])
+                    g_customer.permissions.add(permissions['view_staticrules'])
+                    g_customer.permissions.add(permissions['view_session'])
+                    logging.getLogger("Gerologger").debug(
+                        "-------------------------------------------------------------------")
+                    logging.getLogger("Gerologger").debug(
+                        "Group Customer has been created successfully. Visit the Admin Site!")
+                    logging.getLogger("Gerologger").debug(
+                        "-------------------------------------------------------------------")
 
             # INIT THEME
             def init_theme_db():
