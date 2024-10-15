@@ -241,31 +241,45 @@ def ReportStatusView(request, id):
     return render(request, 'dashboard_varieties/report_status.html', context)
 
 
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.shortcuts import redirect
+from .models import BugReport, ReportStatus  # Импортируйте необходимые модели
+import threading
+import logging
+
+
 @login_required
-def ReportUpdateStatus(request,id):
+def ReportUpdateStatus(request, id):
+    # Проверка валидности ID и метода запроса
     if request.method == "POST" and gerofilter.validate_id(id):
         if geroparser.check_mailbox_status():
             report = BugReport.objects.get(report_id=id)
-            max = ReportStatus.objects.count() - 2 # LIMITED TO "BOUNTY PROCESS"
+            max_status = ReportStatus.objects.count() - 2
 
-            if report.report_status < max:
-                report.report_status += 1
-                report.save()
+            user = request.user
+            if user.groups.filter(name="Reviewer").exists() or user.is_superuser:
+                if report.report_status < max_status:
+                    report.report_status += 1
+                    report.save()
 
-            logging.getLogger("Gerologger").info("REPORT "+str(id)+" STATUS UPDATED ("+str(report.report_status)+") BY "+str(request.user.username))
-            messages.success(request,"Report Status is updated!")
+                logging.getLogger("Gerologger").info(
+                    f"REPORT {id} STATUS UPDATED ({report.report_status}) BY {request.user.username}"
+                )
+                messages.success(request, "Report Status is updated!")
 
-            def trigger_geromailer(report):
-                payload = [report.report_id, report.report_title, report.report_status, "", report.report_severity]
-                destination = report.hunter_email
-                geromailer.notify(destination, payload) #TRIGGER GEROMAILER TO SEND UPDATE NOTIFICATION
+                def trigger_geromailer(report):
+                    payload = [report.report_id, report.report_title, report.report_status, "", report.report_severity]
+                    destination = report.hunter_email
+                    geromailer.notify(destination, payload)
 
-            trigger = threading.Thread(target=trigger_geromailer, args=(report,))
-            trigger.start()
-
+                trigger = threading.Thread(target=trigger_geromailer, args=(report,))
+                trigger.start()
+            else:
+                messages.error(request, "You do not have permission to update the report status.")
         else:
             logging.getLogger("Gerologger").error("Mailbox is not ready.")
-        
+
     return redirect('dashboard')
 
 
