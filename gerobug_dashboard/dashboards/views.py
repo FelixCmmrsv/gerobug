@@ -109,13 +109,21 @@ class ReportDetails(LoginRequiredMixin, DetailView):
         return context
 
 
-class ReportUpdate(LoginRequiredMixin,UpdateView):
+class ReportUpdate(LoginRequiredMixin, UpdateView):
     login_url = '/login/'
     redirect_field_name = 'login'
     model = BugReport
     template_name = "dashboard_varieties/edit_report.html"
-    fields = ["report_severitystring"] # Only status field is allowed to be edited
-    
+    fields = ["report_severitystring"]  # Only severity field is allowed to be edited
+
+    def dispatch(self, request, *args, **kwargs):
+        user = request.user
+        if not user.is_superuser and not user.groups.filter(name="Reviewer").exists():
+            messages.error(request, "You do not have permission to edit this report.")
+            return redirect('dashboard')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         report = BugReport.objects.get(report_id=self.object.report_id)
         report.report_severitytype = gerocalculator.classify(self.object.report_severitystring)
@@ -123,36 +131,45 @@ class ReportUpdate(LoginRequiredMixin,UpdateView):
         report.report_reviewer = str(self.request.user.username)
         report.save()
 
-        logging.getLogger("Gerologger").info("REPORT " + str(self.object.report_id) + " SEVERITY UPDATED USING " + report.report_severitytype + " BY " + str(self.request.user.username))
+        logging.getLogger("Gerologger").info(
+            "REPORT " + str(self.object.report_id) + " SEVERITY UPDATED USING " + report.report_severitytype + " BY " + str(self.request.user.username)
+        )
         return reverse('dashboard')
 
 
-class ReportDelete(LoginRequiredMixin,DeleteView):
+
+class ReportDelete(LoginRequiredMixin, DeleteView):
     login_url = '/login/'
     redirect_field_name = 'login'
     model = BugReport
     template_name = "dashboard_varieties/delete_report.html"
-    
+
+    def dispatch(self, request, *args, **kwargs):
+        user = request.user
+        if not user.is_superuser and not user.groups.filter(name="Reviewer").exists():
+            messages.error(request, "You do not have permission to delete this report.")
+            return redirect('dashboard')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def delete(self, *args, **kwargs):
         self.object = self.get_object()
         super().delete(*args, **kwargs)
-        #self.object.delete()
 
-        # DELETE ALL CHILD UAN OBJECT
         if BugReportUpdate.objects.filter(report_id=self.object.report_id).exists():
             BugReportUpdate.objects.filter(report_id=self.object.report_id).delete()
 
         if BugReportAppeal.objects.filter(report_id=self.object.report_id).exists():
             BugReportAppeal.objects.filter(report_id=self.object.report_id).delete()
-        
+
         if BugReportNDA.objects.filter(report_id=self.object.report_id).exists():
-            BugReportNDA.objects.filter(report_id=self.object.report_id).delete() 
+            BugReportNDA.objects.filter(report_id=self.object.report_id).delete()
 
     def get_success_url(self):
         if platform == "win32":
-            shutil.rmtree(os.path.join(MEDIA_ROOT)+"\\"+self.object.report_id)
+            shutil.rmtree(os.path.join(MEDIA_ROOT) + "\\" + self.object.report_id)
         else:
-            shutil.rmtree(os.path.join(MEDIA_ROOT)+"/"+self.object.report_id)
+            shutil.rmtree(os.path.join(MEDIA_ROOT) + "/" + self.object.report_id)
         logging.getLogger("Gerologger").info("REPORT " + str(self.object.report_id) + " DELETED BY " + str(self.request.user.username))
         return reverse_lazy('dashboard')
 
