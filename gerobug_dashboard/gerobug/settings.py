@@ -1,5 +1,6 @@
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
+from django.utils.translation import gettext_lazy as _ # for translation
 import os
 
 
@@ -153,3 +154,18 @@ CKEDITOR_CONFIGS = {
         "allowedContent": "b i ul li p br a h1 h2 h3 h4 ol pre code strong em blockquote table thead tr td tbody th",
     }
 }
+
+# Add supported languages
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('kz', _('Kazakh')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
