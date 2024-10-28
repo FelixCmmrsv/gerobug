@@ -1,0 +1,503 @@
+{
+  "404.html": {
+    "box__description-title": "Whoops!",
+    "box__description-text": "It seems like we couldn't find the page you were looking for",
+    "box__button": "Go back"
+  },
+  "500.html": {
+    "box__description-title": "Whoops!",
+    "box__description-text": "Something went wrong...",
+    "box__button": "Go back"
+  },
+  "base.html": {
+    "nav_dashboard": "Dashboard",
+    "nav_need_to_review": "Need To Review",
+    "nav_details": "Details",
+    "nav_setting": "Setting",
+    "nav_owasp_calculator": "OWASP Calculator",
+    "nav_cvss_calculator": "CVSS3 Calculator",
+    "btn_logout": "Logout",
+    "copyright": "RTEAM"
+  },
+  "cvss-calculator.html": {
+    "page_title": "RTEAM | CVSS 3.1 Calculator",
+    "scriptWarning": "This page requires JavaScript. If you have disabled scripting, please enable it.",
+    "vector_label": "Vector String",
+    "vector_placeholder": "CVSSv3.1 Score e.g. CVSS:3.1/AV:X/AC:X/PR:X/UI:X/S:X/C:X/I:X/A:X/E:X/RL:X/RC:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MPR:X/MUI:X/MS:X/MC:X/MI:X/MA:X",
+    "baseScore_legend": "Base Score",
+    "needBaseMetrics": "Select values for all base metrics to generate score",
+    "attackVector_heading": "Attack Vector",
+    "attackVector_title": "This metric reflects the context by which vulnerability exploitation is possible.",
+    "AV_N_Label": "Network",
+    "AV_N_Title": "The vulnerable component is bound to the network stack and the set of possible attackers extends beyond the other options listed, up to and including the entire Internet.",
+    "AV_A_Label": "Adjacent",
+    "AV_A_Title": "The vulnerable component is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology.",
+    "AV_L_Label": "Local",
+    "AV_L_Title": "The vulnerable component is not bound to the network stack and the attacker's path is via read/write/execute capabilities.",
+    "AV_P_Label": "Physical",
+    "AV_P_Title": "The attack requires the attacker to physically touch or manipulate the vulnerable component.",
+    "attackComplexity_heading": "Attack Complexity",
+    "attackComplexity_title": "This metric describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
+    "AC_L_Label": "Low",
+    "AC_L_Title": "Specialized access conditions or extenuating circumstances do not exist.",
+    "AC_H_Label": "High",
+    "AC_H_Title": "A successful attack depends on conditions beyond the attacker's control.",
+    "privilegesRequired_heading": "Privileges Required",
+    "PR_N_Label": "None",
+    "PR_N_Title": "The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files to carry out an attack.",
+    "PR_L_Label": "Low",
+    "PR_L_Title": "The attacker is authorized with privileges that provide basic user capabilities.",
+    "PR_H_Label": "High",
+    "PR_H_Title": "The attacker is authorized with privileges that provide significant control over the vulnerable component.",
+    "userInteraction_heading": "User Interaction",
+    "UI_N_Label": "None",
+    "UI_N_Title": "The vulnerable system can be exploited without any interaction from any user.",
+    "UI_R_Label": "Required",
+    "UI_R_Title": "Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited.",
+    "scope_heading": "Scope",
+    "S_U_Label": "Unchanged",
+    "S_U_Title": "An exploited vulnerability can only affect resources managed by the same security authority.",
+    "S_C_Label": "Changed",
+    "S_C_Title": "An exploited vulnerability can affect resources beyond the security scope managed by the security authority of the vulnerable component.",
+    "confidentiality_heading": "Confidentiality",
+    "C_N_Label": "None",
+    "C_N_Title": "There is no loss of confidentiality within the impacted component.",
+    "C_L_Label": "Low",
+    "C_L_Title": "There is some loss of confidentiality.",
+    "C_H_Label": "High",
+    "C_H_Title": "There is total loss of confidentiality, resulting in all resources being divulged to the attacker.",
+    "integrity_heading": "Integrity",
+    "I_N_Label": "None",
+    "I_N_Title": "There is no loss of integrity within the impacted component.",
+    "I_L_Label": "Low",
+    "I_L_Title": "Modification of data is possible, but the attacker does not have control over the consequence of a modification.",
+    "I_H_Label": "High",
+    "I_H_Title": "There is total loss of integrity, or a complete loss of protection.",
+    "availability_heading": "Availability",
+    "A_N_Label": "None",
+    "A_N_Title": "There is no impact to availability within the impacted component.",
+    "A_L_Label": "Low",
+    "A_L_Title": "Performance is reduced or there are interruptions in resource availability.",
+    "A_H_Label": "High",
+    "A_H_Title": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources."
+  },
+  "dashboard.html": {
+    "page_title": "Dashboard",
+    "unauthenticated_heading": "Unauthenticated",
+    "unauthenticated_message": "Please Login",
+    "notification_bell_title": "There are {{ total_unreviewed }} new report(s) to review",
+    "success_alert_message": "Success: {{ message }}",
+    "warning_alert_message": "Warning: {{ message }}",
+    "rteam_text": "RTEAM"
+  },
+  "dashboard_varieties": {
+    "delete_report.html": {
+      "page_title": "Delete Bug Report",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Delete Bug Bounty Report"
+      },
+      "form": {
+        "confirmation_message": "Are you sure you want to delete Report ID #{{ report_id }} from {{ hunter_email }}?",
+        "confirm_button": "Confirm"
+      }
+    },
+    "detail_report.html": {
+      "page_title": "Report Detail",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Bug Bounty Report Details",
+        "report_id_label": "Report ID",
+        "report_status": {
+          "need_review": "Need to Review",
+          "in_review": "In Review",
+          "fixing": "Fixing",
+          "bounty_calculation": "Bounty Calculation",
+          "complete": "Complete",
+          "invalid": "Invalid"
+        },
+        "severity": {
+          "informational": "Informational",
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "critical": "Critical",
+          "none": "None"
+        },
+        "attaked_customer": "Attacked Customer",
+        "attack_type": "Attack Type",
+        "affected_endpoint": "Affected Endpoint",
+        "severity_string": "Severity String",
+        "summary": "Summary",
+        "files": "Files",
+        "file_download": "Download",
+        "file_download_updated": "Download (Updated)",
+        "view_update": "View Update",
+        "nda_files": {
+          "hunter_data": "Hunter Data",
+          "view_nda": "View",
+          "nda_label": "NDA"
+        },
+        "appeals": {
+          "appeal_label": "Appeals",
+          "view_appeal": "View"
+        },
+        "bug_hunter": "Bug Hunter",
+        "severity_input_label": "Severity",
+        "reviewer_label": "Reviewer",
+        "update_button_label": "Update",
+        "modal": {
+          "modal_update_title": "Important!",
+          "modal_update_body": "Update Report Severity and Reviewer?",
+          "ok_button": "OK",
+          "cancel_button": "Cancel"
+        },
+        "mark_invalid_button": "Mark as Invalid",
+        "mark_invalid_modal_title": "Mark as Invalid",
+        "request_amend_button": "Request Amend",
+        "send_calculations_button": "Send Calculations",
+        "request_nda_button": "Request NDA",
+        "complete_button": "Complete",
+        "delete_button": "Delete",
+        "move_button": "Move",
+        "move_modal": {
+          "are_you_sure": "Are You Sure?",
+          "move_to_review": "IN REVIEW",
+          "move_to_fixing": "FIXING",
+          "move_to_fixing_retest": "FIXING (RETEST)",
+          "move_to_bounty_preparation": "BOUNTY PREPARATION"
+        }
+      },
+      "messages": {
+        "success": "Success!",
+        "warning": "Warning!"
+      }
+    },
+    "detail_uan.html": {
+      "page_title": "UAN Report Detail",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "UAN Report Details",
+        "back_button": "Back",
+        "report_id_label": "Report ID",
+        "report_title_label": "Report Title",
+        "summary_label": "Summary",
+        "files_label": "Files",
+        "file_download": "Download",
+        "messages": {
+          "success": "Success!",
+          "warning": "Warning!"
+        }
+      }
+    },
+    "edit_report.html": {
+      "page_title": "Edit Report",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Update Report Severity",
+        "form": {
+          "submit_button": "Update"
+        },
+        "calculator_links": {
+          "owasp_link": "OWASP RISK CALCULATOR",
+          "cvss_link": "CVSS 3.1 CALCULATOR"
+        }
+      }
+    },
+    "list_report_dashboard.html": {
+      "columns": {
+        "need_review": "Need to Review",
+        "in_review": "In Review",
+        "fixing": "Fixing",
+        "retest": "Retest",
+        "bounty_preparation": "Bounty Preparation"
+      },
+      "statuses": {
+        "need_review": "Need to Review",
+        "in_review": "In Review",
+        "fixing": "Fixing",
+        "retest": "Retest",
+        "bounty_calculation": "Bounty Calculation",
+        "processing_bounty": "Processing Bounty"
+      },
+      "labels": {
+        "report_id": "Report ID",
+        "report_title": "Report Title",
+        "by_hunter": "by: ",
+        "report_time": "Time",
+        "duplicate_warning": "Duplicate Report"
+      }
+    },
+    "report_status.html": {
+      "table_headers": {
+        "report_number": "Report Number",
+        "report_title": "Report Title",
+        "bug_hunter": "Bug Hunter",
+        "proof_of_concepts": "Proof Of Concepts",
+        "status": "Status"
+      },
+      "statuses": {
+        "need_review": "Need to Review",
+        "in_review": "In Review",
+        "fixing": "Fixing",
+        "bounty_calculation": "Bounty Calculation",
+        "bounty_processing": "Processing Bounty",
+        "complete": "Complete",
+        "invalid": "Invalid"
+      },
+      "links": {
+        "report_file": "Report File"
+      }
+    }
+  },
+  "halloffame.html": {
+    "page_title": "Hall Of Fame",
+    "rules_and_guidelines": "Rules & Guidelines",
+    "hall_of_fame": "Hall Of Fame",
+    "submit": "Submit",
+    "select_company": "Select Company",
+    "all_companies": "All Companies",
+    "thanks_message": "RTEAM thanks the following researchers for reporting valid security issues",
+    "rank": "Rank",
+    "bounty_hunter": "Bounty Hunter",
+    "points": "Points"
+  },
+  "login.html": {
+    "page_title": "Gerobug Login",
+    "login_heading": "Login",
+    "submit_button": "Submit",
+    "forgot_password": "Forgot Password"
+  },
+  "owasp-calculator.html": {
+    "page_title": "Settings",
+    "menu_title": "RTEAM | OWASP Risk Rating Calculator",
+    "section_titles": {
+      "threat_agent_factors": "Threat Agent Factors",
+      "technical_impact_factors": "Technical Impact Factors",
+      "vulnerability_factors": "Vulnerability Factors",
+      "business_impact_factors": "Business Impact Factors",
+      "likelihood_score": "Likelihood score",
+      "impact_score": "Impact score",
+      "modal_title": "How is Severity Risk calculated?"
+    },
+    "labels": {
+      "vector": "VECTOR (SEVERITY STRING): ",
+      "skill_level": "Skill level",
+      "motive": "Motive",
+      "opportunity": "Opportunity",
+      "size": "Size",
+      "loss_of_confidentiality": "Loss of confidentiality",
+      "loss_of_integrity": "Loss of integrity",
+      "loss_of_availability": "Loss of availability",
+      "loss_of_accountability": "Loss of accountability",
+      "ease_of_discovery": "Ease of discovery",
+      "ease_of_exploit": "Ease of exploit",
+      "awareness": "Awareness",
+      "intrusion_detection": "Intrusion detection",
+      "financial_damage": "Financial damage",
+      "reputation_damage": "Reputation damage",
+      "non_compliance": "Non-compliance",
+      "privacy_violation": "Privacy violation"
+    },
+    "options": {
+      "skill_level": {
+        "1": "No technical skills (1)",
+        "3": "Some technical skills (3)",
+        "5": "Advanced computer user (5)",
+        "6": "Network and programming skills (6)",
+        "9": "Security penetration skills (9)"
+      },
+      "motive": {
+        "1": "Low or no reward (1)",
+        "4": "Possible reward (4)",
+        "9": "High reward (9)"
+      },
+      "opportunity": {
+        "0": "Full access or expensive resources required (0)",
+        "4": "Special access or resources required (4)",
+        "7": "Some access or resources required (7)",
+        "9": "No access or resources required (9)"
+      },
+      "size": {
+        "2": "Developers, System administrators (2)",
+        "4": "Intranet users (4)",
+        "5": "Partners (5)",
+        "6": "Authenticated users (6)",
+        "9": "Anonymous Internet users (9)"
+      }
+    },
+    "modal": {
+      "likelihood_levels": {
+        "low": "LOW",
+        "medium": "MEDIUM",
+        "high": "HIGH"
+      },
+      "impact_levels": {
+        "low": "LOW",
+        "medium": "MEDIUM",
+        "high": "HIGH"
+      }
+    }
+  },
+  "password_reset_forms": {
+      "password_reset_complete.html": {
+      "title": "Reset Password",
+      "message": {
+        "header": "Password reset completed!",
+        "description": "Your new password has been set. You may go ahead and log in now with your new password."
+      },
+      "action_button": "Login"
+    },
+    "password_reset_confirm.html": {
+      "title": "Reset Password",
+      "form": {
+        "csrf_token": "CSRF Token",
+        "password_reset_form": "Password Reset Form"
+      },
+      "buttons": {
+        "submit": "Submit"
+      }
+    },
+    "password_reset_done.html": {
+      "title": "Reset Password",
+      "message": {
+        "header": "Reset Link has been sent!",
+        "description_1": "You will receive a password reset link if the email exists.",
+        "description_2": "(Please also check the spam folder)"
+      }
+    },
+    "password_reset.html": {
+      "title": "Reset Password",
+      "instruction": "Enter your registered email address to continue.",
+      "form": {
+        "csrf_token": "CSRF Token",
+        "password_reset_form": "Password Reset Form"
+      },
+      "buttons": {
+        "send_email": "Send Email"
+      },
+      "messages": {
+        "success": "Success",
+        "warning": "Warning"
+      }
+    }
+  },
+  "rules.html": {
+    "page_title": "Rules and Guidelines",
+    "menu": {
+      "rules_guidelines": "Rules & Guidelines",
+      "hall_of_fame": "Hall Of Fame",
+      "submit": "Submit"
+    },
+    "sections": {
+      "bounty_terms": "Bounty Terms",
+      "in_scope": "In Scope",
+      "out_of_scope": "Out Of Scope",
+      "responsible_disclosure_policy": "Responsible Disclosure Policy",
+      "report_guidelines": "Report Guidelines",
+      "faq": "FAQ"
+    },
+    "links": {
+      "internal_view": "[INTERNAL VIEW ONLY]"
+    },
+    "side_menu": {
+      "bounty_terms": "Bounty Terms",
+      "in_scope": "In Scope",
+      "out_of_scope": "Out Of Scope",
+      "responsible_disclosure_policy": "Responsible Disclosure Policy",
+      "report_guidelines": "Report Guidelines",
+      "faq": "FAQ"
+    }
+  },
+  "settings.html": {
+    "page_title": "Settings",
+    "sections": {
+      "mailbox_settings": "Mailbox Settings",
+      "user_account_settings": "User Account Settings",
+      "personalization": "Personalization",
+      "edit_rules_and_guidelines": "Edit Rules and Guidelines",
+      "manage_users": "Manage Users",
+      "notification": "Notification",
+      "blacklist_rule": "Blacklist Rule",
+      "report_template": "Report Template",
+      "nda_template": "NDA Template",
+      "certificate_template": "Certificate Template",
+      "troubleshooting": "Troubleshooting"
+    },
+    "buttons": {
+      "update": "Update",
+      "add": "Add",
+      "run": "Run",
+      "delete": "Delete",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "success": "Success",
+      "warning": "Warning"
+    },
+    "placeholders": {
+      "current_mailbox": "Current Mailbox: ",
+      "active": "(ACTIVE)",
+      "inactive": "(INACTIVE)",
+      "current_template": "Current Template: ",
+      "current_rule": "Current Rule: When there are more than ",
+      "emails_from_same_address": " emails from the same address with ",
+      "seconds_interval": " seconds interval, that email will be blocked for ",
+      "seconds": " seconds"
+    },
+    "notifications": {
+      "add_new": "Add New Notification",
+      "service": "Service",
+      "webhook": "Webhook",
+      "actions": "Actions",
+      "delete_notification": "Delete Notification",
+      "confirmation": "Are you sure you want to delete this notification channel?",
+      "no_undo": "This action cannot be undone."
+    },
+    "users": {
+      "add_new_user": "Add New User",
+      "username": "Username",
+      "email": "Email",
+      "group": "Group",
+      "actions": "Actions",
+      "delete_user": "Delete User",
+      "confirmation": "Are you sure you want to delete this User?",
+      "no_undo": "This action cannot be undone."
+    },
+    "certificates": {
+      "current_template": "Current Template: ",
+      "sample_certificate": "Sample Certificate",
+      "use_official_template": "[It is recommended to use the official template provided by RTEAM]"
+    }
+  },
+  "submit.html": {
+    "page_title": "Submit Bug Report",
+    "sections": {
+      "how_to_submit": "How To Submit",
+      "join_discord": "Join Gerobug community on Discord",
+      "submit_bug_report": "Submit Bug Bounty Report",
+      "check_report_status": "Check Report Status",
+      "check_all_report_status": "Check All Report Status (Overview)",
+      "update_report": "Update Report",
+      "appeal_to_bounty_calculations": "Appeal to Bounty Calculations",
+      "agree_to_bounty_calculations": "Agree to Bounty Calculations",
+      "submit_data_and_nda": "Submit Data and NDA",
+      "check_score": "Check Score",
+      "customers_list": "Customers List"
+    },
+    "customers_table": {
+      "code": "Code",
+      "company_name": "Company Name"
+    },
+    "buttons": {
+      "copy": "Copy"
+    },
+    "placeholders": {
+      "customer_code": "CUSTOMER= Customer 3 digits code (example: RTM. To see all available customers code check first block - \"Customers List\")",
+      "bug_type": "TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)",
+      "affected_endpoint": "ENDPOINT= Affected Endpoint (example: https://rteam.kz/redteam/) [max 100 characters]",
+      "summary": "SUMMARY= Summary of your finding"
+    }
+  }
+}

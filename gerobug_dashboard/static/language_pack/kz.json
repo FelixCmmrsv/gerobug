@@ -1,0 +1,503 @@
+{
+  "404.html": {
+    "box__description-title": "Упс!",
+    "box__description-text": "Біз сіз іздеген бетті таба алмадық",
+    "box__button": "Артқа оралу"
+  },
+  "500.html": {
+    "box__description-title": "Упс!",
+    "box__description-text": "Бірнәрсе дұрыс болмай қалды...",
+    "box__button": "Артқа оралу"
+  },
+  "base.html": {
+    "nav_dashboard": "Басқару панелі",
+    "nav_need_to_review": "Қарауды қажет етеді",
+    "nav_details": "Мәліметтер",
+    "nav_setting": "Параметрлер",
+    "nav_owasp_calculator": "OWASP калькуляторы",
+    "nav_cvss_calculator": "CVSS3 калькуляторы",
+    "btn_logout": "Шығу",
+    "copyright": "RTEAM"
+  },
+  "cvss-calculator.html": {
+    "page_title": "RTEAM | CVSS 3.1 калькуляторы",
+    "scriptWarning": "Бұл бетте JavaScript қажет. Егер сізде сценарийлер өшірілген болса, оларды қосыңыз.",
+    "vector_label": "Векторлық жол",
+    "vector_placeholder": "CVSSv3.1 бағасы, мысалы, CVSS:3.1/AV:X/AC:X/PR:X/UI:X/S:X/C:X/I:X/A:X/E:X/RL:X/RC:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MPR:X/MUI:X/MS:X/MC:X/MI:X/MA:X",
+    "baseScore_legend": "Негізгі баға",
+    "needBaseMetrics": "Бағаны шығару үшін барлық негізгі метрикаларға мәндерді таңдаңыз",
+    "attackVector_heading": "Шабуыл векторы",
+    "attackVector_title": "Бұл көрсеткіш осалдықты пайдалануға мүмкіндік беретін контекстті көрсетеді.",
+    "AV_N_Label": "Желі",
+    "AV_N_Title": "Осал компонент желілік стекке байланысты және ықтимал шабуылшылардың тізімі бүкіл интернетті қамтиды.",
+    "AV_A_Label": "Сырт жақ",
+    "AV_A_Title": "Осал компонент желілік стекке байланысты, бірақ шабуыл протокол деңгейінде жақын топологиямен шектеледі.",
+    "AV_L_Label": "Жергілікті",
+    "AV_L_Title": "Осал компонент желілік стекке байланысты емес, шабуылдау жолы оқу/жазу/орындау мүмкіндіктері арқылы жүзеге асады.",
+    "AV_P_Label": "Физикалық",
+    "AV_P_Title": "Шабуыл жасау үшін шабуылдаушыға физикалық түрде осал компонентке жанасу немесе оны басқару қажет.",
+    "attackComplexity_heading": "Шабуыл күрделілігі",
+    "attackComplexity_title": "Бұл көрсеткіш шабуылдаушының бақылауынан тыс осалдықты пайдалану үшін қажетті жағдайларды сипаттайды.",
+    "AC_L_Label": "Төмен",
+    "AC_L_Title": "Арнайы қолжетімділік жағдайлары немесе ерекше жағдайлар жоқ.",
+    "AC_H_Label": "Жоғары",
+    "AC_H_Title": "Сәтті шабуыл шабуылдаушының бақылауынан тыс жағдайларға байланысты.",
+    "privilegesRequired_heading": "Қажетті артықшылықтар",
+    "PR_N_Label": "Жоқ",
+    "PR_N_Title": "Шабуылдаушыға шабуыл жасамас бұрын ешқандай рұқсат берілмейді және шабуылды жүзеге асыру үшін параметрлерге немесе файлдарға қолжетімділік қажет емес.",
+    "PR_L_Label": "Төмен",
+    "PR_L_Title": "Шабуылдаушы базалық пайдаланушы мүмкіндіктерімен авторизацияланған.",
+    "PR_H_Label": "Жоғары",
+    "PR_H_Title": "Шабуылдаушы осал компонентті бақылауға мүмкіндік беретін артықшылықтармен авторизацияланған.",
+    "userInteraction_heading": "Пайдаланушымен әрекеттестік",
+    "UI_N_Label": "Қажет емес",
+    "UI_N_Title": "Осал жүйе пайдаланушының ешқандай әрекетінсіз пайдаланылуы мүмкін.",
+    "UI_R_Label": "Қажет",
+    "UI_R_Title": "Бұл осалдықты сәтті пайдалану үшін пайдаланушының қандай да бір әрекетін орындау қажет.",
+    "scope_heading": "Ауқым",
+    "S_U_Label": "Өзгеріссіз",
+    "S_U_Title": "Осалдықты пайдалану тек сол қауіпсіздік жүйесі басқарған ресурстарға әсер етеді.",
+    "S_C_Label": "Өзгертілген",
+    "S_C_Title": "Осалдықты пайдалану осал компонентті басқарған қауіпсіздік шеңберінен тыс ресурстарға әсер етуі мүмкін.",
+    "confidentiality_heading": "Құпиялылық",
+    "C_N_Label": "Жоқ",
+    "C_N_Title": "Зардап шеккен компоненттің құпиялылығы жоғалған жоқ.",
+    "C_L_Label": "Төмен",
+    "C_L_Title": "Құпиялылықтың ішінара жоғалуы бар.",
+    "C_H_Label": "Жоғары",
+    "C_H_Title": "Құпиялылық толықтай жоғалады, барлық ресурстар шабуылдаушыға қолжетімді болады.",
+    "integrity_heading": "Тұтастық",
+    "I_N_Label": "Жоқ",
+    "I_N_Title": "Зардап шеккен компоненттің тұтастығы жоғалған жоқ.",
+    "I_L_Label": "Төмен",
+    "I_L_Title": "Деректерді өзгерту мүмкін, бірақ шабуылдаушы өзгерістің салдарын бақыламайды.",
+    "I_H_Label": "Жоғары",
+    "I_H_Title": "Тұтастық толықтай жоғалған немесе қорғаныс жойылған.",
+    "availability_heading": "Қолжетімділік",
+    "A_N_Label": "Жоқ",
+    "A_N_Title": "Зардап шеккен компоненттің қолжетімділігіне әсер жоқ.",
+    "A_L_Label": "Төмен",
+    "A_L_Title": "Өнімділік төмендеген немесе ресурстардың қолжетімділігінде уақытша үзілістер бар.",
+    "A_H_Label": "Жоғары",
+    "A_H_Title": "Қолжетімділіктің толық жоғалуы, шабуылдаушы ресурстарға толықтай қолжетімділікті шектеуі мүмкін."
+  },
+  "dashboard.html": {
+    "page_title": "Басқару панелі",
+    "unauthenticated_heading": "Авторизацияланбаған",
+    "unauthenticated_message": "Жүйеге кіруіңізді өтінеміз",
+    "notification_bell_title": "{{ total_unreviewed }} жаңа есеп(тер)ді тексеру қажет",
+    "success_alert_message": "Сәттілік: {{ message }}",
+    "warning_alert_message": "Ескерту: {{ message }}",
+    "rteam_text": "RTEAM"
+  },
+  "dashboard_varieties": {
+    "delete_report.html": {
+      "page_title": "Қатені жою туралы есеп",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Қатені анықтағаны үшін сыйақы есебін жою"
+      },
+      "form": {
+        "confirmation_message": "Сіз шынымен {{ hunter_email }} пайдаланушысының #{{ report_id }} есеп нөмірін жойғыңыз келе ме?",
+        "confirm_button": "Растау"
+      }
+    },
+    "detail_report.html": {
+      "page_title": "Есептің егжей-тегжейі",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Қатені анықтағаны үшін сыйақы есебінің егжей-тегжейі",
+        "report_id_label": "Есеп ID",
+        "report_status": {
+          "need_review": "Қарауды қажет етеді",
+          "in_review": "Қаралуда",
+          "fixing": "Түзетілуде",
+          "bounty_calculation": "Сыйақы есебі",
+          "complete": "Аяқталды",
+          "invalid": "Жарамсыз"
+        },
+        "severity": {
+          "informational": "Ақпараттық",
+          "low": "Төмен",
+          "medium": "Орташа",
+          "high": "Жоғары",
+          "critical": "Сындарлы",
+          "none": "Жоқ"
+        },
+        "attaked_customer": "Шабуылдаған клиент",
+        "attack_type": "Шабуыл түрі",
+        "affected_endpoint": "Зардап шеккен соңғы нүкте",
+        "severity_string": "Қаталдық жолы",
+        "summary": "Қысқаша мазмұны",
+        "files": "Файлдар",
+        "file_download": "Жүктеп алу",
+        "file_download_updated": "Жүктеп алу (жаңартылған)",
+        "view_update": "Жаңартуды көру",
+        "nda_files": {
+          "hunter_data": "Зерттеуші деректері",
+          "view_nda": "Қарау",
+          "nda_label": "Құпиялылық келісімі (НДА)"
+        },
+        "appeals": {
+          "appeal_label": "Апелляциялар",
+          "view_appeal": "Қарау"
+        },
+        "bug_hunter": "Қателікті аңшы",
+        "severity_input_label": "Қаталдық деңгейі",
+        "reviewer_label": "Рецензент",
+        "update_button_label": "Жаңарту",
+        "modal": {
+          "modal_update_title": "Маңызды!",
+          "modal_update_body": "Есептің қаталдық деңгейі мен рецензентті жаңарту керек пе?",
+          "ok_button": "ОК",
+          "cancel_button": "Бас тарту"
+        },
+        "mark_invalid_button": "Жарамсыз деп белгілеу",
+        "mark_invalid_modal_title": "Жарамсыз деп белгілеу",
+        "request_amend_button": "Түзетуді сұрау",
+        "send_calculations_button": "Есептеулерді жіберу",
+        "request_nda_button": "НДА сұрау",
+        "complete_button": "Аяқтау",
+        "delete_button": "Жою",
+        "move_button": "Жылжыту",
+        "move_modal": {
+          "are_you_sure": "Сенімдісіз бе?",
+          "move_to_review": "ҚАРАЛУДА",
+          "move_to_fixing": "ТҮЗЕТІЛУДЕ",
+          "move_to_fixing_retest": "ТҮЗЕТІЛУДЕ (ҚАЙТАЛАУ ТЕСТІ)",
+          "move_to_bounty_preparation": "СЫЙАҚЫ ДАЙЫНДАУДА"
+        }
+      },
+      "messages": {
+        "success": "Сәттілік!",
+        "warning": "Ескерту!"
+      }
+    },
+    "detail_uan.html": {
+      "page_title": "UAN есебінің егжей-тегжейі",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "UAN есебінің егжей-тегжейі",
+        "back_button": "Артқа",
+        "report_id_label": "Есеп ID",
+        "report_title_label": "Есеп атауы",
+        "summary_label": "Қысқаша мазмұны",
+        "files_label": "Файлдар",
+        "file_download": "Жүктеп алу",
+        "messages": {
+          "success": "Сәттілік!",
+          "warning": "Ескерту!"
+        }
+      }
+    },
+    "edit_report.html": {
+      "page_title": "Есепті өңдеу",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Есептің қаталдық деңгейін жаңарту",
+        "form": {
+          "submit_button": "Жаңарту"
+        },
+        "calculator_links": {
+          "owasp_link": "OWASP ҚАУІП КАЛЬКУЛЯТОРЫ",
+          "cvss_link": "CVSS 3.1 КАЛЬКУЛЯТОРЫ"
+        }
+      }
+    },
+    "list_report_dashboard.html": {
+      "columns": {
+        "need_review": "Қарауды қажет етеді",
+        "in_review": "Қаралуда",
+        "fixing": "Түзетілуде",
+        "retest": "Қайталама тестілеу",
+        "bounty_preparation": "Сыйақыны дайындау"
+      },
+      "statuses": {
+        "need_review": "Қарауды қажет етеді",
+        "in_review": "Қаралуда",
+        "fixing": "Түзетілуде",
+        "retest": "Қайталама тестілеу",
+        "bounty_calculation": "Сыйақы есептеу",
+        "processing_bounty": "Сыйақыны өңдеу"
+      },
+      "labels": {
+        "report_id": "Есеп ID",
+        "report_title": "Есеп атауы",
+        "by_hunter": "авторы: ",
+        "report_time": "Уақыты",
+        "duplicate_warning": "Қайталанған есеп"
+      }
+    },
+    "report_status.html": {
+      "table_headers": {
+        "report_number": "Есеп нөмірі",
+        "report_title": "Есеп атауы",
+        "bug_hunter": "Қателікті аңшы",
+        "proof_of_concepts": "Концепцияның дәлелі",
+        "status": "Мәртебе"
+      },
+      "statuses": {
+        "need_review": "Қарауды қажет етеді",
+        "in_review": "Қаралуда",
+        "fixing": "Түзетілуде",
+        "bounty_calculation": "Сыйақы есептеу",
+        "bounty_processing": "Сыйақыны өңдеу",
+        "complete": "Аяқталды",
+        "invalid": "Жарамсыз"
+      },
+      "links": {
+        "report_file": "Есеп файлы"
+      }
+    }
+  },
+  "halloffame.html": {
+    "page_title": "Даңқ залы",
+    "rules_and_guidelines": "Ережелер мен нұсқаулар",
+    "hall_of_fame": "Даңқ залы",
+    "submit": "Жіберу",
+    "select_company": "Компанияны таңдаңыз",
+    "all_companies": "Барлық компаниялар",
+    "thanks_message": "RTEAM келесі зерттеушілерге қауіпсіздік мәселелерін дұрыс хабарлағаны үшін алғыс айтады",
+    "rank": "Ранк",
+    "bounty_hunter": "Сыйақы аңшысы",
+    "points": "Ұпайлар"
+  },
+  "login.html": {
+    "page_title": "RTEAM BugBounty кіру",
+    "login_heading": "Кіру",
+    "submit_button": "Жіберу",
+    "forgot_password": "Құпиясөзді ұмыттыңыз ба"
+  },
+  "owasp-calculator.html": {
+    "page_title": "Параметрлер",
+    "menu_title": "RTEAM | OWASP Қауіптерді бағалау калькуляторы",
+    "section_titles": {
+      "threat_agent_factors": "Қауіп агентінің факторлары",
+      "technical_impact_factors": "Техникалық әсер ету факторлары",
+      "vulnerability_factors": "Осалдық факторлары",
+      "business_impact_factors": "Бизнеске әсер ету факторлары",
+      "likelihood_score": "Ықтималдық бағасы",
+      "impact_score": "Әсер ету бағасы",
+      "modal_title": "Қауіптің қаталдық деңгейі қалай есептеледі?"
+    },
+    "labels": {
+      "vector": "ВЕКТОР (ҚАТАЛДЫҚ ЖОЛЫ): ",
+      "skill_level": "Дағды деңгейі",
+      "motive": "Мотив",
+      "opportunity": "Мүмкіндік",
+      "size": "Өлшем",
+      "loss_of_confidentiality": "Құпиялылықтың жоғалуы",
+      "loss_of_integrity": "Тұтастықтың жоғалуы",
+      "loss_of_availability": "Қолжетімділіктің жоғалуы",
+      "loss_of_accountability": "Жауапкершіліктің жоғалуы",
+      "ease_of_discovery": "Ашу оңайлығы",
+      "ease_of_exploit": "Эксплуатация оңайлығы",
+      "awareness": "Қауіп туралы хабардарлық",
+      "intrusion_detection": "Кірісті анықтау",
+      "financial_damage": "Қаржылық шығын",
+      "reputation_damage": "Беделге нұқсан",
+      "non_compliance": "Сәйкессіздік",
+      "privacy_violation": "Құпиялылықтың бұзылуы"
+    },
+    "options": {
+      "skill_level": {
+        "1": "Техникалық дағдылар жоқ (1)",
+        "3": "Кейбір техникалық дағдылар (3)",
+        "5": "Жетілдірілген қолданушы (5)",
+        "6": "Желілік және бағдарламалық дағдылар (6)",
+        "9": "Қауіпсіздікке ену дағдылары (9)"
+      },
+      "motive": {
+        "1": "Төмен немесе жоқ марапат (1)",
+        "4": "Мүмкін марапат (4)",
+        "9": "Жоғары марапат (9)"
+      },
+      "opportunity": {
+        "0": "Толық қолжетімділік немесе қымбат ресурстар қажет (0)",
+        "4": "Арнайы қолжетімділік немесе ресурстар қажет (4)",
+        "7": "Кейбір қолжетімділік немесе ресурстар қажет (7)",
+        "9": "Қолжетімділік немесе ресурстар қажет емес (9)"
+      },
+      "size": {
+        "2": "Дамытушылар, жүйе әкімшілері (2)",
+        "4": "Интранет қолданушылары (4)",
+        "5": "Серіктестер (5)",
+        "6": "Расталған қолданушылар (6)",
+        "9": "Анонимді интернет қолданушылары (9)"
+      }
+    },
+    "modal": {
+      "likelihood_levels": {
+        "low": "ТӨМЕН",
+        "medium": "ОРТАША",
+        "high": "ЖОҒАРЫ"
+      },
+      "impact_levels": {
+        "low": "ТӨМЕН",
+        "medium": "ОРТАША",
+        "high": "ЖОҒАРЫ"
+      }
+    }
+  },
+  "password_reset_forms": {
+    "password_reset_complete.html": {
+      "title": "Құпиясөзді қалпына келтіру",
+      "message": {
+        "header": "Құпиясөз қалпына келтірілді!",
+        "description": "Жаңа құпиясөзіңіз орнатылды. Енді жаңа құпиясөзбен жүйеге кіре аласыз."
+      },
+      "action_button": "Кіру"
+    },
+    "password_reset_confirm.html": {
+      "title": "Құпиясөзді қалпына келтіру",
+      "form": {
+        "csrf_token": "CSRF Токені",
+        "password_reset_form": "Құпиясөзді қалпына келтіру формасы"
+      },
+      "buttons": {
+        "submit": "Жіберу"
+      }
+    },
+    "password_reset_done.html": {
+      "title": "Құпиясөзді қалпына келтіру",
+      "message": {
+        "header": "Қалпына келтіру сілтемесі жіберілді!",
+        "description_1": "Егер көрсетілген электрондық пошта бар болса, сіз құпиясөзді қалпына келтіру сілтемесін аласыз.",
+        "description_2": "(Спам қалтасын да тексеріңіз)"
+      }
+    },
+    "password_reset.html": {
+      "title": "Құпиясөзді қалпына келтіру",
+      "instruction": "Жалғастыру үшін тіркелген электрондық пошта мекенжайын енгізіңіз.",
+      "form": {
+        "csrf_token": "CSRF Токені",
+        "password_reset_form": "Құпиясөзді қалпына келтіру формасы"
+      },
+      "buttons": {
+        "send_email": "Хат жіберу"
+      },
+      "messages": {
+        "success": "Сәттілік",
+        "warning": "Ескерту"
+      }
+    }
+  },
+  "rules.html": {
+    "page_title": "Ережелер мен нұсқаулар",
+    "menu": {
+      "rules_guidelines": "Ережелер мен нұсқаулар",
+      "hall_of_fame": "Даңқ залы",
+      "submit": "Жіберу"
+    },
+    "sections": {
+      "bounty_terms": "Сыйақы шарттары",
+      "in_scope": "Қамтылған",
+      "out_of_scope": "Қамтылмаған",
+      "responsible_disclosure_policy": "Ақпаратты жауапты жариялау саясаты",
+      "report_guidelines": "Есеп нұсқаулары",
+      "faq": "Жиі қойылатын сұрақтар (FAQ)"
+    },
+    "links": {
+      "internal_view": "[ТЕК ІШКІ ҚАРАУ ҮШІН]"
+    },
+    "side_menu": {
+      "bounty_terms": "Сыйақы шарттары",
+      "in_scope": "Қамтылған",
+      "out_of_scope": "Қамтылмаған",
+      "responsible_disclosure_policy": "Ақпаратты жауапты жариялау саясаты",
+      "report_guidelines": "Есеп нұсқаулары",
+      "faq": "Жиі қойылатын сұрақтар (FAQ)"
+    }
+  },
+  "settings.html": {
+    "page_title": "Параметрлер",
+    "sections": {
+      "mailbox_settings": "Пошта жәшігі параметрлері",
+      "user_account_settings": "Пайдаланушы тіркелгісінің параметрлері",
+      "personalization": "Жекелендіру",
+      "edit_rules_and_guidelines": "Ережелер мен нұсқауларды өңдеу",
+      "manage_users": "Пайдаланушыларды басқару",
+      "notification": "Хабарландыру",
+      "blacklist_rule": "Қара тізім ережесі",
+      "report_template": "Есеп шаблоны",
+      "nda_template": "Құпиялылық келісімі (NDA) шаблоны",
+      "certificate_template": "Сертификат шаблоны",
+      "troubleshooting": "Ақаулықтарды жою"
+    },
+    "buttons": {
+      "update": "Жаңарту",
+      "add": "Қосу",
+      "run": "Іске қосу",
+      "delete": "Жою",
+      "submit": "Жіберу",
+      "cancel": "Бас тарту"
+    },
+    "messages": {
+      "success": "Сәттілік",
+      "warning": "Ескерту"
+    },
+    "placeholders": {
+      "current_mailbox": "Ағымдағы пошта жәшігі: ",
+      "active": "(БЕЛСЕНДІ)",
+      "inactive": "(БЕЛСЕНДІ ЕМЕС)",
+      "current_template": "Ағымдағы шаблон: ",
+      "current_rule": "Ағымдағы ереже: егер бір мекенжайдан ",
+      "emails_from_same_address": " хабарлама аралығы ",
+      "seconds_interval": " секундтан асса, бұл хабарлама блокталады ",
+      "seconds": " секундқа"
+    },
+    "notifications": {
+      "add_new": "Жаңа хабарландыру қосу",
+      "service": "Қызмет",
+      "webhook": "Webhook",
+      "actions": "Әрекеттер",
+      "delete_notification": "Хабарландыруды жою",
+      "confirmation": "Бұл хабарландыру арнасын жоюға сенімдісіз бе?",
+      "no_undo": "Бұл әрекетті болдырмау мүмкін емес."
+    },
+    "users": {
+      "add_new_user": "Жаңа пайдаланушы қосу",
+      "username": "Пайдаланушы аты",
+      "email": "Электрондық пошта",
+      "group": "Топ",
+      "actions": "Әрекеттер",
+      "delete_user": "Пайдаланушыны жою",
+      "confirmation": "Бұл пайдаланушыны жоюға сенімдісіз бе?",
+      "no_undo": "Бұл әрекетті болдырмау мүмкін емес."
+    },
+    "certificates": {
+      "current_template": "Ағымдағы шаблон: ",
+      "sample_certificate": "Сертификат үлгісі",
+      "use_official_template": "[RTEAM ұсынған ресми шаблонды қолдану ұсынылады]"
+    }
+  },
+  "submit.html": {
+    "page_title": "Қатені хабарлау есебін жіберу",
+    "sections": {
+      "how_to_submit": "Қалай жіберу керек",
+      "join_discord": "RTEAM қауымдастығына Discord-та қосылыңыз",
+      "submit_bug_report": "Қатені анықтағаны үшін сыйақы есебін жіберу",
+      "check_report_status": "Есептің күйін тексеру",
+      "check_all_report_status": "Барлық есептердің күйін тексеру (Шолу)",
+      "update_report": "Есепті жаңарту",
+      "appeal_to_bounty_calculations": "Сыйақыны есептеуге шағымдану",
+      "agree_to_bounty_calculations": "Сыйақы есептеуіне келісу",
+      "submit_data_and_nda": "Деректер мен NDA жіберу",
+      "check_score": "Ұпайды тексеру",
+      "customers_list": "Клиенттер тізімі"
+    },
+    "customers_table": {
+      "code": "Код",
+      "company_name": "Компания атауы"
+    },
+    "buttons": {
+      "copy": "Көшіру"
+    },
+    "placeholders": {
+      "customer_code": "CUSTOMER= Клиенттің үш таңбалы коды (мысалы: RTM. Клиенттердің барлық қолжетімді кодтарын көру үшін \"Клиенттер тізімі\" блогын тексеріңіз)",
+      "bug_type": "TYPE= Қате түрі (мысалы: XSS, SQL Injection, IDOR және т.б.)",
+      "affected_endpoint": "ENDPOINT= Зардап шеккен соңғы нүкте (мысалы: https://rteam.kz/redteam/) [максимум 100 таңба]",
+      "summary": "SUMMARY= Сіз тапқан олқылықтардың қысқаша мазмұны"
+    }
+  }
+}

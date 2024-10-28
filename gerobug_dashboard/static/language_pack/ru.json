@@ -1,0 +1,503 @@
+{
+  "404.html": {
+    "box__description-title": "Упс!",
+    "box__description-text": "Похоже, мы не смогли найти страницу, которую вы искали",
+    "box__button": "Вернуться назад"
+  },
+  "500.html": {
+    "box__description-title": "Упс!",
+    "box__description-text": "Что-то пошло не так...",
+    "box__button": "Вернуться назад"
+  },
+  "base.html": {
+    "nav_dashboard": "Панель управления",
+    "nav_need_to_review": "Требуется проверка",
+    "nav_details": "Детали",
+    "nav_setting": "Настройки",
+    "nav_owasp_calculator": "Калькулятор OWASP",
+    "nav_cvss_calculator": "Калькулятор CVSS3",
+    "btn_logout": "Выйти",
+    "copyright": "RTEAM"
+  },
+  "cvss-calculator.html": {
+    "page_title": "RTEAM | Калькулятор CVSS 3.1",
+    "scriptWarning": "Эта страница требует JavaScript. Если у вас отключены скрипты, пожалуйста, включите их.",
+    "vector_label": "Векторная строка",
+    "vector_placeholder": "Оценка CVSSv3.1, например, CVSS:3.1/AV:X/AC:X/PR:X/UI:X/S:X/C:X/I:X/A:X/E:X/RL:X/RC:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MPR:X/MUI:X/MS:X/MC:X/MI:X/MA:X",
+    "baseScore_legend": "Базовая оценка",
+    "needBaseMetrics": "Выберите значения для всех базовых метрик, чтобы сгенерировать оценку",
+    "attackVector_heading": "Вектор атаки",
+    "attackVector_title": "Этот показатель отражает контекст, при котором возможна эксплуатация уязвимости.",
+    "AV_N_Label": "Сеть",
+    "AV_N_Title": "Уязвимый компонент привязан к сетевому стеку, и круг потенциальных атакующих включает весь интернет.",
+    "AV_A_Label": "Смежная",
+    "AV_A_Title": "Уязвимый компонент привязан к сетевому стеку, но атака ограничена протокольным уровнем в пределах смежной топологии.",
+    "AV_L_Label": "Локальная",
+    "AV_L_Title": "Уязвимый компонент не привязан к сетевому стеку, и путь атаки требует прав на чтение/запись/выполнение.",
+    "AV_P_Label": "Физическая",
+    "AV_P_Title": "Для атаки требуется физический доступ к уязвимому компоненту.",
+    "attackComplexity_heading": "Сложность атаки",
+    "attackComplexity_title": "Этот показатель описывает условия, выходящие за рамки контроля атакующего, необходимые для эксплуатации уязвимости.",
+    "AC_L_Label": "Низкая",
+    "AC_L_Title": "Специальные условия доступа или особые обстоятельства отсутствуют.",
+    "AC_H_Label": "Высокая",
+    "AC_H_Title": "Успешная атака зависит от условий, неподконтрольных атакующему.",
+    "privilegesRequired_heading": "Необходимые привилегии",
+    "PR_N_Label": "Нет",
+    "PR_N_Title": "Атакующий не авторизован до атаки и не требует доступа к настройкам или файлам для выполнения атаки.",
+    "PR_L_Label": "Низкие",
+    "PR_L_Title": "Атакующий авторизован с базовыми пользовательскими привилегиями.",
+    "PR_H_Label": "Высокие",
+    "PR_H_Title": "Атакующий авторизован с привилегиями, предоставляющими значительный контроль над уязвимым компонентом.",
+    "userInteraction_heading": "Взаимодействие с пользователем",
+    "UI_N_Label": "Не требуется",
+    "UI_N_Title": "Уязвимая система может быть эксплуатирована без какого-либо взаимодействия с пользователем.",
+    "UI_R_Label": "Требуется",
+    "UI_R_Title": "Успешная эксплуатация уязвимости требует выполнения пользователем какого-либо действия.",
+    "scope_heading": "Область",
+    "S_U_Label": "Неизменная",
+    "S_U_Title": "Уязвимость влияет только на ресурсы, управляемые той же системой безопасности.",
+    "S_C_Label": "Измененная",
+    "S_C_Title": "Уязвимость может влиять на ресурсы за пределами области управления уязвимого компонента.",
+    "confidentiality_heading": "Конфиденциальность",
+    "C_N_Label": "Нет",
+    "C_N_Title": "Потери конфиденциальности не наблюдаются.",
+    "C_L_Label": "Низкая",
+    "C_L_Title": "Есть частичная потеря конфиденциальности.",
+    "C_H_Label": "Высокая",
+    "C_H_Title": "Полная потеря конфиденциальности, все ресурсы становятся доступны атакующему.",
+    "integrity_heading": "Целостность",
+    "I_N_Label": "Нет",
+    "I_N_Title": "Потери целостности не наблюдаются.",
+    "I_L_Label": "Низкая",
+    "I_L_Title": "Модификация данных возможна, но атакующий не контролирует последствия.",
+    "I_H_Label": "Высокая",
+    "I_H_Title": "Полная потеря целостности или защита больше не действует.",
+    "availability_heading": "Доступность",
+    "A_N_Label": "Нет",
+    "A_N_Title": "Нет воздействия на доступность компонентов.",
+    "A_L_Label": "Низкая",
+    "A_L_Title": "Производительность снижена или наблюдаются кратковременные перебои в доступности ресурсов.",
+    "A_H_Label": "Высокая",
+    "A_H_Title": "Полная потеря доступности, атакующий может полностью ограничить доступ к ресурсам."
+  },
+  "dashboard.html": {
+    "page_title": "Панель управления",
+    "unauthenticated_heading": "Неавторизован",
+    "unauthenticated_message": "Пожалуйста, войдите в систему",
+    "notification_bell_title": "Есть {{ total_unreviewed }} новых отчета(ов) для проверки",
+    "success_alert_message": "Успех: {{ message }}",
+    "warning_alert_message": "Предупреждение: {{ message }}",
+    "rteam_text": "RTEAM"
+  },
+  "dashboard_varieties": {
+    "delete_report.html": {
+      "page_title": "Удалить отчет об ошибке",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Удалить отчет о вознаграждении за обнаружение ошибки"
+      },
+      "form": {
+        "confirmation_message": "Вы уверены, что хотите удалить отчет с ID #{{ report_id }} от {{ hunter_email }}?",
+        "confirm_button": "Подтвердить"
+      }
+    },
+    "detail_report.html": {
+      "page_title": "Детали отчета",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Детали отчета о вознаграждении за обнаружение ошибки",
+        "report_id_label": "ID отчета",
+        "report_status": {
+          "need_review": "Требуется проверка",
+          "in_review": "В процессе проверки",
+          "fixing": "Исправляется",
+          "bounty_calculation": "Расчет вознаграждения",
+          "complete": "Завершено",
+          "invalid": "Недействительный"
+        },
+        "severity": {
+          "informational": "Информационный",
+          "low": "Низкий",
+          "medium": "Средний",
+          "high": "Высокий",
+          "critical": "Критический",
+          "none": "Нет"
+        },
+        "attaked_customer": "Атакованный клиент",
+        "attack_type": "Тип атаки",
+        "affected_endpoint": "Затронутая конечная точка",
+        "severity_string": "Строка с уровнем серьезности",
+        "summary": "Резюме",
+        "files": "Файлы",
+        "file_download": "Скачать",
+        "file_download_updated": "Скачать (обновлено)",
+        "view_update": "Просмотреть обновление",
+        "nda_files": {
+          "hunter_data": "Данные исследователя",
+          "view_nda": "Просмотреть",
+          "nda_label": "НДА"
+        },
+        "appeals": {
+          "appeal_label": "Апелляции",
+          "view_appeal": "Просмотреть"
+        },
+        "bug_hunter": "Охотник за ошибками",
+        "severity_input_label": "Серьезность",
+        "reviewer_label": "Рецензент",
+        "update_button_label": "Обновить",
+        "modal": {
+          "modal_update_title": "Внимание!",
+          "modal_update_body": "Обновить серьезность отчета и рецензента?",
+          "ok_button": "ОК",
+          "cancel_button": "Отмена"
+        },
+        "mark_invalid_button": "Отметить как недействительный",
+        "mark_invalid_modal_title": "Отметить как недействительный",
+        "request_amend_button": "Запросить исправление",
+        "send_calculations_button": "Отправить расчеты",
+        "request_nda_button": "Запросить НДА",
+        "complete_button": "Завершить",
+        "delete_button": "Удалить",
+        "move_button": "Переместить",
+        "move_modal": {
+          "are_you_sure": "Вы уверены?",
+          "move_to_review": "В ПРОЦЕССЕ ПРОВЕРКИ",
+          "move_to_fixing": "ИСПРАВЛЯЕТСЯ",
+          "move_to_fixing_retest": "ИСПРАВЛЯЕТСЯ (ПОВТОРНОЕ ТЕСТИРОВАНИЕ)",
+          "move_to_bounty_preparation": "ПОДГОТОВКА ВОЗНАГРАЖДЕНИЯ"
+        }
+      },
+      "messages": {
+        "success": "Успешно!",
+        "warning": "Предупреждение!"
+      }
+    },
+    "detail_uan.html": {
+      "page_title": "Детали отчета UAN",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Детали отчета UAN",
+        "back_button": "Назад",
+        "report_id_label": "ID отчета",
+        "report_title_label": "Заголовок отчета",
+        "summary_label": "Резюме",
+        "files_label": "Файлы",
+        "file_download": "Скачать",
+        "messages": {
+          "success": "Успешно!",
+          "warning": "Предупреждение!"
+        }
+      }
+    },
+    "edit_report.html": {
+      "page_title": "Редактировать отчет",
+      "sections": {
+        "header_text": "RTEAM",
+        "main_title": "Обновить уровень серьезности отчета",
+        "form": {
+          "submit_button": "Обновить"
+        },
+        "calculator_links": {
+          "owasp_link": "КАЛЬКУЛЯТОР РИСКОВ OWASP",
+          "cvss_link": "КАЛЬКУЛЯТОР CVSS 3.1"
+        }
+      }
+    },
+    "list_report_dashboard.html": {
+      "columns": {
+        "need_review": "Требуется проверка",
+        "in_review": "В процессе проверки",
+        "fixing": "Исправляется",
+        "retest": "Повторное тестирование",
+        "bounty_preparation": "Подготовка вознаграждения"
+      },
+      "statuses": {
+        "need_review": "Требуется проверка",
+        "in_review": "В процессе проверки",
+        "fixing": "Исправляется",
+        "retest": "Повторное тестирование",
+        "bounty_calculation": "Расчет вознаграждения",
+        "processing_bounty": "Обработка вознаграждения"
+      },
+      "labels": {
+        "report_id": "ID отчета",
+        "report_title": "Заголовок отчета",
+        "by_hunter": "автор: ",
+        "report_time": "Время",
+        "duplicate_warning": "Дублирующийся отчет"
+      }
+    },
+    "report_status.html": {
+      "table_headers": {
+        "report_number": "Номер отчета",
+        "report_title": "Заголовок отчета",
+        "bug_hunter": "Охотник за ошибками",
+        "proof_of_concepts": "Доказательство концепции",
+        "status": "Статус"
+      },
+      "statuses": {
+        "need_review": "Требуется проверка",
+        "in_review": "В процессе проверки",
+        "fixing": "Исправляется",
+        "bounty_calculation": "Расчет вознаграждения",
+        "bounty_processing": "Обработка вознаграждения",
+        "complete": "Завершено",
+        "invalid": "Недействительный"
+      },
+      "links": {
+        "report_file": "Файл отчета"
+      }
+    }
+  },
+  "halloffame.html": {
+    "page_title": "Зал Славы",
+    "rules_and_guidelines": "Правила и рекомендации",
+    "hall_of_fame": "Зал Славы",
+    "submit": "Отправить",
+    "select_company": "Выберите компанию",
+    "all_companies": "Все компании",
+    "thanks_message": "RTEAM благодарит следующих исследователей за отчет о действительных проблемах безопасности",
+    "rank": "Ранг",
+    "bounty_hunter": "Охотник за наградой",
+    "points": "Очки"
+  },
+  "login.html": {
+    "page_title": "Вход в RTEAM BugBounty",
+    "login_heading": "Вход",
+    "submit_button": "Отправить",
+    "forgot_password": "Забыли пароль"
+  },
+  "owasp-calculator.html": {
+    "page_title": "Настройки",
+    "menu_title": "RTEAM | Калькулятор оценки рисков OWASP",
+    "section_titles": {
+      "threat_agent_factors": "Факторы агента угроз",
+      "technical_impact_factors": "Факторы технического воздействия",
+      "vulnerability_factors": "Факторы уязвимости",
+      "business_impact_factors": "Факторы воздействия на бизнес",
+      "likelihood_score": "Оценка вероятности",
+      "impact_score": "Оценка воздействия",
+      "modal_title": "Как рассчитывается риск серьезности?"
+    },
+    "labels": {
+      "vector": "ВЕКТОР (СТРОКА СЕРЬЕЗНОСТИ): ",
+      "skill_level": "Уровень навыков",
+      "motive": "Мотив",
+      "opportunity": "Возможность",
+      "size": "Размер",
+      "loss_of_confidentiality": "Потеря конфиденциальности",
+      "loss_of_integrity": "Потеря целостности",
+      "loss_of_availability": "Потеря доступности",
+      "loss_of_accountability": "Потеря ответственности",
+      "ease_of_discovery": "Легкость обнаружения",
+      "ease_of_exploit": "Легкость эксплуатации",
+      "awareness": "Осведомленность",
+      "intrusion_detection": "Обнаружение вторжений",
+      "financial_damage": "Финансовый ущерб",
+      "reputation_damage": "Ущерб репутации",
+      "non_compliance": "Несоответствие",
+      "privacy_violation": "Нарушение конфиденциальности"
+    },
+    "options": {
+      "skill_level": {
+        "1": "Нет технических навыков (1)",
+        "3": "Некоторые технические навыки (3)",
+        "5": "Продвинутый пользователь (5)",
+        "6": "Навыки сетевого и программного обеспечения (6)",
+        "9": "Навыки проникновения в систему безопасности (9)"
+      },
+      "motive": {
+        "1": "Низкая или отсутствующая награда (1)",
+        "4": "Возможная награда (4)",
+        "9": "Высокая награда (9)"
+      },
+      "opportunity": {
+        "0": "Требуются полный доступ или дорогие ресурсы (0)",
+        "4": "Требуются специальные доступы или ресурсы (4)",
+        "7": "Требуется некоторый доступ или ресурсы (7)",
+        "9": "Не требуется доступ или ресурсы (9)"
+      },
+      "size": {
+        "2": "Разработчики, системные администраторы (2)",
+        "4": "Пользователи интрасети (4)",
+        "5": "Партнеры (5)",
+        "6": "Аутентифицированные пользователи (6)",
+        "9": "Анонимные интернет-пользователи (9)"
+      }
+    },
+    "modal": {
+      "likelihood_levels": {
+        "low": "НИЗКАЯ",
+        "medium": "СРЕДНЯЯ",
+        "high": "ВЫСОКАЯ"
+      },
+      "impact_levels": {
+        "low": "НИЗКАЯ",
+        "medium": "СРЕДНЯЯ",
+        "high": "ВЫСОКАЯ"
+      }
+    }
+  },
+  "password_reset_forms": {
+    "password_reset_complete.html": {
+      "title": "Сброс пароля",
+      "message": {
+        "header": "Сброс пароля завершен!",
+        "description": "Ваш новый пароль установлен. Теперь вы можете войти в систему с новым паролем."
+      },
+      "action_button": "Войти"
+    },
+    "password_reset_confirm.html": {
+      "title": "Сброс пароля",
+      "form": {
+        "csrf_token": "Токен CSRF",
+        "password_reset_form": "Форма сброса пароля"
+      },
+      "buttons": {
+        "submit": "Отправить"
+      }
+    },
+    "password_reset_done.html": {
+      "title": "Сброс пароля",
+      "message": {
+        "header": "Ссылка для сброса отправлена!",
+        "description_1": "Вы получите ссылку для сброса пароля, если указанный email существует.",
+        "description_2": "(Пожалуйста, проверьте также папку спама)"
+      }
+    },
+    "password_reset.html": {
+      "title": "Сброс пароля",
+      "instruction": "Введите зарегистрированный адрес электронной почты, чтобы продолжить.",
+      "form": {
+        "csrf_token": "Токен CSRF",
+        "password_reset_form": "Форма сброса пароля"
+      },
+      "buttons": {
+        "send_email": "Отправить письмо"
+      },
+      "messages": {
+        "success": "Успех",
+        "warning": "Предупреждение"
+      }
+    }
+  },
+  "rules.html": {
+    "page_title": "Правила и рекомендации",
+    "menu": {
+      "rules_guidelines": "Правила и рекомендации",
+      "hall_of_fame": "Зал Славы",
+      "submit": "Отправить"
+    },
+    "sections": {
+      "bounty_terms": "Условия вознаграждения",
+      "in_scope": "В рамках",
+      "out_of_scope": "Вне рамок",
+      "responsible_disclosure_policy": "Политика ответственного раскрытия информации",
+      "report_guidelines": "Рекомендации по отчету",
+      "faq": "Часто задаваемые вопросы (FAQ)"
+    },
+    "links": {
+      "internal_view": "[ТОЛЬКО ВНУТРЕННИЙ ПРОСМОТР]"
+    },
+    "side_menu": {
+      "bounty_terms": "Условия вознаграждения",
+      "in_scope": "В рамках",
+      "out_of_scope": "Вне рамок",
+      "responsible_disclosure_policy": "Политика ответственного раскрытия информации",
+      "report_guidelines": "Рекомендации по отчету",
+      "faq": "Часто задаваемые вопросы (FAQ)"
+    }
+  },
+  "settings.html": {
+    "page_title": "Настройки",
+    "sections": {
+      "mailbox_settings": "Настройки почтового ящика",
+      "user_account_settings": "Настройки учетной записи",
+      "personalization": "Персонализация",
+      "edit_rules_and_guidelines": "Редактировать правила и рекомендации",
+      "manage_users": "Управление пользователями",
+      "notification": "Уведомление",
+      "blacklist_rule": "Правило черного списка",
+      "report_template": "Шаблон отчета",
+      "nda_template": "Шаблон НДА",
+      "certificate_template": "Шаблон сертификата",
+      "troubleshooting": "Устранение неполадок"
+    },
+    "buttons": {
+      "update": "Обновить",
+      "add": "Добавить",
+      "run": "Запустить",
+      "delete": "Удалить",
+      "submit": "Отправить",
+      "cancel": "Отменить"
+    },
+    "messages": {
+      "success": "Успешно",
+      "warning": "Предупреждение"
+    },
+    "placeholders": {
+      "current_mailbox": "Текущий почтовый ящик: ",
+      "active": "(АКТИВЕН)",
+      "inactive": "(НЕ АКТИВЕН)",
+      "current_template": "Текущий шаблон: ",
+      "current_rule": "Текущее правило: когда более чем ",
+      "emails_from_same_address": " писем с одного адреса с интервалом ",
+      "seconds_interval": " секунд, это письмо будет заблокировано на ",
+      "seconds": " секунд"
+    },
+    "notifications": {
+      "add_new": "Добавить новое уведомление",
+      "service": "Сервис",
+      "webhook": "Вебхук",
+      "actions": "Действия",
+      "delete_notification": "Удалить уведомление",
+      "confirmation": "Вы уверены, что хотите удалить этот канал уведомлений?",
+      "no_undo": "Это действие не может быть отменено."
+    },
+    "users": {
+      "add_new_user": "Добавить нового пользователя",
+      "username": "Имя пользователя",
+      "email": "Электронная почта",
+      "group": "Группа",
+      "actions": "Действия",
+      "delete_user": "Удалить пользователя",
+      "confirmation": "Вы уверены, что хотите удалить этого пользователя?",
+      "no_undo": "Это действие не может быть отменено."
+    },
+    "certificates": {
+      "current_template": "Текущий шаблон: ",
+      "sample_certificate": "Образец сертификата",
+      "use_official_template": "[Рекомендуется использовать официальный шаблон, предоставленный RTEAM]"
+    }
+  },
+  "submit.html": {
+    "page_title": "Отправить отчет об ошибке",
+    "sections": {
+      "how_to_submit": "Как отправить",
+      "join_discord": "Присоединиться к сообществу RTEAM в Discord",
+      "submit_bug_report": "Отправить отчет о вознаграждении за ошибку",
+      "check_report_status": "Проверить статус отчета",
+      "check_all_report_status": "Проверить статус всех отчетов (Обзор)",
+      "update_report": "Обновить отчет",
+      "appeal_to_bounty_calculations": "Апелляция по расчету вознаграждения",
+      "agree_to_bounty_calculations": "Согласиться с расчетом вознаграждения",
+      "submit_data_and_nda": "Отправить данные и NDA",
+      "check_score": "Проверить оценку",
+      "customers_list": "Список клиентов"
+    },
+    "customers_table": {
+      "code": "Код",
+      "company_name": "Название компании"
+    },
+    "buttons": {
+      "copy": "Копировать"
+    },
+    "placeholders": {
+      "customer_code": "CUSTOMER= Трехзначный код клиента (пример: RTM. Чтобы увидеть все доступные коды клиентов, проверьте блок - \"Список клиентов\")",
+      "bug_type": "TYPE= Тип ошибки (пример: XSS, SQL Injection, IDOR и т.д.)",
+      "affected_endpoint": "ENDPOINT= Затронутая конечная точка (пример: https://rteam.kz/redteam/) [максимум 100 символов]",
+      "summary": "SUMMARY= Краткое содержание ваших находок"
+    }
+  }
+}
