@@ -1,9 +1,8 @@
 <!-- submit.html -->
-{% load i18n %}
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="{% get_current_language %}">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Gerobug-signature" content="97de67b8d672c51c158247f398b85d31">
 
-    <title>{% trans "Submit Bug Report" %}</title>
+    <title>Rules and Guidelines</title>
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
 
@@ -51,7 +50,7 @@
 
             navigator.clipboard.writeText(copyText.value);
 
-            alert("{% trans 'Copied: ' %}" + "\n" + copyText.value);
+            alert("Copied: \n" + copyText.value);
         }
     </script>
 </head>
@@ -63,13 +62,13 @@
             <div class="nav-content"><img src="{% static 'logo.png' %}"></div>
         </a></li>
         <li><a href="{% url 'rules' %}">
-            <div class="nav-content">{% trans "Rules & Guidelines" %}</div>
+            <div class="nav-content">Rules & Guidelines</div>
         </a></li>
         <li><a href="{% url 'halloffame' %}">
-            <div class="nav-content">{% trans "Hall Of Fame" %}</div>
+            <div class="nav-content">Hall Of Fame</div>
         </a></li>
         <li><a class="active" href="{% url 'submit' %}">
-            <div class="nav-content">{% trans "Submit" %}</div>
+            <div class="nav-content">Submit</div>
         </a></li>
         <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">
             <div class="nav-content"><i class="fa fa-bars"></i></div>
@@ -78,22 +77,9 @@
 </header>
 
 <main>
-    <h1>{% trans "How To Submit" %}</h1>
+    <h1>How To Submit</h1>
     <p>{{ template|safe }}</p>
-
-    <form action="{% url 'set_language' %}" method="post">
-        {% csrf_token %}
-        <input name="next" type="hidden" value="{{ request.get_full_path }}">
-        <select name="language" onchange="this.form.submit()">
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% for lang in LANGUAGES %}
-                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
-                    {{ lang.1 }}
-                </option>
-            {% endfor %}
-        </select>
-    </form>
+    <p>Join Gerobug community on <a href="https://discord.gg/VhU4X4TQ5F" target="_blank">Discord</a></p>
 
     <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
@@ -101,13 +87,13 @@
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne">
-                    {% trans "Submit Bug Bounty Report" %}
+                    Submit Bug Bounty Report
                 </button>
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                  aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
-                    <b>{% trans "Subject:" %}</b>
+                    <b>Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_1" rows="1" cols="40">SUBMIT_Report Title</textarea>
@@ -115,49 +101,38 @@
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>{% trans "Body:" %}</b>
+                    <b>Body:</b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Body_1" rows="3" cols="40">
-CUSTOMER= {% trans "Customer 3 digits code" %} (example: BIG. {% trans "To see all available customer codes check the first block" %} - {% trans "Customers List" %})
-TYPE= {% trans "Bug Type" %} (example: XSS, SQL Injection, IDOR, etc.)
-ENDPOINT= {% trans "Affected Endpoint" %} (example: https://demo.gerobug.com/submit) [max 100 characters]
-SUMMARY= {% trans "Summary of your findings" %}</textarea>
+CUSTOMER= Customer 3 digits code (example: BIG. To see all available customers code check first block - "Customers List")
+TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)
+ENDPOINT= Affected Endpoint (example: https://demo.gerobug.com/submit) [max 100 characters]
+SUMMARY= Summary of your finding</textarea>
                         <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Body_1')"><i
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>{% trans "Attachment:" %}</b>
+                    <b>Attachment:</b>
                     <br>
-                    {% trans "PDF REPORT FILE" %}
-                    (<a href="{% static 'templates/Template_Report.docx' %}">{% trans "Report Template" %}</a>)<br>
+                    PDF REPORT FILE
+                    (<a href="{% static 'templates/Template_Report.docx' %}">Report Template</a>)<br>
 
                     <br>
-                    <b>{% trans "Sample:" %}</b>
+                    <b>Sample:</b>
                     <br>
                     <img src="{% static 'sample/submit.png' %}" width="35%">
                 </div>
             </div>
         </div>
-
-        <!-- Other accordion sections can be similarly updated with translations -->
-
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseEight">
-                    {% trans "Customers List" %}
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
+        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingEight">
                 <div class="accordion-body">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">{% trans "Code" %}</th>
-                                <th scope="col">{% trans "Company Name" %}</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Company Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -170,7 +145,225 @@ SUMMARY= {% trans "Summary of your findings" %}</textarea>
                         </tbody>
                     </table>
                 </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                    Check Report Status
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_2" rows="1" cols="40">CHECK_Report ID</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_2')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/check.png' %}" width="35%">
+                </div>
             </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo1" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo1">
+                    Check All Report Status (Overview)
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo1" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingTwo1">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_3" rows="1" cols="40">STATUS_OVERVIEW</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_3')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/overview.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                    Update Report
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_4" rows="1" cols="40">UPDATE_Report ID</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_4')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <b>Body:</b>
+                    <br>
+                    Summary of your updates
+                    <br>
+
+                    <br>
+                    <b>Attachment:</b>
+                    <br>
+                    PDF REPORT FILE
+                    (<a href="{% static 'templates/Template_Report.docx' %}">Report Template</a>)<br>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/update.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFour">
+                    Appeal to Bounty Calculations
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_5" rows="1" cols="40">APPEAL_Report ID</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_5')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <b>Body:</b>
+                    <br>
+                    Reason of your appeal
+                    <br>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/appeal.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFive">
+                    Agree to Bounty Calculations
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_6" rows="1" cols="40">AGREE_Report ID</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_6')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/agree.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseSix">
+                    Submit Data and NDA
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingSix">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_7" rows="1" cols="40">NDA_Report ID</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_7')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <b>Body:</b>
+                    <br>
+                    Requested Information
+                    <br>
+
+                    <br>
+                    <b>Attachment:</b>
+                    <br>
+                    PDF SIGNED NDA FILE
+                    <br>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/nda.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseSeven">
+                    Check Score
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingSeven">
+                <div class="accordion-body">
+                    <b>Subject: </b>
+                    <br>
+                    <div class="text-wrap">
+                        <textarea readonly id="Subject_8" rows="1" cols="40">MY_SCORE</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_8')"><i
+                                class="fa fa-copy"></i></div>
+                    </div>
+
+                    <br>
+                    <b>Sample:</b>
+                    <br>
+                    <img src="{% static 'sample/score.png' %}" width="35%">
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseEight">
+                    Customers List
+                </button>
+            </h2>
         </div>
     </div>
 </main>
@@ -183,5 +376,5 @@ SUMMARY= {% trans "Summary of your findings" %}</textarea>
 
 <div style="display:none;">97de67b8d672c51c158247f398b85d31</div>
 </body>
-</html>
 
+</html>

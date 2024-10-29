@@ -18,38 +18,18 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from dashboards.views import halloffame,rulescontext,emailcontext,Themes
 
-#for i18n
-from django.conf import settings
-from django.conf.urls.i18n import i18n_patterns
-
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),
-]
-
-urlpatterns += i18n_patterns(
-    path('', rulescontext, name="rules"),
-    path("submit/", emailcontext, name="submit"),
-    path("halloffame/", halloffame, name="halloffame"),
-    path('login/', include("prerequisites.urls"), name="login"),
-    path('dashboard/', include("dashboards.urls"), name="dashboard"),
+    path('', rulescontext,name="rules"),
+    path("submit/",emailcontext,name="submit"),
+    path("halloffame/",halloffame,name="halloffame"),
+    path('login/', include("prerequisites.urls"),name="login"),
+    path('dashboard/', include("dashboards.urls"),name="dashboard"),
     path("theme", Themes.as_view(), name='themes'),
 
     #path('accounts/', include('django.contrib.auth.urls')),
     #path('admin/', admin.site.urls),
-)
-
-# urlpatterns = [
-#     path('', rulescontext,name="rules"),
-#     path("submit/",emailcontext,name="submit"),
-#     path("halloffame/",halloffame,name="halloffame"),
-#     path('login/', include("prerequisites.urls"),name="login"),
-#     path('dashboard/', include("dashboards.urls"),name="dashboard"),
-#     path("theme", Themes.as_view(), name='themes'),
-#
-#     #path('accounts/', include('django.contrib.auth.urls')),
-#     #path('admin/', admin.site.urls),
-# ]
+]
 
 handler404 = 'dashboards.views.notfound_404'
 # handler500 = 'dashboards.views.error_500'
