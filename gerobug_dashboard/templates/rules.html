@@ -3,13 +3,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Gerobug-signature" content="97de67b8d672c51c158247f398b85d31">
 
-    <title data-translate="page_title">Rules and Guidelines</title>
+    <title>Rules and Guidelines</title>
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
 
@@ -31,40 +32,69 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
-    <script src="/static/js/translate.js" defer></script>
 
+    <!-- Language Switching Script -->
     <script>
-        function myFunction() {
-          var x = document.getElementById("navbar");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-          } else {
-            x.className = "topnav";
-          }
+        function loadLanguage(language) {
+            fetch(`/static/language_pack/${language}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    document.title = data['rules.html'].page_title;
+
+                    document.querySelector('.menu-rules').innerText = data['rules.html'].menu.rules_guidelines;
+                    document.querySelector('.menu-hof').innerText = data['rules.html'].menu.hall_of_fame;
+                    document.querySelector('.menu-submit').innerText = data['rules.html'].menu.submit;
+
+                    document.querySelector('#section-bounty-terms').innerText = data['rules.html'].sections.bounty_terms;
+                    document.querySelector('#section-in-scope').innerText = data['rules.html'].sections.in_scope;
+                    document.querySelector('#section-out-of-scope').innerText = data['rules.html'].sections.out_of_scope;
+                    document.querySelector('#section-rdp').innerText = data['rules.html'].sections.responsible_disclosure_policy;
+                    document.querySelector('#section-report-guidelines').innerText = data['rules.html'].sections.report_guidelines;
+                    document.querySelector('#section-faq').innerText = data['rules.html'].sections.faq;
+
+                    document.querySelector('#internal-view').innerText = data['rules.html'].links.internal_view;
+                })
+                .catch(error => console.error('Error loading language file:', error));
         }
+
+        // Event handler for language selection
+        function setLanguage(event) {
+            const language = event.target.value;
+            loadLanguage(language);
+            localStorage.setItem('selectedLanguage', language); // Save language preference
+        }
+
+        // Load language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.getElementById('language-select').value = savedLanguage;
+            loadLanguage(savedLanguage);
+        });
     </script>
 </head>
 
-<body data-page="rules.html">
+
     <header>
+        <!-- Language selection dropdown -->
+
         <ul class="topnav" id="navbar">
             <li><a class="logo" href="{% url 'rules' %}">
                 <div class="nav-content"><img src="{% static 'logo.png' %}"></div>
             </a></li>
-            <li><a class="active" href="{% url 'rules' %}">
-                <div id="rules_guidelines" data-translate="rules_guidelines" class="nav-content">Rules & Guidelines</div>
+            <li><a class="menu-rules active" href="{% url 'rules' %}">
+                <div class="nav-content">Rules & Guidelines</div>
             </a></li>
-            <li><a href="{% url 'halloffame' %}">
-                <div id="hall_of_fame" data-translate="hall_of_fame" class="nav-content">Hall Of Fame</div>
+            <li><a class="menu-hof" href="{% url 'halloffame' %}">
+                <div class="nav-content">Hall Of Fame</div>
             </a></li>
-            <li><a href="{% url 'submit' %}">
-                <div id="submit" data-translate="submit" class="nav-content">Submit</div>
+            <li><a class="menu-submit" href="{% url 'submit' %}">
+                <div class="nav-content">Submit</div>
             </a></li>
             <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">
                 <div class="nav-content"><i class="fa fa-bars"></i></div>
             </a></li>
             <li>
-                <select onchange="changeLanguage(this.value)">
+                <select id="language-select" onchange="setLanguage(event)">
                     <option value="en">English</option>
                     <option value="ru">Русский</option>
                     <option value="kz">Қазақша</option>
@@ -76,86 +106,88 @@
     <main>
         <div class="row">
             <div class="col-4">
-                <div id="simple-list-example" class="d-flex flex-column gap-4 simple-list-example-scrollspy text-left">
-                    <a class="p-1 rounded" href="#1" data-translate="bounty_terms_title">Bounty Terms</a>
-                    <a class="p-1 rounded" href="#2" data-translate="in_scope_title">In Scope</a>
-                    <a class="p-1 rounded" href="#3" data-translate="out_of_scope_title">Out Of Scope</a>
-                    <a class="p-1 rounded" href="#4" data-translate="rdp_title">Responsible Disclosure Policy</a>
-                    <a class="p-1 rounded" href="#5" data-translate="report_guidelines_title">Report Guidelines</a>
-                    <a class="p-1 rounded" href="#6" data-translate="faq_title">FAQ</a>
+                <div id="simple-list-example"
+                    class="d-flex flex-column gap-4 simple-list-example-scrollspy text-left">
+                    <a class="p-1 rounded" href="#1" id="section-bounty-terms">Bounty Terms</a>
+                    <a class="p-1 rounded" href="#2" id="section-in-scope">In Scope</a>
+                    <a class="p-1 rounded" href="#3" id="section-out-of-scope">Out Of Scope</a>
+                    <a class="p-1 rounded" href="#4" id="section-rdp">Responsible Disclosure Policy</a>
+                    <a class="p-1 rounded" href="#5" id="section-report-guidelines">Report Guidelines</a>
+                    <a class="p-1 rounded" href="#6" id="section-faq">FAQ</a>
                 </div>
             </div>
 
             <div class="col-8">
                 <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
                     data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                    <h3>[INTERNAL VIEW ONLY]</h3>
+                    <h3 id="internal-view">[INTERNAL VIEW ONLY]</h3>
                     <br>
-
-                    <h4 id="bounty_terms_title" data-translate="bounty_terms_title">Bounty Terms</h4>
+                    <h4 id="1">Bounty Terms</h4>
                     {% block bountyterms %}
-                        {% if bountyterms %}
-                            {{ bountyterms.html|safe }}
-                        {% else %}
-                            <p id="bounty_terms_text" data-translate="bounty_terms_text">Detailed information about bounty terms.</p>
-                        {% endif %}
+                    {% if bountyterms %}
+                    {{ bountyterms.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock bountyterms %}
 
-                    <h4 id="in_scope_title" data-translate="in_scope_title">In Scope</h4>
+                    <h4 id="2">In Scope</h4>
                     {% block inscope %}
-                        {% if inscope %}
-                            {{ inscope.html|safe }}
-                        {% else %}
-                            <p id="in_scope_text" data-translate="in_scope_text">Details about in-scope items.</p>
-                        {% endif %}
+                    {% if inscope %}
+                    {{ inscope.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock inscope %}
 
-                    <h4 id="out_of_scope_title" data-translate="out_of_scope_title">Out Of Scope</h4>
+                    <h4 id="3">Out Of Scope</h4>
                     {% block outofscope %}
-                        {% if outofscope %}
-                            {{ outofscope.html|safe }}
-                        {% else %}
-                            <p id="out_of_scope_text" data-translate="out_of_scope_text">Details about out-of-scope items.</p>
-                        {% endif %}
+                    {% if outofscope %}
+                    {{ outofscope.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock outofscope %}
 
-                    <h4 id="rdp_title" data-translate="rdp_title">Responsible Disclosure Policy</h4>
+                    <h4 id="4">Responsible Disclosure Policy</h4>
                     {% block RDP %}
-                        {% if RDP %}
-                            {{ RDP.html|safe }}
-                        {% else %}
-                            <p id="rdp_text" data-translate="rdp_text">Information about responsible disclosure policy.</p>
-                        {% endif %}
+                    {% if RDP %}
+                    {{ RDP.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock RDP %}
 
-                    <h4 id="report_guidelines_title" data-translate="report_guidelines_title">Report Guidelines</h4>
+                    <h4 id="5">Report Guidelines</h4>
                     {% block reportguidelines %}
-                        {% if reportguidelines %}
-                            {{ reportguidelines.html|safe }}
-                        {% else %}
-                            <p id="report_guidelines_text" data-translate="report_guidelines_text">Guidelines for reporting.</p>
-                        {% endif %}
+                    {% if reportguidelines %}
+                    {{ reportguidelines.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock reportguidelines %}
 
-                    <h4 id="faq_title" data-translate="faq_title">FAQ</h4>
+                    <h4 id="6">FAQ</h4>
                     {% block faq %}
-                        {% if faq %}
-                            {{ faq.html|safe }}
-                        {% else %}
-                            <p id="faq_text" data-translate="faq_text">Frequently asked questions.</p>
-                        {% endif %}
+                    {% if faq %}
+                    {{ faq.html|safe }}
+                    {% else %}
+
+                    {% endif %}
                     {% endblock faq %}
                 </div>
             </div>
         </div>
     </main>
 
+
     <footer>
-        <div id="footer_text" data-translate="footer_text">
+        <div id="copyright">
             <p>RTEAM</p>
         </div>
     </footer>
 
     <div style="display:none;">97de67b8d672c51c158247f398b85d31</div>
 </body>
+
 </html>

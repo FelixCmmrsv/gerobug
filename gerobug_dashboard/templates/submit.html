@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Gerobug-signature" content="97de67b8d672c51c158247f398b85d31">
 
-    <title>Rules and Guidelines</title>
+    <title>Submit Bug Report</title>
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
 
@@ -53,6 +53,66 @@
             alert("Copied: \n" + copyText.value);
         }
     </script>
+    <script>
+        // Function to load JSON localization file and apply translations
+        function loadLanguage(language) {
+            fetch(`/static/language_pack/${language}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    // Apply page title
+                    document.title = data['submit.html'].page_title;
+
+                    document.querySelector('.menu-rules').innerText = data['rules.html'].menu.rules_guidelines;
+                    document.querySelector('.menu-hof').innerText = data['rules.html'].menu.hall_of_fame;
+                    document.querySelector('.menu-submit').innerText = data['rules.html'].menu.submit;
+
+                    document.querySelector('.section-hts').innerText = data['submit.html'].sections.how_to_submit;
+                    document.querySelector('.section-sbr').innerText = data['submit.html'].sections.submit_bug_report;
+                    document.querySelector('.section-crs').innerText = data['submit.html'].sections.check_report_status;
+                    document.querySelector('.section-cars').innerText = data['submit.html'].sections.check_all_report_status;
+                    document.querySelector('.section-ur').innerText = data['submit.html'].sections.update_report;
+                    document.querySelector('.section-apbc').innerText = data['submit.html'].sections.appeal_to_bounty_calculations;
+                    document.querySelector('.section-agbc').innerText = data['submit.html'].sections.agree_to_bounty_calculations;
+                    document.querySelector('.section-sdan').innerText = data['submit.html'].sections.submit_data_and_nda;
+                    document.querySelector('.section-cs').innerText = data['submit.html'].sections.check_score;
+                    document.querySelector('.section-cl').innerText = data['submit.html'].sections.customers_list;
+                    document.querySelector('.section-subject').innerText = data['submit.html'].sections.subject;
+                    document.querySelector('.section-body').innerText = data['submit.html'].sections.body;
+
+                    document.querySelector('.customer_table_code').innerText = data['submit.html'].customers_table.code;
+                    document.querySelector('.customer_table_name').innerText = data['submit.html'].customers_table.company_name;
+
+                    document.querySelector('.buttons_copy').innerText = data['submit.html'].buttons.copy;
+
+                    document.querySelector('.placeholders_sub1').innerText = data['submit.html'].placeholders.sub_1;
+                    document.querySelector('.placeholders_body1').innerText = data['submit.html'].placeholders.body_1;
+                    document.querySelector('.attachment').innerText = data['submit.html'].placeholders.attachment;
+                    document.querySelector('.sample').innerText = data['submit.html'].placeholders.sample;
+
+                    document.querySelector('.span_subrep').innerText = data['submit.html'].span.submit_report;
+                    document.querySelector('.span_updrep1').innerText = data['submit.html'].span.update_report_1;
+                    document.querySelector('.span_updrep2').innerText = data['submit.html'].span.update_report_2;
+                    document.querySelector('.span_appeal').innerText = data['submit.html'].span.appeal_to_bounty_calculations;
+                    document.querySelector('.span_nda1').innerText = data['submit.html'].span.submit_data_and_nda_1;
+                    document.querySelector('.span_nda2').innerText = data['submit.html'].span.submit_data_and_nda_2;
+                })
+                .catch(error => console.error('Error loading language file:', error));
+        }
+
+        // Event handler for language selection
+        function setLanguage(event) {
+            const language = event.target.value;
+            loadLanguage(language);
+            localStorage.setItem('selectedLanguage', language); // Save language preference
+        }
+
+        // Load language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.getElementById('language-select').value = savedLanguage;
+            loadLanguage(savedLanguage);
+        });
+    </script>
 </head>
 
 <body>
@@ -61,30 +121,37 @@
         <li><a class="logo" href="{% url 'rules' %}">
             <div class="nav-content"><img src="{% static 'logo.png' %}"></div>
         </a></li>
-        <li><a href="{% url 'rules' %}">
+        <li><a class="menu-rules" href="{% url 'rules' %}">
             <div class="nav-content">Rules & Guidelines</div>
         </a></li>
-        <li><a href="{% url 'halloffame' %}">
+        <li><a class="menu-hof" href="{% url 'halloffame' %}">
             <div class="nav-content">Hall Of Fame</div>
         </a></li>
-        <li><a class="active" href="{% url 'submit' %}">
+        <li><a class="menu-submit active" href="{% url 'submit' %}">
             <div class="nav-content">Submit</div>
         </a></li>
         <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">
             <div class="nav-content"><i class="fa fa-bars"></i></div>
         </a></li>
+        <li>
+            <select id="language-select" onchange="setLanguage(event)">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+                <option value="kz">Қазақша</option>
+            </select>
+        </li>
     </ul>
 </header>
 
 <main>
-    <h1>How To Submit</h1>
+    <h1 class="submit-hts">How To Submit</h1>
     <p>{{ template|safe }}</p>
-    <p>Join Gerobug community on <a href="https://discord.gg/VhU4X4TQ5F" target="_blank">Discord</a></p>
+{#    <p>Join Gerobug community on <a href="https://discord.gg/VhU4X4TQ5F" target="_blank">Discord</a></p>#}
 
     <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button section-sbr" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne">
                     Submit Bug Bounty Report
@@ -93,18 +160,18 @@
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                  aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
-                        <textarea readonly id="Subject_1" rows="1" cols="40">SUBMIT_Report Title</textarea>
+                        <textarea readonly id="Subject_1" rows="1" cols="40" class="">SUBMIT_Report Title</textarea>
                         <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Subject_1')"><i
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>Body:</b>
+                    <b class="section-body">Body:</b>
                     <br>
                     <div class="text-wrap">
-                        <textarea readonly id="Body_1" rows="3" cols="40">
+                        <textarea readonly id="Body_1" rows="3" cols="40" class="placeholders">
 CUSTOMER= Customer 3 digits code (example: BIG. To see all available customers code check first block - "Customers List")
 TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)
 ENDPOINT= Affected Endpoint (example: https://demo.gerobug.com/submit) [max 100 characters]
@@ -113,42 +180,42 @@ SUMMARY= Summary of your finding</textarea>
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>Attachment:</b>
+                    <b class="attachment">Attachment:</b>
                     <br>
-                    PDF REPORT FILE
+                    <span class="span_subrep">PDF REPORT FILE</span>
                     (<a href="{% static 'templates/Template_Report.docx' %}">Report Template</a>)<br>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/submit.png' %}" width="35%">
                 </div>
             </div>
         </div>
         <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
-                 aria-labelledby="panelsStayOpen-headingEight">
-                <div class="accordion-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Code</th>
-                                <th scope="col">Company Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for company in companies %}
-                            <tr>
-                                <td>{{ company.code }}</td>
-                                <td>{{ company.name }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+             aria-labelledby="panelsStayOpen-headingEight">
+            <div class="accordion-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="customer_table_code">Code</th>
+                        <th scope="col" class="customer_table_name">Company Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for company in companies %}
+                        <tr>
+                            <td>{{ company.code }}</td>
+                            <td>{{ company.name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-crs" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseTwo">
                     Check Report Status
@@ -157,7 +224,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingTwo">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_2" rows="1" cols="40">CHECK_Report ID</textarea>
@@ -166,7 +233,7 @@ SUMMARY= Summary of your finding</textarea>
                     </div>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/check.png' %}" width="35%">
                 </div>
@@ -174,7 +241,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo1">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-cars" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo1" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseTwo1">
                     Check All Report Status (Overview)
@@ -183,7 +250,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseTwo1" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingTwo1">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_3" rows="1" cols="40">STATUS_OVERVIEW</textarea>
@@ -192,7 +259,7 @@ SUMMARY= Summary of your finding</textarea>
                     </div>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/overview.png' %}" width="35%">
                 </div>
@@ -200,7 +267,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-ur" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseThree">
                     Update Report
@@ -209,7 +276,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingThree">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_4" rows="1" cols="40">UPDATE_Report ID</textarea>
@@ -217,19 +284,19 @@ SUMMARY= Summary of your finding</textarea>
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>Body:</b>
+                    <b class="section-body">Body:</b>
                     <br>
-                    Summary of your updates
+                    <span class="span-updrep1">Summary of your updates</span>
                     <br>
 
                     <br>
-                    <b>Attachment:</b>
+                    <b class="attachment">Attachment:</b>
                     <br>
-                    PDF REPORT FILE
+                    <span class="span_updrep2">PDF REPORT FILE</span>
                     (<a href="{% static 'templates/Template_Report.docx' %}">Report Template</a>)<br>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/update.png' %}" width="35%">
                 </div>
@@ -237,7 +304,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-apbc" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseFour">
                     Appeal to Bounty Calculations
@@ -246,7 +313,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingFour">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_5" rows="1" cols="40">APPEAL_Report ID</textarea>
@@ -254,13 +321,13 @@ SUMMARY= Summary of your finding</textarea>
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>Body:</b>
+                    <b class="section-body">Body:</b>
                     <br>
-                    Reason of your appeal
+                    <span class="span_appeal">Reason of your appeal</span>
                     <br>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/appeal.png' %}" width="35%">
                 </div>
@@ -269,7 +336,7 @@ SUMMARY= Summary of your finding</textarea>
 
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-agbc" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseFive">
                     Agree to Bounty Calculations
@@ -278,7 +345,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingFive">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_6" rows="1" cols="40">AGREE_Report ID</textarea>
@@ -287,7 +354,7 @@ SUMMARY= Summary of your finding</textarea>
                     </div>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/agree.png' %}" width="35%">
                 </div>
@@ -295,7 +362,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingSix">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-sdan" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseSix">
                     Submit Data and NDA
@@ -304,7 +371,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingSix">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_7" rows="1" cols="40">NDA_Report ID</textarea>
@@ -312,19 +379,19 @@ SUMMARY= Summary of your finding</textarea>
                                 class="fa fa-copy"></i></div>
                     </div>
 
-                    <b>Body:</b>
+                    <b class="section-body">Body:</b>
                     <br>
-                    Requested Information
-                    <br>
-
-                    <br>
-                    <b>Attachment:</b>
-                    <br>
-                    PDF SIGNED NDA FILE
+                    <span class="span_nda1">Requested Information</span>
                     <br>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="attachment">Attachment:</b>
+                    <br>
+                    <span class="span_nda2">PDF SIGNED NDA FILE</span>
+                    <br>
+
+                    <br>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/nda.png' %}" width="35%">
                 </div>
@@ -332,7 +399,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-cs" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseSeven">
                     Check Score
@@ -341,7 +408,7 @@ SUMMARY= Summary of your finding</textarea>
             <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
                  aria-labelledby="panelsStayOpen-headingSeven">
                 <div class="accordion-body">
-                    <b>Subject: </b>
+                    <b class="section-subject">Subject: </b>
                     <br>
                     <div class="text-wrap">
                         <textarea readonly id="Subject_8" rows="1" cols="40">MY_SCORE</textarea>
@@ -350,7 +417,7 @@ SUMMARY= Summary of your finding</textarea>
                     </div>
 
                     <br>
-                    <b>Sample:</b>
+                    <b class="sample">Sample:</b>
                     <br>
                     <img src="{% static 'sample/score.png' %}" width="35%">
                 </div>
@@ -358,7 +425,7 @@ SUMMARY= Summary of your finding</textarea>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingEight">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed section-cl" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseEight">
                     Customers List

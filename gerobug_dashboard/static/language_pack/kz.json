@@ -472,32 +472,42 @@
     }
   },
   "submit.html": {
-    "page_title": "Қатені хабарлау есебін жіберу",
     "sections": {
-      "how_to_submit": "Қалай жіберу керек",
-      "join_discord": "RTEAM қауымдастығына Discord-та қосылыңыз",
-      "submit_bug_report": "Қатені анықтағаны үшін сыйақы есебін жіберу",
-      "check_report_status": "Есептің күйін тексеру",
-      "check_all_report_status": "Барлық есептердің күйін тексеру (Шолу)",
+      "how_to_submit": "Қалай жіберуге болады",
+      "join_discord": "RTEAM қауымдастығына Discord арқылы қосылу",
+      "submit_bug_report": "Қателік үшін сыйақы есебін жіберу",
+      "check_report_status": "Есептің мәртебесін тексеру",
+      "check_all_report_status": "Барлық есептердің мәртебесін тексеру (Шолу)",
       "update_report": "Есепті жаңарту",
-      "appeal_to_bounty_calculations": "Сыйақыны есептеуге шағымдану",
-      "agree_to_bounty_calculations": "Сыйақы есептеуіне келісу",
+      "appeal_to_bounty_calculations": "Сыйақыны есептеу бойынша шағымдану",
+      "agree_to_bounty_calculations": "Сыйақыны есептеуге келісу",
       "submit_data_and_nda": "Деректер мен NDA жіберу",
-      "check_score": "Ұпайды тексеру",
-      "customers_list": "Клиенттер тізімі"
+      "check_score": "Бағаны тексеру",
+      "customers_list": "Тапсырыс берушілер тізімі",
+      "subject": "Тақырып",
+      "body": "Мазмұны"
     },
     "customers_table": {
       "code": "Код",
-      "company_name": "Компания атауы"
+      "company_name": "Компанияның атауы"
     },
     "buttons": {
       "copy": "Көшіру"
     },
     "placeholders": {
-      "customer_code": "CUSTOMER= Клиенттің үш таңбалы коды (мысалы: RTM. Клиенттердің барлық қолжетімді кодтарын көру үшін \"Клиенттер тізімі\" блогын тексеріңіз)",
-      "bug_type": "TYPE= Қате түрі (мысалы: XSS, SQL Injection, IDOR және т.б.)",
-      "affected_endpoint": "ENDPOINT= Зардап шеккен соңғы нүкте (мысалы: https://rteam.kz/redteam/) [максимум 100 таңба]",
-      "summary": "SUMMARY= Сіз тапқан олқылықтардың қысқаша мазмұны"
+      "sub_1": "SUBMIT_Есеп Тақырыбы",
+      "body_1": "CUSTOMER= Тапсырыс берушінің үш таңбалы коды (мысалы: RTM. Барлық қолжетімді тапсырыс беруші кодтарын көру үшін \"Тапсырыс берушілер тізімі\" блогын тексеріңіз)\nTYPE= Қателік түрі (мысалы: XSS, SQL Injection, IDOR, т.б.)\nENDPOINT= Әсер еткен соңғы нүкте (мысалы: https://rteam.kz/redteam/) [максимум 100 символ]\nSUMMARY= Сіздің табылған нәрселердің қысқаша мазмұны",
+      "attachment": "Қосымша",
+      "sample": "Үлгі"
+    },
+    "span": {
+      "submit_report": "ЕСЕП ФАЙЛЫ PDF",
+      "update_report_1": "Сіздің жаңартуларыңыздың қысқаша ақпараты",
+      "update_report_2": "ЕСЕП ФАЙЛЫ PDF",
+      "appeal_to_bounty_calculations": "Шағымдану себебі",
+      "submit_data_and_nda_1": "Сұралған ақпарат",
+      "submit_data_and_nda_2": "NDA ҚОЛТАҢБАЛАНҒАН PDF ФАЙЛЫ"
     }
   }
+
 }
