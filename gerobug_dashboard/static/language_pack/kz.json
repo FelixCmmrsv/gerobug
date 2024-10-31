@@ -484,19 +484,16 @@
       "submit_data_and_nda": "Деректер мен NDA жіберу",
       "check_score": "Бағаны тексеру",
       "customers_list": "Тапсырыс берушілер тізімі",
-      "subject": "Тақырып",
-      "body": "Мазмұны"
     },
     "customers_table": {
-      "code": "Код",
+      "company_code": "Код",
       "company_name": "Компанияның атауы"
     },
-    "buttons": {
-      "copy": "Көшіру"
-    },
-    "placeholders": {
+    "subsections": {
       "sub_1": "SUBMIT_Есеп Тақырыбы",
       "body_1": "CUSTOMER= Тапсырыс берушінің үш таңбалы коды (мысалы: RTM. Барлық қолжетімді тапсырыс беруші кодтарын көру үшін \"Тапсырыс берушілер тізімі\" блогын тексеріңіз)\nTYPE= Қателік түрі (мысалы: XSS, SQL Injection, IDOR, т.б.)\nENDPOINT= Әсер еткен соңғы нүкте (мысалы: https://rteam.kz/redteam/) [максимум 100 символ]\nSUMMARY= Сіздің табылған нәрселердің қысқаша мазмұны",
+      "subject_main": "Тақырып:",
+      "body_main": "Мазмұны:",
       "attachment": "Қосымша",
       "sample": "Үлгі"
     },
