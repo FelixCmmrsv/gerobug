@@ -1,15 +1,15 @@
 {
-  "404.html": {
+  "404_html": {
     "box__description-title": "Упс!",
     "box__description-text": "Біз сіз іздеген бетті таба алмадық",
     "box__button": "Артқа оралу"
   },
-  "500.html": {
+  "500_html": {
     "box__description-title": "Упс!",
     "box__description-text": "Бірнәрсе дұрыс болмай қалды...",
     "box__button": "Артқа оралу"
   },
-  "base.html": {
+  "base_html": {
     "nav_dashboard": "Басқару панелі",
     "nav_need_to_review": "Қарауды қажет етеді",
     "nav_details": "Мәліметтер",
@@ -19,7 +19,7 @@
     "btn_logout": "Шығу",
     "copyright": "RTEAM"
   },
-  "cvss-calculator.html": {
+  "cvss-calculator_html": {
     "page_title": "RTEAM | CVSS 3.1 калькуляторы",
     "scriptWarning": "Бұл бетте JavaScript қажет. Егер сізде сценарийлер өшірілген болса, оларды қосыңыз.",
     "vector_label": "Векторлық жол",
@@ -81,7 +81,7 @@
     "A_H_Label": "Жоғары",
     "A_H_Title": "Қолжетімділіктің толық жоғалуы, шабуылдаушы ресурстарға толықтай қолжетімділікті шектеуі мүмкін."
   },
-  "dashboard.html": {
+  "dashboard_html": {
     "page_title": "Басқару панелі",
     "unauthenticated_heading": "Авторизацияланбаған",
     "unauthenticated_message": "Жүйеге кіруіңізді өтінеміз",
@@ -91,7 +91,7 @@
     "rteam_text": "RTEAM"
   },
   "dashboard_varieties": {
-    "delete_report.html": {
+    "delete_report_html": {
       "page_title": "Қатені жою туралы есеп",
       "sections": {
         "header_text": "RTEAM",
@@ -102,7 +102,7 @@
         "confirm_button": "Растау"
       }
     },
-    "detail_report.html": {
+    "detail_report_html": {
       "page_title": "Есептің егжей-тегжейі",
       "sections": {
         "header_text": "RTEAM",
@@ -173,7 +173,7 @@
         "warning": "Ескерту!"
       }
     },
-    "detail_uan.html": {
+    "detail_uan_html": {
       "page_title": "UAN есебінің егжей-тегжейі",
       "sections": {
         "header_text": "RTEAM",
@@ -190,7 +190,7 @@
         }
       }
     },
-    "edit_report.html": {
+    "edit_report_html": {
       "page_title": "Есепті өңдеу",
       "sections": {
         "header_text": "RTEAM",
@@ -204,7 +204,7 @@
         }
       }
     },
-    "list_report_dashboard.html": {
+    "list_report_dashboard_html": {
       "columns": {
         "need_review": "Қарауды қажет етеді",
         "in_review": "Қаралуда",
@@ -228,7 +228,7 @@
         "duplicate_warning": "Қайталанған есеп"
       }
     },
-    "report_status.html": {
+    "report_status_html": {
       "table_headers": {
         "report_number": "Есеп нөмірі",
         "report_title": "Есеп атауы",
@@ -250,7 +250,7 @@
       }
     }
   },
-  "halloffame.html": {
+  "halloffame_html": {
     "page_title": "Даңқ залы",
     "rules_and_guidelines": "Ережелер мен нұсқаулар",
     "hall_of_fame": "Даңқ залы",
@@ -262,13 +262,13 @@
     "bounty_hunter": "Сыйақы аңшысы",
     "points": "Ұпайлар"
   },
-  "login.html": {
+  "login_html": {
     "page_title": "RTEAM BugBounty кіру",
     "login_heading": "Кіру",
     "submit_button": "Жіберу",
     "forgot_password": "Құпиясөзді ұмыттыңыз ба"
   },
-  "owasp-calculator.html": {
+  "owasp-calculator_html": {
     "page_title": "Параметрлер",
     "menu_title": "RTEAM | OWASP Қауіптерді бағалау калькуляторы",
     "section_titles": {
@@ -340,7 +340,7 @@
     }
   },
   "password_reset_forms": {
-    "password_reset_complete.html": {
+    "password_reset_complete_html": {
       "title": "Құпиясөзді қалпына келтіру",
       "message": {
         "header": "Құпиясөз қалпына келтірілді!",
@@ -348,7 +348,7 @@
       },
       "action_button": "Кіру"
     },
-    "password_reset_confirm.html": {
+    "password_reset_confirm_html": {
       "title": "Құпиясөзді қалпына келтіру",
       "form": {
         "csrf_token": "CSRF Токені",
@@ -358,7 +358,7 @@
         "submit": "Жіберу"
       }
     },
-    "password_reset_done.html": {
+    "password_reset_done_html": {
       "title": "Құпиясөзді қалпына келтіру",
       "message": {
         "header": "Қалпына келтіру сілтемесі жіберілді!",
@@ -366,7 +366,7 @@
         "description_2": "(Спам қалтасын да тексеріңіз)"
       }
     },
-    "password_reset.html": {
+    "password_reset_html": {
       "title": "Құпиясөзді қалпына келтіру",
       "instruction": "Жалғастыру үшін тіркелген электрондық пошта мекенжайын енгізіңіз.",
       "form": {
@@ -382,7 +382,7 @@
       }
     }
   },
-  "rules.html": {
+  "rules_html": {
     "page_title": "Ережелер мен нұсқаулар",
     "menu": {
       "rules_guidelines": "Ережелер мен нұсқаулар",
@@ -409,7 +409,7 @@
       "faq": "Жиі қойылатын сұрақтар (FAQ)"
     }
   },
-  "settings.html": {
+  "settings_html": {
     "page_title": "Параметрлер",
     "sections": {
       "mailbox_settings": "Пошта жәшігі параметрлері",
@@ -471,7 +471,7 @@
       "use_official_template": "[RTEAM ұсынған ресми шаблонды қолдану ұсынылады]"
     }
   },
-  "submit.html": {
+  "submit_html": {
     "sections": {
       "how_to_submit": "Қалай жіберуге болады",
       "join_discord": "RTEAM қауымдастығына Discord арқылы қосылу",

@@ -38,25 +38,23 @@
             fetch(`/static/language_pack/${language}.json`)
                 .then(response => response.json())
                 .then(data => {
-                    document.title = data['rules.html'].page_title;
+                    document.querySelector('.menu-rules').innerText = data['rules_html'].menu.rules_guidelines;
+                    document.querySelector('.menu-hof').innerText = data['rules_html'].menu.hall_of_fame;
+                    document.querySelector('.menu-submit').innerText = data['rules_html'].menu.submit;
 
-                    document.querySelector('.menu-rules').innerText = data['rules.html'].menu.rules_guidelines;
-                    document.querySelector('.menu-hof').innerText = data['rules.html'].menu.hall_of_fame;
-                    document.querySelector('.menu-submit').innerText = data['rules.html'].menu.submit;
-
-                    document.querySelector('#section-bounty-terms').innerText = data['rules.html'].sections.bounty_terms;
-                    document.querySelector('#section-in-scope').innerText = data['rules.html'].sections.in_scope;
-                    document.querySelector('#section-out-of-scope').innerText = data['rules.html'].sections.out_of_scope;
-                    document.querySelector('#section-rdp').innerText = data['rules.html'].sections.responsible_disclosure_policy;
-                    document.querySelector('#section-report-guidelines').innerText = data['rules.html'].sections.report_guidelines;
-                    document.querySelector('#section-faq').innerText = data['rules.html'].sections.faq;
+                    document.querySelector('#section-bounty-terms').innerText = data['rules_html'].sections.bounty_terms;
+                    document.querySelector('#section-in-scope').innerText = data['rules_html'].sections.in_scope;
+                    document.querySelector('#section-out-of-scope').innerText = data['rules_html'].sections.out_of_scope;
+                    document.querySelector('#section-rdp').innerText = data['rules_html'].sections.responsible_disclosure_policy;
+                    document.querySelector('#section-report-guidelines').innerText = data['rules_html'].sections.report_guidelines;
+                    document.querySelector('#section-faq').innerText = data['rules_html'].sections.faq;
 
                     document.querySelectorAll('[data-section]').forEach(element => {
                         const sectionKey = element.getAttribute('data-section');
-                        element.innerText = data['rules.html'].sections[sectionKey];
+                        element.innerText = data['rules_html'].sections[sectionKey];
                     });
 
-                    document.querySelector('#internal-view').innerText = data['rules.html'].links.internal_view;
+                    document.querySelector('#internal-view').innerText = data['rules_html'].links.internal_view;
                 })
                 .catch(error => console.error('Error loading language file:', error));
         }

@@ -1,15 +1,15 @@
 {
-  "404.html": {
+  "404_html": {
     "box__description-title": "Упс!",
     "box__description-text": "Похоже, мы не смогли найти страницу, которую вы искали",
     "box__button": "Вернуться назад"
   },
-  "500.html": {
+  "500_html": {
     "box__description-title": "Упс!",
     "box__description-text": "Что-то пошло не так...",
     "box__button": "Вернуться назад"
   },
-  "base.html": {
+  "base_html": {
     "nav_dashboard": "Панель управления",
     "nav_need_to_review": "Требуется проверка",
     "nav_details": "Детали",
@@ -19,7 +19,7 @@
     "btn_logout": "Выйти",
     "copyright": "RTEAM"
   },
-  "cvss-calculator.html": {
+  "cvss-calculator_html": {
     "page_title": "RTEAM | Калькулятор CVSS 3.1",
     "scriptWarning": "Эта страница требует JavaScript. Если у вас отключены скрипты, пожалуйста, включите их.",
     "vector_label": "Векторная строка",
@@ -81,7 +81,7 @@
     "A_H_Label": "Высокая",
     "A_H_Title": "Полная потеря доступности, атакующий может полностью ограничить доступ к ресурсам."
   },
-  "dashboard.html": {
+  "dashboard_html": {
     "page_title": "Панель управления",
     "unauthenticated_heading": "Неавторизован",
     "unauthenticated_message": "Пожалуйста, войдите в систему",
@@ -91,7 +91,7 @@
     "rteam_text": "RTEAM"
   },
   "dashboard_varieties": {
-    "delete_report.html": {
+    "delete_report_html": {
       "page_title": "Удалить отчет об ошибке",
       "sections": {
         "header_text": "RTEAM",
@@ -102,7 +102,7 @@
         "confirm_button": "Подтвердить"
       }
     },
-    "detail_report.html": {
+    "detail_report_html": {
       "page_title": "Детали отчета",
       "sections": {
         "header_text": "RTEAM",
@@ -173,7 +173,7 @@
         "warning": "Предупреждение!"
       }
     },
-    "detail_uan.html": {
+    "detail_uan_html": {
       "page_title": "Детали отчета UAN",
       "sections": {
         "header_text": "RTEAM",
@@ -190,7 +190,7 @@
         }
       }
     },
-    "edit_report.html": {
+    "edit_report_html": {
       "page_title": "Редактировать отчет",
       "sections": {
         "header_text": "RTEAM",
@@ -204,7 +204,7 @@
         }
       }
     },
-    "list_report_dashboard.html": {
+    "list_report_dashboard_html": {
       "columns": {
         "need_review": "Требуется проверка",
         "in_review": "В процессе проверки",
@@ -228,7 +228,7 @@
         "duplicate_warning": "Дублирующийся отчет"
       }
     },
-    "report_status.html": {
+    "report_status_html": {
       "table_headers": {
         "report_number": "Номер отчета",
         "report_title": "Заголовок отчета",
@@ -250,7 +250,7 @@
       }
     }
   },
-  "halloffame.html": {
+  "halloffame_html": {
     "page_title": "Зал Славы",
     "rules_and_guidelines": "Правила и рекомендации",
     "hall_of_fame": "Зал Славы",
@@ -262,13 +262,13 @@
     "bounty_hunter": "Охотник за наградой",
     "points": "Очки"
   },
-  "login.html": {
+  "login_html": {
     "page_title": "Вход в RTEAM BugBounty",
     "login_heading": "Вход",
     "submit_button": "Отправить",
     "forgot_password": "Забыли пароль"
   },
-  "owasp-calculator.html": {
+  "owasp-calculator_html": {
     "page_title": "Настройки",
     "menu_title": "RTEAM | Калькулятор оценки рисков OWASP",
     "section_titles": {
@@ -340,7 +340,7 @@
     }
   },
   "password_reset_forms": {
-    "password_reset_complete.html": {
+    "password_reset_complete_html": {
       "title": "Сброс пароля",
       "message": {
         "header": "Сброс пароля завершен!",
@@ -348,7 +348,7 @@
       },
       "action_button": "Войти"
     },
-    "password_reset_confirm.html": {
+    "password_reset_confirm_html": {
       "title": "Сброс пароля",
       "form": {
         "csrf_token": "Токен CSRF",
@@ -358,7 +358,7 @@
         "submit": "Отправить"
       }
     },
-    "password_reset_done.html": {
+    "password_reset_done_html": {
       "title": "Сброс пароля",
       "message": {
         "header": "Ссылка для сброса отправлена!",
@@ -366,7 +366,7 @@
         "description_2": "(Пожалуйста, проверьте также папку спама)"
       }
     },
-    "password_reset.html": {
+    "password_reset_html": {
       "title": "Сброс пароля",
       "instruction": "Введите зарегистрированный адрес электронной почты, чтобы продолжить.",
       "form": {
@@ -382,7 +382,7 @@
       }
     }
   },
-  "rules.html": {
+  "rules_html": {
     "page_title": "Правила и рекомендации",
     "menu": {
       "rules_guidelines": "Правила и рекомендации",
@@ -409,7 +409,7 @@
       "faq": "Часто задаваемые вопросы (FAQ)"
     }
   },
-  "settings.html": {
+  "settings_html": {
     "page_title": "Настройки",
     "sections": {
       "mailbox_settings": "Настройки почтового ящика",
@@ -471,7 +471,7 @@
       "use_official_template": "[Рекомендуется использовать официальный шаблон, предоставленный RTEAM]"
     }
   },
-  "submit.html": {
+  "submit_html": {
     "sections": {
       "how_to_submit": "Как отправить",
       "join_discord": "Присоединиться к сообществу RTEAM в Discord",

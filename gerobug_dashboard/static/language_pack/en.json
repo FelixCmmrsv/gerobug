@@ -1,15 +1,15 @@
 {
-  "404.html": {
+  "404_html": {
     "box__description-title": "Whoops!",
     "box__description-text": "It seems like we couldn't find the page you were looking for",
     "box__button": "Go back"
   },
-  "500.html": {
+  "500_html": {
     "box__description-title": "Whoops!",
     "box__description-text": "Something went wrong...",
     "box__button": "Go back"
   },
-  "base.html": {
+  "base_html": {
     "nav_dashboard": "Dashboard",
     "nav_need_to_review": "Need To Review",
     "nav_details": "Details",
@@ -19,7 +19,7 @@
     "btn_logout": "Logout",
     "copyright": "RTEAM"
   },
-  "cvss-calculator.html": {
+  "cvss-calculator_html": {
     "page_title": "RTEAM | CVSS 3.1 Calculator",
     "scriptWarning": "This page requires JavaScript. If you have disabled scripting, please enable it.",
     "vector_label": "Vector String",
@@ -81,7 +81,7 @@
     "A_H_Label": "High",
     "A_H_Title": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources."
   },
-  "dashboard.html": {
+  "dashboard_html": {
     "page_title": "Dashboard",
     "unauthenticated_heading": "Unauthenticated",
     "unauthenticated_message": "Please Login",
@@ -91,7 +91,7 @@
     "rteam_text": "RTEAM"
   },
   "dashboard_varieties": {
-    "delete_report.html": {
+    "delete_report_html": {
       "page_title": "Delete Bug Report",
       "sections": {
         "header_text": "RTEAM",
@@ -102,7 +102,7 @@
         "confirm_button": "Confirm"
       }
     },
-    "detail_report.html": {
+    "detail_report_html": {
       "page_title": "Report Detail",
       "sections": {
         "header_text": "RTEAM",
@@ -173,7 +173,7 @@
         "warning": "Warning!"
       }
     },
-    "detail_uan.html": {
+    "detail_uan_html": {
       "page_title": "UAN Report Detail",
       "sections": {
         "header_text": "RTEAM",
@@ -190,7 +190,7 @@
         }
       }
     },
-    "edit_report.html": {
+    "edit_report_html": {
       "page_title": "Edit Report",
       "sections": {
         "header_text": "RTEAM",
@@ -204,7 +204,7 @@
         }
       }
     },
-    "list_report_dashboard.html": {
+    "list_report_dashboard_html": {
       "columns": {
         "need_review": "Need to Review",
         "in_review": "In Review",
@@ -228,7 +228,7 @@
         "duplicate_warning": "Duplicate Report"
       }
     },
-    "report_status.html": {
+    "report_status_html": {
       "table_headers": {
         "report_number": "Report Number",
         "report_title": "Report Title",
@@ -250,7 +250,7 @@
       }
     }
   },
-  "halloffame.html": {
+  "halloffame_html": {
     "page_title": "Hall Of Fame",
     "rules_and_guidelines": "Rules & Guidelines",
     "hall_of_fame": "Hall Of Fame",
@@ -262,13 +262,13 @@
     "bounty_hunter": "Bounty Hunter",
     "points": "Points"
   },
-  "login.html": {
+  "login_html": {
     "page_title": "Gerobug Login",
     "login_heading": "Login",
     "submit_button": "Submit",
     "forgot_password": "Forgot Password"
   },
-  "owasp-calculator.html": {
+  "owasp-calculator_html": {
     "page_title": "Settings",
     "menu_title": "RTEAM | OWASP Risk Rating Calculator",
     "section_titles": {
@@ -340,7 +340,7 @@
     }
   },
   "password_reset_forms": {
-    "password_reset_complete.html": {
+    "password_reset_complete_html": {
       "title": "Reset Password",
       "message": {
         "header": "Password reset completed!",
@@ -348,7 +348,7 @@
       },
       "action_button": "Login"
     },
-    "password_reset_confirm.html": {
+    "password_reset_confirm_html": {
       "title": "Reset Password",
       "form": {
         "csrf_token": "CSRF Token",
@@ -358,7 +358,7 @@
         "submit": "Submit"
       }
     },
-    "password_reset_done.html": {
+    "password_reset_done_html": {
       "title": "Reset Password",
       "message": {
         "header": "Reset Link has been sent!",
@@ -366,7 +366,7 @@
         "description_2": "(Please also check the spam folder)"
       }
     },
-    "password_reset.html": {
+    "password_reset_html": {
       "title": "Reset Password",
       "instruction": "Enter your registered email address to continue.",
       "form": {
@@ -382,7 +382,7 @@
       }
     }
   },
-  "rules.html": {
+  "rules_html": {
     "page_title": "Rules and Guidelines",
     "menu": {
       "rules_guidelines": "Rules and Guidelines",
@@ -409,7 +409,7 @@
       "faq": "Frequently Asked Questions (FAQ)"
     }
   },
-  "settings.html": {
+  "settings_html": {
     "page_title": "Settings",
     "sections": {
       "mailbox_settings": "Mailbox Settings",
@@ -471,7 +471,7 @@
       "use_official_template": "[It is recommended to use the official template provided by RTEAM]"
     }
   },
-  "submit.html": {
+  "submit_html": {
     "sections": {
       "join_discord": "Join the RTEAM community on Discord",
       "how_to_submit": "How To Submit",
