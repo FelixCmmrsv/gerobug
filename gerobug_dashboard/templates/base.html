@@ -95,17 +95,21 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a data-i18n="base_html.sub_menu.details" class="link_name" href="#">Details</a></li>
-                    <li><a data-i18n="base_html.sub_menu.need_to_review" href="{% url 'report_status' 1 %}">Need To Review</a>
+                    <li><a data-i18n="base_html.sub_menu.need_to_review" href="{% url 'report_status' 1 %}">Need To
+                        Review</a>
                     </li>
-                    <li><a data-i18n="base_html.sub_menu.in_review" href="{% url 'report_status' 2 %}">In Review</a></li>
+                    <li><a data-i18n="base_html.sub_menu.in_review" href="{% url 'report_status' 2 %}">In Review</a>
+                    </li>
                     <li><a data-i18n="base_html.sub_menu.fixing" href="{% url 'report_status' 3 %}">Fixing</a></li>
                     <li><a data-i18n="base_html.sub_menu.retest" href="{% url 'report_status' 4 %}">Retest</a></li>
                     <li><a data-i18n="base_html.sub_menu.bounty_calculation" href="{% url 'report_status' 5 %}">Bounty
                         Calculation</a></li>
                     <li><a data-i18n="base_html.sub_menu.bounty_in_process" href="{% url 'report_status' 6 %}">Bounty in
                         Process</a></li>
-                    <li><a data-i18n="base_html.sub_menu.completed" href="{% url 'report_status' 7 %}">Completed</a></li>
-                    <li><a data-i18n="base_html.sub_menu.not_valid" href="{% url 'report_status' 0 %}">Not Valid</a></li>
+                    <li><a data-i18n="base_html.sub_menu.completed" href="{% url 'report_status' 7 %}">Completed</a>
+                    </li>
+                    <li><a data-i18n="base_html.sub_menu.not_valid" href="{% url 'report_status' 0 %}">Not Valid</a>
+                    </li>
                 </ul>
             </li>
 
@@ -138,6 +142,14 @@
                     <li><a class="link_name" href="{% url 'cvss-calculator' %}">CVSS3 Calculator</a></li>
                 </ul>
             </li>
+            <div class="language-switch">
+                <label for="language-select">Language:</label>
+                <select id="language-select" onchange="setLanguage(event)">
+                    <option value="en">English</option>
+                    <option value="kz">Қазақша</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
         </ul>
         <a data-i18n="base_html.bth_logout" class="btn btn-light" href="{% url 'logout' %}" role="button">Logout</a>
         <div id="copyright">
