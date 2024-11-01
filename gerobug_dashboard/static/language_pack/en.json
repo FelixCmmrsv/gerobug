@@ -498,9 +498,8 @@
       "sample_main": "Sample:"
     },
     "span": {
-      "submit_report": "PDF REPORT FILE",
       "update_report_1": "Summary of your updates",
-      "update_report_2": "PDF REPORT FILE",
+      "file": "Report Template",
       "appeal_to_bounty_calculations": "Reason of your appeal",
       "submit_data_and_nda_1": "Requested Information",
       "submit_data_and_nda_2": "PDF SIGNED NDA FILE"

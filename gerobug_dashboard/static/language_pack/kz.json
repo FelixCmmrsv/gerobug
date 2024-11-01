@@ -498,9 +498,8 @@
       "sample_main": "Үлгі:"
     },
     "span": {
-      "submit_report": "ЕСЕП ФАЙЛЫ PDF",
       "update_report_1": "Сіздің жаңартуларыңыздың қысқаша ақпараты",
-      "update_report_2": "ЕСЕП ФАЙЛЫ PDF",
+      "file": "Есеп Мысалы",
       "appeal_to_bounty_calculations": "Шағымдану себебі",
       "submit_data_and_nda_1": "Сұралған ақпарат",
       "submit_data_and_nda_2": "NDA ҚОЛТАҢБАЛАНҒАН PDF ФАЙЛЫ"
