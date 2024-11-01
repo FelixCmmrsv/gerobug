@@ -17,7 +17,17 @@
     "nav_owasp_calculator": "OWASP калькуляторы",
     "nav_cvss_calculator": "CVSS3 калькуляторы",
     "btn_logout": "Шығу",
-    "copyright": "RTEAM"
+    "sub_menu": {
+      "details": "Толығырақ",
+      "need_to_review": "Қарастыру қажет",
+      "in_review": "Қарауда",
+      "fixing": "Түзетуде",
+      "retest": "Қайта тексеру",
+      "bounty_calculation": "Сыйақыны есептеу",
+      "bounty_in_process": "Сыйақы өңделуде",
+      "completed": "Аяқталды",
+      "not_valid": "Жарамсыз"
+    }
   },
   "cvss-calculator_html": {
     "page_title": "RTEAM | CVSS 3.1 калькуляторы",

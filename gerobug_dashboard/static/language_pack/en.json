@@ -17,7 +17,17 @@
     "nav_owasp_calculator": "OWASP Calculator",
     "nav_cvss_calculator": "CVSS3 Calculator",
     "btn_logout": "Logout",
-    "copyright": "RTEAM"
+    "sub_menu": {
+      "details": "Details",
+      "need_to_review": "Need To Review",
+      "in_review": "In Review",
+      "fixing": "Fixing",
+      "retest": "Retest",
+      "bounty_calculation": "Bounty Calculation",
+      "bounty_in_process": "Bounty in Process",
+      "completed": "Completed",
+      "not_valid": "Not Valid"
+    }
   },
   "cvss-calculator_html": {
     "page_title": "RTEAM | CVSS 3.1 Calculator",
