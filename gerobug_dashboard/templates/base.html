@@ -142,16 +142,17 @@
                     <li><a class="link_name" href="{% url 'cvss-calculator' %}">CVSS3 Calculator</a></li>
                 </ul>
             </li>
-            <div class="language-switch">
-                <label for="language-select">Language:</label>
-                <select id="language-select" onchange="setLanguage(event)">
-                    <option value="en">English</option>
-                    <option value="kz">Қазақша</option>
-                    <option value="ru">Русский</option>
-                </select>
-            </div>
+            <li>
+                <div class="language-switch">
+                    <select id="language-select" onchange="setLanguage(event)">
+                        <option value="en">English</option>
+                        <option value="kz">Қазақша</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
+            </li>
         </ul>
-        <a data-i18n="base_html.bth_logout" class="btn btn-light" href="{% url 'logout' %}" role="button">Logout</a>
+        <a data-i18n="base_html.btn_logout" class="btn btn-light" href="{% url 'logout' %}" role="button">Logout</a>
         <div id="copyright">
             <p>RTEAM</p>
         </div>

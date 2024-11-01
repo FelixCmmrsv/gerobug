@@ -95,16 +95,15 @@
     "page_title": "Dashboard",
     "unauthenticated_heading": "Unauthenticated",
     "unauthenticated_message": "Please Login",
-    "notification_bell_title": "There are {{ total_unreviewed }} new report(s) to review",
-    "success_alert_message": "Success: {{ message }}",
-    "warning_alert_message": "Warning: {{ message }}",
-    "rteam_text": "RTEAM"
+    "notification_bell_title_prefix": "There are ",
+    "notification_bell_title_suffix": " new report(s) to review",
+    "success_alert_message": "Success: ",
+    "warning_alert_message": "Warning: "
   },
   "dashboard_varieties": {
     "delete_report_html": {
       "page_title": "Delete Bug Report",
       "sections": {
-        "header_text": "RTEAM",
         "main_title": "Delete Bug Bounty Report"
       },
       "form": {
@@ -115,7 +114,6 @@
     "detail_report_html": {
       "page_title": "Report Detail",
       "sections": {
-        "header_text": "RTEAM",
         "main_title": "Bug Bounty Report Details",
         "report_id_label": "Report ID",
         "report_status": {
