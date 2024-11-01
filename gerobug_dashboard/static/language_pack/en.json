@@ -253,7 +253,7 @@
   "halloffame_html": {
     "hall_of_fame": "Hall Of Fame",
     "select_company": "Select Company",
-    "all_companies": "All Companies",
+    "all_company": "All Companies",
     "thanks_message": "RTEAM thanks the following researchers for reporting valid security issues",
     "rank": "Rank",
     "bounty_hunter": "Bounty Hunter",
