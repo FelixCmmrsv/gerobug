@@ -251,10 +251,7 @@
     }
   },
   "halloffame_html": {
-    "page_title": "Hall Of Fame",
-    "rules_and_guidelines": "Rules & Guidelines",
     "hall_of_fame": "Hall Of Fame",
-    "submit": "Submit",
     "select_company": "Select Company",
     "all_companies": "All Companies",
     "thanks_message": "RTEAM thanks the following researchers for reporting valid security issues",
@@ -495,7 +492,8 @@
       "subject_main": "Subject:",
       "body_main": "Body:",
       "attachment_main": "Attachment:",
-      "sample_main": "Sample:"
+      "sample_main": "Sample:",
+      "email": "Отправьте ваш email на {{ template|extract_email }} используя шаблоны ниже..."
     },
     "span": {
       "update_report_1": "Summary of your updates",

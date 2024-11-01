@@ -1,5 +1,6 @@
 <!-- submit.html -->
 {% load static %}
+{% load custom_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,8 +115,10 @@
 
 <main>
     <h1 data-i18n="submit_html.sections.how_to_submit">How To Submit</h1>
-    <p>{{ template|safe }}</p>
+    {# <p>{{ template|safe }}</p>#}
     {#    <p>Join Gerobug community on <a href="https://discord.gg/VhU4X4TQ5F" target="_blank">Discord</a></p>#}
+
+    <p data-i18n="submit_html.subsections.email">Submit your email to {{ template|extract_email }} using the templates below...</p>
 
     <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
@@ -154,7 +157,7 @@ SUMMARY= Summary of your finding
                     (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.subsections.file">Report Template</a>)<br>
 
                     <br>
-                    <b data-i18n="submit_html.subsections.sample_main">Sample:</b>
+                    <b data-i18n="submit_html.span.sample_main">Sample:</b>
                     <br>
                     <img src="{% static 'sample/submit.png' %}" width="35%">
                 </div>
@@ -270,7 +273,7 @@ SUMMARY= Summary of your finding
                     <br>
                     <b data-i18n="submit_html.subsections.attachment_main">Attachment:</b>
                     <br>
-                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.subsections.file">Report Template</a>)<br>
+                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.span.file">Report Template</a>)<br>
 
                     <br>
                     <b data-i18n="submit_html.subsections.sample_main">Sample:</b>
