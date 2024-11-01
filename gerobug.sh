@@ -351,6 +351,7 @@ case $ACTION in
     echo "PULL LATEST UPDATES"
     echo "=========================="
     git branch --set-upstream-to=origin/main
+    git reset --hard
     git pull
     sleep 1
 
