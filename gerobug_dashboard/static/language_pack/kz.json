@@ -493,7 +493,9 @@
       "body_main": "Мазмұны:",
       "attachment_main": "Қосымша:",
       "sample_main": "Үлгі:",
-      "email": "Төмендегі үлгілерді пайдаланып {{ template|extract_email }} электрондық поштасына жіберіңіз..."
+      "email": "{ template|extract_email }}",
+      "email_prefix": "Төмендегі үлгілерді пайдаланып ",
+      "email_suffix": " электрондық поштасына жіберіңіз..."
     },
     "span": {
       "update_report_1": "Сіздің жаңартуларыңыздың қысқаша ақпараты",

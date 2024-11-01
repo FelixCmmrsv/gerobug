@@ -118,14 +118,19 @@
     {# <p>{{ template|safe }}</p>#}
     {#    <p>Join Gerobug community on <a href="https://discord.gg/VhU4X4TQ5F" target="_blank">Discord</a></p>#}
 
-    <p data-i18n="submit_html.subsections.email">Submit your email to {{ template|extract_email }} using the templates below...</p>
+    <p>
+        <span data-i18n="submit_html.subsections.email_prefix">Submit your email to</span>
+        {{ template|extract_email }}
+        <span data-i18n="submit_html.subsections.email_suffix">using the templates below...</span>
+    </p>
 
     <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseOne" data-i1data-i18n="submit_html.sections.submit_bug_report">
+                        aria-controls="panelsStayOpen-collapseOne"
+                        data-i1data-i18n="submit_html.sections.submit_bug_report">
                     Submit Bug Bounty Report
                 </button>
             </h2>
@@ -154,7 +159,8 @@ SUMMARY= Summary of your finding
 
                     <b data-i18n="submit_html.subsections.attachment_main">Attachment:</b>
                     <br>
-                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.subsections.file">Report Template</a>)<br>
+                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.subsections.file">Report
+                    Template</a>)<br>
 
                     <br>
                     <b data-i18n="submit_html.span.sample_main">Sample:</b>
@@ -273,7 +279,8 @@ SUMMARY= Summary of your finding
                     <br>
                     <b data-i18n="submit_html.subsections.attachment_main">Attachment:</b>
                     <br>
-                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.span.file">Report Template</a>)<br>
+                    (<a href="{% static 'templates/Template_Report.docx' %}" data-i18n="submit_html.span.file">Report
+                    Template</a>)<br>
 
                     <br>
                     <b data-i18n="submit_html.subsections.sample_main">Sample:</b>
