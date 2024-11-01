@@ -53,25 +53,6 @@
         }
     </script>
     <script>
-        function copyAllText() {
-            const text1 = document.getElementById("Body_1").value.trim();
-            const text2 = document.getElementById("Body_2").value.trim();
-            const text3 = document.getElementById("Body_3").value.trim();
-            const text4 = document.getElementById("Body_4").value.trim();
-
-            const fullText = `${text1}\n${text2}\n${text3}\n${text4}`;
-
-            const tempTextarea = document.createElement("textarea");
-            tempTextarea.value = fullText;
-            document.body.appendChild(tempTextarea);
-
-            tempTextarea.select();
-            document.execCommand("copy");
-
-            document.body.removeChild(tempTextarea);
-        }
-    </script>
-    <script>
         function loadLanguage(language) {
             fetch(`/static/language_pack/${language}.json`)
                 .then(response => response.json())
@@ -158,21 +139,13 @@
 
                     <b data-i18n="submit_html.subsections.body_main">Body:</b>
                     <div class="text-wrap">
-                        <textarea readonly id="Body_1" rows="3" cols="40" data-i18n="submit_html.subsections.body_1.1">
-                            CUSTOMER= Customer 3 digits code (example: BIG. To see all available customers code check first block - "Customers List")
-                        </textarea>
-                        <textarea readonly id="Body_2" rows="3" cols="40" data-i18n="submit_html.subsections.body_1.2">
-                            TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)
-                        </textarea>
-                        <textarea readonly id="Body_3" rows="3" cols="40" data-i18n="submit_html.subsections.body_1.3">
-                            ENDPOINT= Affected Endpoint (example: https://demo.gerobug.com/submit) [max 100 characters]
-                        </textarea>
-                        <textarea readonly id="Body_4" rows="3" cols="40" data-i18n="submit_html.subsections.body_1.4">
-                            SUMMARY= Summary of your finding
-                        </textarea>
-                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copyAllText()">
-                            <i class="fa fa-copy"></i>
-                        </div>
+                        <textarea readonly id="Body_1" rows="3" cols="40" data-i18n="submit_html.subsections.body_1">
+CUSTOMER= Customer 3 digits code (example: BIG. To see all available customers code check first block - "Customers List")
+TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)
+ENDPOINT= Affected Endpoint (example: https://demo.gerobug.com/submit) [max 100 characters]
+SUMMARY= Summary of your finding</textarea>
+                        <div id="copyToClipboard-a" class="clipboard icon" onclick="copytext('Body_1')"><i
+                                class="fa fa-copy"></i></div>
                     </div>
 
                     <b data-i18n="submit_html.subsections.attachment_main">Attachment:</b>
@@ -247,8 +220,7 @@
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo1">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo1" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseTwo1"
-                        data-i18n="submit_html.sections.check_all_report_status">
+                        aria-controls="panelsStayOpen-collapseTwo1" data-i18n="submit_html.sections.check_all_report_status">
                     Check All Report Status (Overview)
                 </button>
             </h2>
@@ -311,8 +283,7 @@
             <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseFour"
-                        data-i18n="submit_html.sections.appeal_to_bounty_calculations">
+                        aria-controls="panelsStayOpen-collapseFour" data-i18n="submit_html.sections.appeal_to_bounty_calculations">
                     Appeal to Bounty Calculations
                 </button>
             </h2>
@@ -344,8 +315,7 @@
             <h2 class="accordion-header" id="panelsStayOpen-headingFive">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseFive"
-                        data-i18n="submit_html.sections.agree_to_bounty_calculations">
+                        aria-controls="panelsStayOpen-collapseFive" data-i18n="submit_html.sections.agree_to_bounty_calculations">
                     Agree to Bounty Calculations
                 </button>
             </h2>

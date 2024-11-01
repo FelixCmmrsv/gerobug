@@ -491,12 +491,12 @@
     },
     "subsections": {
       "sub_1": "SUBMIT_Report Title",
-      "body_1": {
-        "1": "CUSTOMER= Customer 3 digits code (example: RTM. To see all available customers code check first block - \"Customers List\")\n",
-        "2": "TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)\n",
-        "3": "ENDPOINT= Affected Endpoint (example: https://rteam.kz/redteam/) [max 100 characters]\n",
-        "4": "SUMMARY= Summary of your finding"
-      },
+      "body_1": [
+        "CUSTOMER= Customer 3 digits code (example: RTM. To see all available customers code check first block - \"Customers List\")\n",
+        "TYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)\n",
+        "ENDPOINT= Affected Endpoint (example: https://rteam.kz/redteam/) [max 100 characters]\n",
+        "SUMMARY= Summary of your finding"
+      ],
       "subject_main": "Subject:",
       "body_main": "Body:",
       "attachment_main": "Attachment:",
