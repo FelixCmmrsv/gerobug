@@ -494,8 +494,8 @@
       "body_1": "CUSTOMER= Customer 3 digits code (example: RTM. To see all available customers code check first block - \"Customers List\")\nTYPE= Bug Type (example: XSS, SQL Injection, IDOR, etc.)\nENDPOINT= Affected Endpoint (example: https://rteam.kz/redteam/) [max 100 characters]\nSUMMARY= Summary of your finding",
       "subject_main": "Subject:",
       "body_main": "Body:",
-      "attachment_main": "Attachment",
-      "sample_main": "Sample"
+      "attachment_main": "Attachment:",
+      "sample_main": "Sample:"
     },
     "span": {
       "submit_report": "PDF REPORT FILE",
