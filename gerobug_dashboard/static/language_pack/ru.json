@@ -216,11 +216,11 @@
     },
     "list_report_dashboard_html": {
       "columns": {
-        "need_review": "Требуется проверка",
-        "in_review": "В процессе проверки",
-        "fixing": "Исправляется",
-        "retest": "Повторное тестирование",
-        "bounty_preparation": "Подготовка вознаграждения"
+        "need_review": "Требуется проверка ",
+        "in_review": "В процессе проверки ",
+        "fixing": "Исправляется ",
+        "retest": "Повторное тестирование ",
+        "bounty_preparation": "Подготовка вознаграждения "
       },
       "statuses": {
         "need_review": "Требуется проверка",

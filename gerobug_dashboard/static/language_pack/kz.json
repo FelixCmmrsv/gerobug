@@ -216,11 +216,11 @@
     },
     "list_report_dashboard_html": {
       "columns": {
-        "need_review": "Қарауды қажет етеді",
-        "in_review": "Қаралуда",
-        "fixing": "Түзетілуде",
-        "retest": "Қайталама тестілеу",
-        "bounty_preparation": "Сыйақыны дайындау"
+        "need_review": "Қарауды қажет етеді ",
+        "in_review": "Қаралуда ",
+        "fixing": "Түзетілуде ",
+        "retest": "Қайталама тестілеу ",
+        "bounty_preparation": "Сыйақыны дайындау "
       },
       "statuses": {
         "need_review": "Қарауды қажет етеді",

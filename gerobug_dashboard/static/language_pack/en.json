@@ -214,11 +214,11 @@
     },
     "list_report_dashboard_html": {
       "columns": {
-        "need_review": "Need to Review",
-        "in_review": "In Review",
-        "fixing": "Fixing",
-        "retest": "Retest",
-        "bounty_preparation": "Bounty Preparation"
+        "need_review": "Need to Review ",
+        "in_review": "In Review ",
+        "fixing": "Fixing ",
+        "retest": "Retest ",
+        "bounty_preparation": "Bounty Preparation "
       },
       "statuses": {
         "need_review": "Need to Review",
