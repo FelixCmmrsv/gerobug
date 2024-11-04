@@ -420,15 +420,15 @@
   "settings_html": {
     "page_title": "Настройки",
     "sections": {
-      "mailbox_settings": "Настройки почтового ящика",
-      "user_account_settings": "Настройки учетной записи",
+      "mailbox_settings": "Настройки почты",
+      "user_account_settings": "Настройки учетной записи пользователя",
       "personalization": "Персонализация",
-      "edit_rules_and_guidelines": "Редактировать правила и рекомендации",
+      "edit_rules_and_guidelines": "Редактировать правила и инструкции",
       "manage_users": "Управление пользователями",
       "notification": "Уведомление",
       "blacklist_rule": "Правило черного списка",
       "report_template": "Шаблон отчета",
-      "nda_template": "Шаблон НДА",
+      "nda_template": "Шаблон NDA",
       "certificate_template": "Шаблон сертификата",
       "troubleshooting": "Устранение неполадок"
     },
@@ -438,32 +438,28 @@
       "run": "Запустить",
       "delete": "Удалить",
       "submit": "Отправить",
-      "cancel": "Отменить"
+      "cancel": "Отмена"
     },
     "messages": {
       "success": "Успешно",
       "warning": "Предупреждение"
     },
     "placeholders": {
+      "mailbox_settings": "НАСТРОЙКИ ПОЧТЫ",
       "current_mailbox": "Текущий почтовый ящик: ",
-      "active": "(АКТИВЕН)",
-      "inactive": "(НЕ АКТИВЕН)",
+      "active": "АКТИВЕН",
+      "inactive": "НЕАКТИВЕН",
+      "gmail_password": "Пароль приложения Gmail",
+      "outlook_password": "Пароль приложения Outlook",
       "current_template": "Текущий шаблон: ",
-      "current_rule": "Текущее правило: когда более чем ",
-      "emails_from_same_address": " писем с одного адреса с интервалом ",
-      "seconds_interval": " секунд, это письмо будет заблокировано на ",
+      "current_rule": "Текущее правило: Когда более ",
+      "emails_from_same_address": " писем с одного адреса за ",
+      "seconds_interval": " секунд, этот адрес будет заблокирован на ",
       "seconds": " секунд"
     },
-    "notifications": {
-      "add_new": "Добавить новое уведомление",
-      "service": "Сервис",
-      "webhook": "Вебхук",
-      "actions": "Действия",
-      "delete_notification": "Удалить уведомление",
-      "confirmation": "Вы уверены, что хотите удалить этот канал уведомлений?",
-      "no_undo": "Это действие не может быть отменено."
-    },
     "users": {
+      "user_account_settings": "НАСТРОЙКИ УЧЕТНОЙ ЗАПИСИ ПОЛЬЗОВАТЕЛЯ",
+      "manage_users": "УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ",
       "add_new_user": "Добавить нового пользователя",
       "username": "Имя пользователя",
       "email": "Электронная почта",
@@ -471,12 +467,65 @@
       "actions": "Действия",
       "delete_user": "Удалить пользователя",
       "confirmation": "Вы уверены, что хотите удалить этого пользователя?",
-      "no_undo": "Это действие не может быть отменено."
+      "no_undo": "Это действие нельзя отменить.",
+      "add_user": "Добавить пользователя"
     },
     "certificates": {
       "current_template": "Текущий шаблон: ",
-      "sample_certificate": "Образец сертификата",
-      "use_official_template": "[Рекомендуется использовать официальный шаблон, предоставленный RTEAM]"
+      "sample_certificate": "Пример сертификата",
+      "use_official_template": "[Рекомендуется использовать официальный шаблон от RTEAM]"
+    },
+    "personalization": {
+      "personalization": "ПЕРСОНАЛИЗАЦИЯ"
+    },
+    "theme": {
+      "theme": "ТЕМА"
+    },
+    "rules_and_guidelines": {
+      "edit_rules_and_guidelines": "РЕДАКТИРОВАТЬ ПРАВИЛА И ИНСТРУКЦИИ"
+    },
+    "notification": {
+      "notification": "УВЕДОМЛЕНИЕ",
+      "add_new": "Добавить новое уведомление",
+      "service": "Сервис",
+      "webhook": "Webhook",
+      "actions": "Действия",
+      "delete_notification": "Удалить уведомление",
+      "confirmation": "Вы уверены, что хотите удалить этот канал уведомлений?",
+      "no_undo": "Это действие нельзя отменить.",
+      "add_channel": "Добавить канал"
+    },
+    "blacklist_rule": {
+      "blacklist_rule": "ПРАВИЛО ЧЕРНОГО СПИСКА",
+      "current_rule": "Текущее правило:",
+      "when_more_than": "Когда более ",
+      "emails_from_same_address": " писем с одного адреса за ",
+      "seconds_interval": " секунд.",
+      "that_email_will_be_blocked": "Этот адрес будет заблокирован на ",
+      "seconds": " секунд."
+    },
+    "report_template": {
+      "report_template": "ШАБЛОН ОТЧЕТА",
+      "current_template": "Текущий шаблон: ",
+      "sample_template": "Шаблон отчета"
+    },
+    "nda_template": {
+      "nda_template": "ШАБЛОН NDA",
+      "current_template": "Текущий шаблон: ",
+      "sample_template": "Шаблон NDA"
+    },
+    "certificate_template": {
+      "certificate_template": "ШАБЛОН СЕРТИФИКАТА",
+      "current_template": "Текущий шаблон: ",
+      "sample_certificate": "Пример сертификата",
+      "certificate_data": "ДАННЫЕ СЕРТИФИКАТА",
+      "sample": "Пример ",
+      "officer_signature": "Подпись офицера (.jpg, .png):",
+      "officer_name": "Имя офицера:",
+      "officer_title": "Должность офицера:"
+    },
+    "troubleshooting": {
+      "troubleshooting": "УСТРАНЕНИЕ НЕПОЛАДОК"
     }
   },
   "submit_html": {

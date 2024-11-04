@@ -420,17 +420,17 @@
   "settings_html": {
     "page_title": "Параметрлер",
     "sections": {
-      "mailbox_settings": "Пошта жәшігі параметрлері",
-      "user_account_settings": "Пайдаланушы тіркелгісінің параметрлері",
-      "personalization": "Жекелендіру",
+      "mailbox_settings": "Пошта параметрлері",
+      "user_account_settings": "Пайдаланушы есептік жазбасының параметрлері",
+      "personalization": "Жекешелендіру",
       "edit_rules_and_guidelines": "Ережелер мен нұсқауларды өңдеу",
       "manage_users": "Пайдаланушыларды басқару",
-      "notification": "Хабарландыру",
+      "notification": "Хабарлама",
       "blacklist_rule": "Қара тізім ережесі",
-      "report_template": "Есеп шаблоны",
-      "nda_template": "Құпиялылық келісімі (NDA) шаблоны",
-      "certificate_template": "Сертификат шаблоны",
-      "troubleshooting": "Ақаулықтарды жою"
+      "report_template": "Есеп үлгісі",
+      "nda_template": "NDA үлгісі",
+      "certificate_template": "Сертификат үлгісі",
+      "troubleshooting": "Ақауларды жою"
     },
     "buttons": {
       "update": "Жаңарту",
@@ -441,42 +441,91 @@
       "cancel": "Бас тарту"
     },
     "messages": {
-      "success": "Сәттілік",
+      "success": "Сәтті",
       "warning": "Ескерту"
     },
     "placeholders": {
+      "mailbox_settings": "ПОШТА ПАРАМЕТРЛЕРІ",
       "current_mailbox": "Ағымдағы пошта жәшігі: ",
-      "active": "(БЕЛСЕНДІ)",
-      "inactive": "(БЕЛСЕНДІ ЕМЕС)",
-      "current_template": "Ағымдағы шаблон: ",
-      "current_rule": "Ағымдағы ереже: егер бір мекенжайдан ",
-      "emails_from_same_address": " хабарлама аралығы ",
-      "seconds_interval": " секундтан асса, бұл хабарлама блокталады ",
-      "seconds": " секундқа"
-    },
-    "notifications": {
-      "add_new": "Жаңа хабарландыру қосу",
-      "service": "Қызмет",
-      "webhook": "Webhook",
-      "actions": "Әрекеттер",
-      "delete_notification": "Хабарландыруды жою",
-      "confirmation": "Бұл хабарландыру арнасын жоюға сенімдісіз бе?",
-      "no_undo": "Бұл әрекетті болдырмау мүмкін емес."
+      "active": "АКТИВ",
+      "inactive": "ПАСИВ",
+      "gmail_password": "Gmail қосымшасының паролі",
+      "outlook_password": "Outlook қосымшасының паролі",
+      "current_template": "Ағымдағы үлгі: ",
+      "current_rule": "Ағымдағы ереже: Егер ",
+      "emails_from_same_address": " хабар бір мекенжайдан келіп, ",
+      "seconds_interval": " секунд ішінде болса, бұл мекенжай ",
+      "seconds": " секундқа бұғатталады"
     },
     "users": {
+      "user_account_settings": "ПАЙДАЛАНУШЫ ЕСЕПТІК ЖАЗБАСЫНЫҢ ПАРАМЕТРЛЕРІ",
+      "manage_users": "ПАЙДАЛАНУШЫЛАРДЫ БАСҚАРУ",
       "add_new_user": "Жаңа пайдаланушы қосу",
       "username": "Пайдаланушы аты",
       "email": "Электрондық пошта",
       "group": "Топ",
       "actions": "Әрекеттер",
       "delete_user": "Пайдаланушыны жою",
-      "confirmation": "Бұл пайдаланушыны жоюға сенімдісіз бе?",
-      "no_undo": "Бұл әрекетті болдырмау мүмкін емес."
+      "confirmation": "Осы пайдаланушыны жойғыңыз келетініне сенімдісіз бе?",
+      "no_undo": "Бұл әрекетті кері қайтару мүмкін емес.",
+      "add_user": "Пайдаланушы қосу"
     },
     "certificates": {
-      "current_template": "Ағымдағы шаблон: ",
+      "current_template": "Ағымдағы үлгі: ",
       "sample_certificate": "Сертификат үлгісі",
-      "use_official_template": "[RTEAM ұсынған ресми шаблонды қолдану ұсынылады]"
+      "use_official_template": "[RTEAM ұсынған ресми үлгіні пайдаланған жөн]"
+    },
+    "personalization": {
+      "personalization": "ЖЕКЕШЕЛЕНДІРУ"
+    },
+    "theme": {
+      "theme": "ТАҚЫРЫП"
+    },
+    "rules_and_guidelines": {
+      "edit_rules_and_guidelines": "ЕРЕЖЕЛЕР МЕН НҰСҚАУЛАРДЫ ӨҢДЕУ"
+    },
+    "notification": {
+      "notification": "ХАБАРЛАМА",
+      "add_new": "Жаңа хабарлама қосу",
+      "service": "Қызмет",
+      "webhook": "Webhook",
+      "actions": "Әрекеттер",
+      "delete_notification": "Хабарламаны жою",
+      "confirmation": "Осы хабарлама арнасын жойғыңыз келетініне сенімдісіз бе?",
+      "no_undo": "Бұл әрекетті кері қайтару мүмкін емес.",
+      "add_channel": "Арна қосу"
+    },
+    "blacklist_rule": {
+      "blacklist_rule": "ҚАРА ТІЗІМ ЕРЕЖЕСІ",
+      "current_rule": "Ағымдағы ереже:",
+      "when_more_than": "Егер ",
+      "emails_from_same_address": " хабар бір мекенжайдан келіп, ",
+      "seconds_interval": " секунд ішінде болса.",
+      "that_email_will_be_blocked": "Бұл мекенжай ",
+      "seconds": " секундқа бұғатталады."
+    },
+    "report_template": {
+      "report_template": "ЕСЕП ҮЛГІСІ",
+      "current_template": "Ағымдағы үлгі: ",
+      "sample_template": "Есеп үлгісі"
+    },
+    "nda_template": {
+      "nda_template": "NDA ҮЛГІСІ",
+      "current_template": "Ағымдағы үлгі: ",
+      "sample_template": "NDA үлгісі"
+    },
+    "certificate_template": {
+      "certificate_template": "СЕРТИФИКАТ ҮЛГІСІ",
+      "current_template": "Ағымдағы үлгі: ",
+      "sample_certificate": "Сертификат үлгісі",
+      "certificate_data": "СЕРТИФИКАТ МӘЛІМЕТТЕРІ",
+      "sample": "Үлгі ",
+      "officer_signature": "Офицер қолтаңбасы (.jpg, .png):",
+      "officer_name": "Офицер аты:",
+      "officer_title": "Офицер атағы:"
+    },
+    "troubleshooting": {
+      "troubleshooting": "АҚАУЛАРДЫ ЖОЮ"
     }
   },
   "submit_html": {
