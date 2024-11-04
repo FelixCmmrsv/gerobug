@@ -59,14 +59,12 @@
                 .catch(error => console.error('Error loading language file:', error));
         }
 
-        // Event handler for language selection
         function setLanguage(event) {
             const language = event.target.value;
             loadLanguage(language);
-            localStorage.setItem('selectedLanguage', language); // Save language preference
+            localStorage.setItem('selectedLanguage', language);
         }
 
-        // Load language on page load
         document.addEventListener('DOMContentLoaded', () => {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             document.getElementById('language-select').value = savedLanguage;
