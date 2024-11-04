@@ -95,7 +95,8 @@
     "page_title": "Басқару панелі",
     "unauthenticated_heading": "Авторизацияланбаған",
     "unauthenticated_message": "Жүйеге кіруіңізді өтінеміз",
-    "notification_bell_title": "{{ total_unreviewed }} жаңа есеп(тер)ді тексеру қажет",
+    "notification_bell_title_prefix": "Сізде ",
+    "notification_bell_title_suffix": " жаңа есеп(тер)ді тексеру қажет",
     "success_alert_message": "Сәттілік: {{ message }}",
     "warning_alert_message": "Ескерту: {{ message }}",
     "rteam_text": "RTEAM"

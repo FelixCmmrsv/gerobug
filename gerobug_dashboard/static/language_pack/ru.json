@@ -95,7 +95,8 @@
     "page_title": "Панель управления",
     "unauthenticated_heading": "Неавторизован",
     "unauthenticated_message": "Пожалуйста, войдите в систему",
-    "notification_bell_title": "Есть {{ total_unreviewed }} новых отчета(ов) для проверки",
+    "notification_bell_title_prefix": "Есть ",
+    "notification_bell_title_suffix": " новых отчета(ов) для проверки",
     "success_alert_message": "Успех: {{ message }}",
     "warning_alert_message": "Предупреждение: {{ message }}",
     "rteam_text": "RTEAM"
