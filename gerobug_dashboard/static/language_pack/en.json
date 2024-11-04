@@ -442,25 +442,21 @@
       "warning": "Warning"
     },
     "placeholders": {
+      "mailbox_settings": "MAILBOX SETTINGS",
       "current_mailbox": "Current Mailbox: ",
-      "active": "(ACTIVE)",
-      "inactive": "(INACTIVE)",
+      "active": "ACTIVE",
+      "inactive": "INACTIVE",
+      "gmail_password": "Gmail App Password",
+      "outlook_password": "Outlook App Password",
       "current_template": "Current Template: ",
       "current_rule": "Current Rule: When there are more than ",
       "emails_from_same_address": " emails from the same address with ",
       "seconds_interval": " seconds interval, that email will be blocked for ",
       "seconds": " seconds"
     },
-    "notifications": {
-      "add_new": "Add New Notification",
-      "service": "Service",
-      "webhook": "Webhook",
-      "actions": "Actions",
-      "delete_notification": "Delete Notification",
-      "confirmation": "Are you sure you want to delete this notification channel?",
-      "no_undo": "This action cannot be undone."
-    },
     "users": {
+      "user_account_settings": "USER ACCOUNT SETTINGS",
+      "manage_users": "MANAGE USERS",
       "add_new_user": "Add New User",
       "username": "Username",
       "email": "Email",
@@ -468,12 +464,65 @@
       "actions": "Actions",
       "delete_user": "Delete User",
       "confirmation": "Are you sure you want to delete this User?",
-      "no_undo": "This action cannot be undone."
+      "no_undo": "This action cannot be undone.",
+      "add_user": "Add User"
     },
     "certificates": {
       "current_template": "Current Template: ",
       "sample_certificate": "Sample Certificate",
       "use_official_template": "[It is recommended to use the official template provided by RTEAM]"
+    },
+    "personalization": {
+      "personalization": "PERSONALIZATION"
+    },
+    "theme": {
+      "theme": "THEME"
+    },
+    "rules_and_guidelines": {
+      "edit_rules_and_guidelines": "EDIT RULES AND GUIDELINES"
+    },
+    "notification": {
+      "notification": "NOTIFICATION",
+      "add_new": "Add New Notification",
+      "service": "Service",
+      "webhook": "Webhook",
+      "actions": "Actions",
+      "delete_notification": "Delete Notification",
+      "confirmation": "Are you sure you want to delete this notification channel?",
+      "no_undo": "This action cannot be undone.",
+      "add_channel": "Add Channel"
+    },
+    "blacklist_rule": {
+      "blacklist_rule": "BLACKLIST RULE",
+      "current_rule": "Current Rule:",
+      "when_more_than": "When there are more than ",
+      "emails_from_same_address": " emails from the same address with ",
+      "seconds_interval": " seconds interval.",
+      "that_email_will_be_blocked": "That email will be blocked for ",
+      "seconds": " seconds."
+    },
+    "report_template": {
+      "report_template": "REPORT TEMPLATE",
+      "current_template": "Current Template: ",
+      "sample_template": "Report Template"
+    },
+    "nda_template": {
+      "nda_template": "NDA TEMPLATE",
+      "current_template": "Current Template: ",
+      "sample_template": "NDA Template"
+    },
+    "certificate_template": {
+      "certificate_template": "CERTIFICATE TEMPLATE",
+      "current_template": "Current Template: ",
+      "sample_certificate": "Sample Certificate",
+      "certificate_data": "CERTIFICATE DATA",
+      "sample": "Sample ",
+      "officer_signature": "Officer Signature (.jpg, .png):",
+      "officer_name": "Officer Name:",
+      "officer_title": "Officer Title:"
+    },
+    "troubleshooting": {
+      "troubleshooting": "TROUBLESHOOTING"
     }
   },
   "submit_html": {
