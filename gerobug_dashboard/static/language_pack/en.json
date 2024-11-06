@@ -285,6 +285,28 @@
       "impact_score": "Impact score",
       "modal_title": "How is Severity Risk calculated?"
     },
+    "titles": {
+      "threat_agent_factors": "The first set of factors are related to the threat agent involved. The goal here is to estimate the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.",
+      "skill_level": "How technically skilled is this group of threat agents?",
+      "motive": "How motivated is this group of threat agents to find and exploit this vulnerability?",
+      "opportunity": "What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?",
+      "size": "How large is this group of threat agents?",
+      "technical_impact_factors": "Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited.",
+      "loss_of_confidentiality": "How much data could be disclosed and how sensitive is it?",
+      "loss_of_integrity": "How much data could be corrupted and how damaged is it?",
+      "loss_of_availability": "How much service could be lost and how vital is it?",
+      "loss_of_accountability": "Are the threat agents' actions traceable to an individual?",
+      "vulnerability_factors": "The next set of factors are related to the vulnerability involved. The goal here is to estimate the likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat agent selected above.",
+      "ease_of_discovery": "How easy is it for this group of threat agents to discover this vulnerability?",
+      "ease_of_exploit": "How easy is it for this group of threat agents to actually exploit this vulnerability?",
+      "awareness": "How well known is this vulnerability to this group of threat agents?",
+      "intrusion_detection": "How likely is an exploit to be detected?",
+      "business_impact_factors": "The business impact stems from the technical impact, but requires a deep understanding of what is important to the company running the application. In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level. The business risk is what justifies investment in fixing security problems.",
+      "financial_damage": "How much financial damage will result from an exploit?",
+      "reputation_damage": "Would an exploit result in reputation damage that would harm the business?",
+      "non_compliance": "How much exposure does non-compliance introduce?",
+      "privacy_violation": "How much personally identifiable information could be disclosed?"
+    },
     "labels": {
       "vector": "VECTOR (SEVERITY STRING): ",
       "skill_level": "Skill level",
@@ -329,6 +351,53 @@
         "5": "Partners (5)",
         "6": "Authenticated users (6)",
         "9": "Anonymous Internet users (9)"
+      },
+      "loss_of_confidentiality": {
+        "2": "Minimal non-sensitive data disclosed (2)",
+        "6": "Minimal critical data disclosed (6)",
+        "7": "Extensive critical data disclosed (7)",
+        "9": "All data disclosed (9)"
+      },
+      "loss_of_integrity": {
+        "1": "Minimal slightly corrupt data (1)",
+        "3": "Minimal seriously corrupt data (3)",
+        "5": "Extensive slightly corrupt data (5)",
+        "7": "Extensive seriously corrupt data (7)",
+        "9": "All data totally corrupt (9)"
+      },
+      "loss_of_availability": {
+        "1": "Minimal secondary services interrupted (1)",
+        "5": "Minimal primary services interrupted (5)",
+        "7": "Extensive primary services interrupted (7)",
+        "9": "All services completely lost (9)"
+      },
+      "loss_of_accountability": {
+        "1": "Fully traceable (1)",
+        "7": "Possibly traceable (7)",
+        "9": "Completely anonymous (9)"
+      },
+      "financial_damage": {
+        "1": "Less than the cost to fix the vulnerability (1)",
+        "3": "Minor effect on annual profit (3)",
+        "7": "Significant effect on annual profit (7)",
+        "9": "Bankruptcy (9)"
+      },
+      "reputation_damage": {
+        "1": "Minimal damage (1)",
+        "4": "Loss of major accounts (4)",
+        "5": "Loss of goodwill (5)",
+        "9": "Brand damage (9)"
+      },
+      "non_compliance": {
+        "2": "Minor violation (2)",
+        "5": "Clear violation (5)",
+        "7": "High profile violation (7)"
+      },
+      "privacy_violation": {
+        "3": "One individual (3)",
+        "5": "Hundreds of people (5)",
+        "7": "Thousands of people (7)",
+        "9": "Millions of people (9)"
       }
     },
     "modal": {
