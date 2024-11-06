@@ -92,13 +92,13 @@
                     <!-- THREAT AGENT FACTORS -->
                     <section>
                         <h5 class="border-bottom"
-                            data-i18n-title="owasp-calculator_html.section_titles.threat_agent_factors"
+                            data-i18n-title="owasp-calculator_html.titles.threat_agent_factors"
                             title="The first set of factors are related to the threat agent involved. The goal here is to estimate the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent."
                             data-i18n="owasp-calculator_html.section_titles.threat_agent_factors">Threat Agent
                             Factors</h5>
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 data-i18n-title="owasp-calculator_html.labels.skill_level"
+                                 data-i18n-title="owasp-calculator_html.titles.skill_level"
                                  title="How technically skilled is this group of threat agents?"
                                  data-i18n="owasp-calculator_html.labels.skill_level">Skill level
                             </div>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 data-i18n-title="owasp-calculator_html.labels.motive"
+                                 data-i18n-title="owasp-calculator_html.titles.motive"
                                  title="How motivated is this group of threat agents to find and exploit this vulnerability?"
                                  data-i18n="owasp-calculator_html.labels.motive">Motive
                             </div>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 data-i18n-title="owasp-calculator_html.labels.opportunity"
+                                 data-i18n-title="owasp-calculator_html.titles.opportunity"
                                  title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?"
                                  data-i18n="owasp-calculator_html.labels.opportunity">Opportunity
                             </div>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 data-i18n-title="owasp-calculator_html.labels.size"
+                                 data-i18n-title="owasp-calculator_html.titles.size"
                                  title="How large is this group of threat agents?"
                                  data-i18n="owasp-calculator_html.labels.size">Size
                             </div>
@@ -198,65 +198,122 @@
                     <!-- TECHNICAL IMPACT FACTORS -->
                     <section>
                         <h5 class="border-bottom"
-                            title="Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited. ">
-                            Technical Impact Factors</h5>
+                            data-i18n-title="owasp-calculator_html.titles.technical_impact_factors"
+                            title="Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited."
+                            data-i18n="owasp-calculator_html.section_titles.technical_impact_factors">Technical Impact
+                            Factors</h5>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much data could be disclosed and how sensitive is it?">Loss of
+                                 data-i18n-title="owasp-calculator_html.titles.loss_of_confidentiality"
+                                 title="How much data could be disclosed and how sensitive is it?"
+                                 data-i18n="owasp-calculator_html.labels.loss_of_confidentiality">Loss of
                                 confidentiality
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="lc" name="lc"
                                         onchange="calculate()">
-                                    <option value="2">Minimal non-sensitive data disclosed (2)</option>
-                                    <option value="6">Minimal critical data disclosed (6)</option>
-                                    <option value="6">Extensive non-sensitive data disclosed (6)</option>
-                                    <option value="7">Extensive critical data disclosed (7)</option>
-                                    <option value="9">All data disclosed (9)</option>
+                                    <option value="2"
+                                            data-i18n="owasp-calculator_html.options.loss_of_confidentiality.2">Minimal
+                                        non-sensitive data disclosed (2)
+                                    </option>
+                                    <option value="6"
+                                            data-i18n="owasp-calculator_html.options.loss_of_confidentiality.6">Minimal
+                                        critical data disclosed (6)
+                                    </option>
+                                    <option value="6"
+                                            data-i18n="owasp-calculator_html.options.loss_of_confidentiality.6">
+                                        Extensive non-sensitive data disclosed (6)
+                                    </option>
+                                    <option value="7"
+                                            data-i18n="owasp-calculator_html.options.loss_of_confidentiality.7">
+                                        Extensive critical data disclosed (7)
+                                    </option>
+                                    <option value="9"
+                                            data-i18n="owasp-calculator_html.options.loss_of_confidentiality.9">All data
+                                        disclosed (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much data could be corrupted and how damaged is it?">Loss of integrity
+                                 data-i18n-title="owasp-calculator_html.titles.loss_of_integrity"
+                                 title="How much data could be corrupted and how damaged is it?"
+                                 data-i18n="owasp-calculator_html.labels.loss_of_integrity">Loss of integrity
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="li" name="li"
                                         onchange="calculate()">
-                                    <option value="1">Minimal slightly corrupt data (1)</option>
-                                    <option value="3">Minimal seriously corrupt data (3)</option>
-                                    <option value="5">Extensive slightly corrupt data (5)</option>
-                                    <option value="7">Extensive seriously corrupt data (7)</option>
-                                    <option value="9">All data totally corrupt (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.loss_of_integrity.1">
+                                        Minimal slightly corrupt data (1)
+                                    </option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.loss_of_integrity.3">
+                                        Minimal seriously corrupt data (3)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.loss_of_integrity.5">
+                                        Extensive slightly corrupt data (5)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.loss_of_integrity.7">
+                                        Extensive seriously corrupt data (7)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.loss_of_integrity.9">All
+                                        data totally corrupt (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much service could be lost and how vital is it?">Loss of availability
+                                 data-i18n-title="owasp-calculator_html.titles.loss_of_availability"
+                                 title="How much service could be lost and how vital is it?"
+                                 data-i18n="owasp-calculator_html.labels.loss_of_availability">Loss of availability
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="lav" name="lav"
                                         onchange="calculate()">
-                                    <option value="1">Minimal secondary services interrupted (1)</option>
-                                    <option value="5">Minimal primary services interrupted (5)</option>
-                                    <option value="5">Extensive secondary services interrupted (5)</option>
-                                    <option value="7">Extensive primary services interrupted (7)</option>
-                                    <option value="9">All services completely lost (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.loss_of_availability.1">
+                                        Minimal secondary services interrupted (1)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.loss_of_availability.5">
+                                        Minimal primary services interrupted (5)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.loss_of_availability.5">
+                                        Extensive secondary services interrupted (5)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.loss_of_availability.7">
+                                        Extensive primary services interrupted (7)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.loss_of_availability.9">
+                                        All services completely lost (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="Are the threat agents' actions traceable to an individual?">Loss of
-                                accountability
+                                 data-i18n-title="owasp-calculator_html.titles.loss_of_accountability"
+                                 title="Are the threat agents' actions traceable to an individual?"
+                                 data-i18n="owasp-calculator_html.labels.loss_of_accountability">Loss of accountability
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="lac" name="lac"
                                         onchange="calculate()">
-                                    <option value="1">Fully traceable (1)</option>
-                                    <option value="7">Possibly traceable (7)</option>
-                                    <option value="9">Completely anonymous (9)</option>
+                                    <option value="1"
+                                            data-i18n="owasp-calculator_html.options.loss_of_accountability.1">Fully
+                                        traceable (1)
+                                    </option>
+                                    <option value="7"
+                                            data-i18n="owasp-calculator_html.options.loss_of_accountability.7">Possibly
+                                        traceable (7)
+                                    </option>
+                                    <option value="9"
+                                            data-i18n="owasp-calculator_html.options.loss_of_accountability.9">
+                                        Completely anonymous (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -268,64 +325,106 @@
                     <!-- VULNERABILITY FACTORS -->
                     <section>
                         <h5 class="border-bottom"
-                            title="The next set of factors are related to the vulnerability involved. The goal here is to estimate the likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat agent selected above.">
-                            Vulnerability Factors</h5>
+                            data-i18n-title="owasp-calculator_html.titles.vulnerability_factors"
+                            title="The next set of factors are related to the vulnerability involved. The goal here is to estimate the likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat agent selected above."
+                            data-i18n="owasp-calculator_html.section_titles.vulnerability_factors">Vulnerability
+                            Factors</h5>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How easy is it for this group of threat agents to discover this vulnerability?">
-                                Ease of discovery
+                                 data-i18n-title="owasp-calculator_html.titles.ease_of_discovery"
+                                 title="How easy is it for this group of threat agents to discover this vulnerability?"
+                                 data-i18n="owasp-calculator_html.labels.ease_of_discovery">Ease of discovery
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="ed" name="ed"
                                         onchange="calculate()">
-                                    <option value="1">Practically impossible (1)</option>
-                                    <option value="3">Difficult (3)</option>
-                                    <option value="7">Easy (7)</option>
-                                    <option value="9">Automated tools available (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.ease_of_discovery.1">
+                                        Practically impossible (1)
+                                    </option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.ease_of_discovery.3">
+                                        Difficult (3)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.ease_of_discovery.7">Easy
+                                        (7)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.ease_of_discovery.9">
+                                        Automated tools available (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How easy is it for this group of threat agents to actually exploit this vulnerability?">
-                                Ease of exploit
+                                 data-i18n-title="owasp-calculator_html.titles.ease_of_exploit"
+                                 title="How easy is it for this group of threat agents to actually exploit this vulnerability?"
+                                 data-i18n="owasp-calculator_html.labels.ease_of_exploit">Ease of exploit
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="ee" name="ee"
                                         onchange="calculate()">
-                                    <option value="1">Theoretical (1)</option>
-                                    <option value="3">Difficult (3)</option>
-                                    <option value="5">Easy (5)</option>
-                                    <option value="9">Automated tools available (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.ease_of_exploit.1">
+                                        Theoretical (1)
+                                    </option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.ease_of_exploit.3">
+                                        Difficult (3)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.ease_of_exploit.5">Easy
+                                        (5)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.ease_of_exploit.9">
+                                        Automated tools available (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How well known is this vulnerability to this group of threat agents?">Awareness
+                                 data-i18n-title="owasp-calculator_html.titles.awareness"
+                                 title="How well known is this vulnerability to this group of threat agents?"
+                                 data-i18n="owasp-calculator_html.labels.awareness">Awareness
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="a" name="a"
                                         onchange="calculate()">
-                                    <option value="1">Unknown (1)</option>
-                                    <option value="4">Hidden (4)</option>
-                                    <option value="6">Obvious (6)</option>
-                                    <option value="9">Public knowledge (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.awareness.1">Unknown
+                                        (1)
+                                    </option>
+                                    <option value="4" data-i18n="owasp-calculator_html.options.awareness.4">Hidden (4)
+                                    </option>
+                                    <option value="6" data-i18n="owasp-calculator_html.options.awareness.6">Obvious
+                                        (6)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.awareness.9">Public
+                                        knowledge (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How likely is an exploit to be detected?">
-                                Intrusion detection
+                                 data-i18n-title="owasp-calculator_html.titles.intrusion_detection"
+                                 title="How likely is an exploit to be detected?"
+                                 data-i18n="owasp-calculator_html.labels.intrusion_detection">Intrusion detection
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="id" name="id"
                                         onchange="calculate()">
-                                    <option value="1">Active detection in application (1)</option>
-                                    <option value="3">Logged and reviewed (3)</option>
-                                    <option value="8">Logged without review (8)</option>
-                                    <option value="9">Not logged (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.intrusion_detection.1">
+                                        Active detection in application (1)
+                                    </option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.intrusion_detection.3">
+                                        Logged and reviewed (3)
+                                    </option>
+                                    <option value="8" data-i18n="owasp-calculator_html.options.intrusion_detection.8">
+                                        Logged without review (8)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.intrusion_detection.9">
+                                        Not logged (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -334,86 +433,133 @@
                     <!-- BUSINESS IMPACT FACTORS -->
                     <section>
                         <h5 class="border-bottom"
-                            title="The business impact stems from the technical impact, but requires a deep understanding of what is important to the company running the application. In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level. The business risk is what justifies investment in fixing security problems.">
-                            Business Impact Factors</h5>
+                            data-i18n-title="owasp-calculator_html.titles.business_impact_factors"
+                            title="The business impact stems from the technical impact, but requires a deep understanding of what is important to the company running the application. In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level. The business risk is what justifies investment in fixing security problems."
+                            data-i18n="owasp-calculator_html.section_titles.business_impact_factors">Business Impact
+                            Factors</h5>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much financial damage will result from an exploit?">Financial damage
+                                 data-i18n-title="owasp-calculator_html.titles.financial_damage"
+                                 title="How much financial damage will result from an exploit?"
+                                 data-i18n="owasp-calculator_html.labels.financial_damage">Financial damage
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="fd" name="fd"
                                         onchange="calculate()">
-                                    <option value="1">Less than the cost to fix the vulnerability (1)</option>
-                                    <option value="3">Minor effect on annual profit (3)</option>
-                                    <option value="7">Significant effect on annual profit (7)</option>
-                                    <option value="9">Bankruptcy (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.financial_damage.1">Less
+                                        than the cost to fix the vulnerability (1)
+                                    </option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.financial_damage.3">Minor
+                                        effect on annual profit (3)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.financial_damage.7">
+                                        Significant effect on annual profit (7)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.financial_damage.9">
+                                        Bankruptcy (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="Would an exploit result in reputation damage that would harm the business?">
-                                Reputation damage
+                                 data-i18n-title="owasp-calculator_html.titles.reputation_damage"
+                                 title="Would an exploit result in reputation damage that would harm the business?"
+                                 data-i18n="owasp-calculator_html.labels.reputation_damage">Reputation damage
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="rd" name="rd"
                                         onchange="calculate()">
-                                    <option value="1">Minimal damage (1)</option>
-                                    <option value="4">Loss of major accounts (4)</option>
-                                    <option value="5">Loss of goodwill (5)</option>
-                                    <option value="9">Brand damage (9)</option>
+                                    <option value="1" data-i18n="owasp-calculator_html.options.reputation_damage.1">
+                                        Minimal damage (1)
+                                    </option>
+                                    <option value="4" data-i18n="owasp-calculator_html.options.reputation_damage.4">Loss
+                                        of major accounts (4)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.reputation_damage.5">Loss
+                                        of goodwill (5)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.reputation_damage.9">
+                                        Brand damage (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much exposure does non-compliance introduce?">Non-compliance
+                                 data-i18n-title="owasp-calculator_html.titles.non_compliance"
+                                 title="How much exposure does non-compliance introduce?"
+                                 data-i18n="owasp-calculator_html.labels.non_compliance">Non-compliance
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="nc" name="nc"
                                         onchange="calculate()">
-                                    <option value="2">Minor violation (2)</option>
-                                    <option value="5">Clear violation (5)</option>
-                                    <option value="7">High profile violation (7)</option>
+                                    <option value="2" data-i18n="owasp-calculator_html.options.non_compliance.2">Minor
+                                        violation (2)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.non_compliance.5">Clear
+                                        violation (5)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.non_compliance.7">High
+                                        profile violation (7)
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="h6 nomargin col-4 d-flex align-items-center"
-                                 title="How much personally identifiable information could be disclosed?">Privacy
-                                violation
+                                 data-i18n-title="owasp-calculator_html.titles.privacy_violation"
+                                 title="How much personally identifiable information could be disclosed?"
+                                 data-i18n="owasp-calculator_html.labels.privacy_violation">Privacy violation
                             </div>
                             <div class="col-8">
                                 <select class="form-control" aria-label=".form-select-sm example" id="pv" name="pv"
                                         onchange="calculate()">
-                                    <option value="3">One individual (3)</option>
-                                    <option value="5">Hundreds of people (5)</option>
-                                    <option value="7">Thousands of people (7)</option>
-                                    <option value="9">Millions of people (9)</option>
+                                    <option value="3" data-i18n="owasp-calculator_html.options.privacy_violation.3">One
+                                        individual (3)
+                                    </option>
+                                    <option value="5" data-i18n="owasp-calculator_html.options.privacy_violation.5">
+                                        Hundreds of people (5)
+                                    </option>
+                                    <option value="7" data-i18n="owasp-calculator_html.options.privacy_violation.7">
+                                        Thousands of people (7)
+                                    </option>
+                                    <option value="9" data-i18n="owasp-calculator_html.options.privacy_violation.9">
+                                        Millions of people (9)
+                                    </option>
                                 </select>
                             </div>
                         </div>
                     </section>
                 </div>
+
 
                 <!-- THIRD -->
                 <div class="row">
                     <!-- LIKELIHOOD SCORE -->
                     <section>
-                        <h5 class="border-bottom">Likelihood score</h5>
+                        <h5 class="border-bottom" data-i18n="owasp-calculator_html.section_titles.likelihood_score">
+                            Likelihood score</h5>
                         <h6 class="LS nomargin">0</h6>
                     </section>
 
                     <!-- IMPACT SCORE -->
                     <section>
-                        <h5 class="border-bottom">Impact score</h5>
+                        <h5 class="border-bottom" data-i18n="owasp-calculator_html.section_titles.impact_score">Impact
+                            score</h5>
                         <h6 class="IS nomargin">0</h6>
                     </section>
                 </div>
 
                 <div>
-                    <a href="#exampleModalCenter" data-toggle="modal">How is Severity Risk calculated?</a>
+                    <a href="#exampleModalCenter" data-toggle="modal"
+                       data-i18n="owasp-calculator_html.section_titles.modal_title">How is Severity Risk calculated?</a>
                 </div>
+
             </main>
 
             <!-- MODAL -->
@@ -422,10 +568,9 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">How is Severity Risk calculated?</h5>
-                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button> -->
+                            <h5 class="modal-title" id="exampleModalLongTitle"
+                                data-i18n="owasp-calculator_html.section_titles.modal_title">How is Severity Risk
+                                calculated?</h5>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -434,21 +579,34 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th scope="col" colspan="2">Likelihood and Impact Levels</th>
+                                            <th scope="col" colspan="2"
+                                                data-i18n="owasp-calculator_html.modal.likelihood_levels_title">
+                                                Likelihood and Impact Levels
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>0 to < 3</td>
-                                            <td class="classNote">LOW</td>
+                                            <td data-i18n="owasp-calculator_html.modal.likelihood_range_low">0 to < 3
+                                            </td>
+                                            <td class="classNote"
+                                                data-i18n="owasp-calculator_html.modal.likelihood_levels.low">LOW
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>3 to < 6</td>
-                                            <td class="classMedium">MEDIUM</td>
+                                            <td data-i18n="owasp-calculator_html.modal.likelihood_range_medium">3 to <
+                                                6
+                                            </td>
+                                            <td class="classMedium"
+                                                data-i18n="owasp-calculator_html.modal.likelihood_levels.medium">MEDIUM
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>6 to 9</td>
-                                            <td class="classHigh">HIGH</td>
+                                            <td data-i18n="owasp-calculator_html.modal.likelihood_range_high">6 to 9
+                                            </td>
+                                            <td class="classHigh"
+                                                data-i18n="owasp-calculator_html.modal.likelihood_levels.high">HIGH
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -459,42 +617,66 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th scope="col" colspan="5">Overall Risk Severity = Likelihood x Impact</th>
+                                            <th scope="col" colspan="5"
+                                                data-i18n="owasp-calculator_html.modal.overall_risk_title">Overall Risk
+                                                Severity = Likelihood x Impact
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td colspan="1" rowspan="4"
-                                                style="vertical-align: middle; font-weight: bold">Impact
+                                                style="vertical-align: middle; font-weight: bold"
+                                                data-i18n="owasp-calculator_html.modal.impact">Impact
                                             </td>
-                                            <td>HIGH</td>
-                                            <td class="classMedium">Medium</td>
-                                            <td class="classHigh">High</td>
-                                            <td class="classCritical">Critical</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.high">HIGH</td>
+                                            <td class="classMedium"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.medium">Medium
+                                            </td>
+                                            <td class="classHigh"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.high">High
+                                            </td>
+                                            <td class="classCritical"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.critical">Critical
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>MEDIUM</td>
-                                            <td class="classLow">Low</td>
-                                            <td class="classMedium">Medium</td>
-                                            <td class="classHigh">High</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.medium">MEDIUM</td>
+                                            <td class="classLow"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.low">Low
+                                            </td>
+                                            <td class="classMedium"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.medium">Medium
+                                            </td>
+                                            <td class="classHigh"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.high">High
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>LOW</td>
-                                            <td class="classNote">Note</td>
-                                            <td class="classLow">Low</td>
-                                            <td class="classMedium">Medium</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.low">LOW</td>
+                                            <td class="classNote"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.note">Note
+                                            </td>
+                                            <td class="classLow"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.low">Low
+                                            </td>
+                                            <td class="classMedium"
+                                                data-i18n="owasp-calculator_html.modal.risk_severity.medium">Medium
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td>LOW</td>
-                                            <td>MEDIUM</td>
-                                            <td>HIGH</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.low">LOW</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.medium">MEDIUM</td>
+                                            <td data-i18n="owasp-calculator_html.modal.impact_levels.high">HIGH</td>
                                         </tr>
                                         </tbody>
                                         <thead>
                                         <tr>
                                             <th scope="col" colspan="1"></th>
-                                            <th scope="col" colspan="4">Likelihood</th>
+                                            <th scope="col" colspan="4"
+                                                data-i18n="owasp-calculator_html.modal.likelihood">Likelihood
+                                            </th>
                                         </tr>
                                         </thead>
                                     </table>
@@ -502,7 +684,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK!</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    data-i18n="owasp-calculator_html.modal.ok_button">OK!
+                            </button>
                         </div>
                     </div>
                 </div>
