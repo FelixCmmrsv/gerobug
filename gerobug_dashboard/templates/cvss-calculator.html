@@ -559,7 +559,7 @@
                                         <td>
                                             <p id="MAC_Heading"
                                                title="This metric describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability. Such conditions may require the collection of more information about the target or computational exceptions. The assessment of this metric excludes any requirements for user interaction in order to exploit the vulnerability. If a specific configuration is required for an attack to succeed, the Base metrics should be scored assuming the vulnerable component is in that configuration."
-                                               data-i18n="cvss-calculator_html.headings.modified_attack_complexity"
+                                               data-i18n="cvss-calculator_html.labels.modified_attack_complexity"
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_attack_complexity">
                                                 Modified Attack Complexity</p>
                                         </td>
@@ -592,7 +592,7 @@
                                             <p id="MPR_Heading"
                                                title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability."
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_privileges_required"
-                                               data-i18n="cvss-calculator_html.headings.modified_privileges_required">
+                                               data-i18n="cvss-calculator_html.labels.modified_privileges_required">
                                                 Modified Privileges Required</p>
                                         </td>
                                         <td>
@@ -627,7 +627,7 @@
                                             <p id="MUI_Heading"
                                                title="This metric captures the requirement for a user, other than the attacker, to participate in the successful compromise the vulnerable component. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner."
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_user_interaction"
-                                               data-i18n="cvss-calculator_html.headings.modified_user_interaction">
+                                               data-i18n="cvss-calculator_html.labels.modified_user_interaction">
                                                 Modified User Interaction</p>
                                         </td>
                                         <td>
@@ -636,19 +636,19 @@
                                                        class="btn-check">
                                                 <label class="btn btn-outline-dark" for="MUI_X" id="MUI_X_Label"
                                                        title="The value assigned to the corresponding Base metric is used."
-                                                       data-i18n-title="cvss-calculator_html.options.vector_placeholder"
+                                                       data-i18n-title="cvss-calculator_html.options.not_defined"
                                                        data-i18n="cvss-calculator_html.options.not_defined">
                                                     Not Defined</label>
                                                 <input name="MUI" value="N" id="MUI_N" type="radio" class="btn-check">
                                                 <label class="btn btn-outline-dark" for="MUI_N" id="MUI_N_Label"
                                                        title="The vulnerable system can be exploited without any interaction from any user."
-                                                       data-i18n-title="cvss-calculator_html.options.vector_placeholder"
+                                                       data-i18n-title="cvss-calculator_html.options.none"
                                                        data-i18n="cvss-calculator_html.options.none">
                                                     None</label>
                                                 <input name="MUI" value="R" id="MUI_R" type="radio" class="btn-check">
                                                 <label class="btn btn-outline-dark" for="MUI_R" id="MUI_R_Label"
                                                        title="Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited."
-                                                       data-i18n-title="cvss-calculator_html.options.vector_placeholder"
+                                                       data-i18n-title="cvss-calculator_html.options.required"
                                                        data-i18n="cvss-calculator_html.options.required">
                                                     Required</label>
                                             </div>
@@ -659,7 +659,7 @@
                                             <p id="MS_Heading"
                                                title="Does a successful attack impact a component other than the vulnerable component? If so, the Base Score increases and the Confidentiality, Integrity and Authentication metrics should be scored relative to the impacted component."
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_scope"
-                                               data-i18n="cvss-calculator_html.headings.modified_scope">
+                                               data-i18n="cvss-calculator_html.labels.modified_scope">
                                                 Modified Scope</p>
                                         </td>
                                         <td>
@@ -689,7 +689,7 @@
                                             <p id="MC_Heading"
                                                title="This metric measures the impact to the confidentiality of the information resources managed by a software component due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones."
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_confidentiality"
-                                               data-i18n="cvss-calculator_html.headings.modified_confidentiality">
+                                               data-i18n="cvss-calculator_html.labels.modified_confidentiality">
                                                 Modified Confidentiality</p>
                                         </td>
                                         <td>
@@ -724,7 +724,7 @@
                                             <p id="MI_Heading"
                                                title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information."
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_integrity"
-                                               data-i18n="cvss-calculator_html.headings.modified_integrity">
+                                               data-i18n="cvss-calculator_html.labels.modified_integrity">
                                                 Modified Integrity</p>
                                         </td>
                                         <td>
@@ -757,7 +757,7 @@
                                     <tr>
                                         <td>
                                             <p id="MA_Heading"
-                                               data-i18n="cvss-calculator_html.headings.modified_availability"
+                                               data-i18n="cvss-calculator_html.labels.modified_availability"
                                                data-i18n-title="cvss-calculator_html.descriptions.modified_availability"
                                                title="This metric measures the impact to the availability of the impacted component resulting from a successfully exploited vulnerability. It refers to the loss of availability of the impacted component itself, such as a networked service (e.g., web, database, email). Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of an impacted component.">
                                                 Modified Availability</p>
@@ -801,7 +801,7 @@
                             <h4 id="temporalMetricGroup_Legend"
                                 title="The Temporal metrics measure the current state of exploit techniques or code availability, the existence of any patches or workarounds, or the confidence that one has in the description of a vulnerability."
                                 data-i18n-title="cvss-calculator_html.descriptions.temporal_metric_group"
-                                data-i18n="cvss-calculator_html.headings.temporal_score">
+                                data-i18n="cvss-calculator_html.labels.temporal_score">
                                 Temporal Score</h4>
                             <div class="text-center fw-bold fs-6">
                                 <div class="alert alert-secondary" role="alert">
@@ -821,7 +821,7 @@
                                 <td>
                                     <p id="E_Heading"
                                        title="This metric measures the likelihood of the vulnerability being attacked, and is typically based on the current state of exploit techniques, exploit code availability, or active, 'in-the-wild' exploitation."
-                                       data-i18n="cvss-calculator_html.headings.exploit_code_maturity"
+                                       data-i18n="cvss-calculator_html.labels.exploit_code_maturity"
                                        data-i18n-title="cvss-calculator_html.descriptions.exploit_code_maturity">
                                         Exploit Code Maturity</p>
                                 </td>
@@ -860,7 +860,7 @@
                                 <td>
                                     <p id="RL_Heading"
                                        title="The Remediation Level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final."
-                                       data-i18n="cvss-calculator_html.headings.remediation_level"
+                                       data-i18n="cvss-calculator_html.labels.remediation_level"
                                        data-i18n-title="cvss-calculator_html.descriptions.remediation_level">
                                         Remediation Level</p>
                                 </td>
@@ -901,7 +901,7 @@
                                 <td>
                                     <p id="RC_Heading"
                                        title="This metric measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes only the existence of vulnerabilities are publicized, but without specific details. For example, an impact may be recognized as undesirable, but the root cause may not be known. The vulnerability may later be corroborated by research which suggests where the vulnerability may lie, though the research may not be certain. Finally, a vulnerability may be confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers."
-                                       data-i18n="cvss-calculator_html.headings.report_confidence"
+                                       data-i18n="cvss-calculator_html.labels.report_confidence"
                                        data-i18n-title="cvss-calculator_html.descriptions.report_confidence">
                                         Report Confidence</p>
                                 </td>
